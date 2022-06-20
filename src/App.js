@@ -1,11 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Header from './components/Header'
+import Product from './components/Products'
+import Footer from './components/Footer'
+
 
 function App() {
   return (
-    <h1 className="text-3xl font-bold">
-    Hello world!
-  </h1>
+    <div >
+      <Header />
+      <Product />
+      <Footer />
+    </div>
   );
 }
 
