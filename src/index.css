@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  height: 100%;
+  /* @aplly h-full bg-gray-50; */
+}
 
+body {
+  height: 100%;
+  /* @aplly h-full; */
+}
 
 /* 
 body {
