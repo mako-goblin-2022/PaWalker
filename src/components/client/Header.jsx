@@ -1,11 +1,18 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-
+import Navbar from "./Navbar";
 const Header = () => {
   return (
-    <div>
-      Header
-    </div>
+    <header>
+      <div>
+        <Link to='/'>
+          eShop
+        </Link>
+      </div>
+      <div>
+        <Navbar />
+      </div>
+    </header>
   )
 }
 
