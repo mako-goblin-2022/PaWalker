@@ -1,7 +1,10 @@
 import React from "react";
 import {Link} from 'react-router-dom';
 import Navbar from "./Navbar";
-const Header = () => {
+
+
+
+function Header () {
   return (
     <header className="w-4/5 h-min-4/5 flex sticky mt-0 m-auto p-3 justify-between items-center overflow-hidden bg-stone-800 text-slate-50 shadow-lg shadow-orange-500/10">
       <div className="inline-block font-bold">

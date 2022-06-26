@@ -1,23 +1,16 @@
 import React from 'react';
 
-import data from './components/server/db/Data';
+// import { BrowserRouter as Router } from 'react-router-dom';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import Home from './components/client/Home'
 
-import './index.css';
-import Header from './components/client/Header'
-// import Product from './components/Products'
-// import Footer from './components/Footer'
 
 
 
 function App() {
-  const {productItems} = data;
   return (
     <div >
-        <Router>
-          <Header />
-        </Router>
+          <Home /> 
     </div>
   )
 }

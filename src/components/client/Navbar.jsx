@@ -5,21 +5,21 @@ const Navbar = () => {
   return (
     <nav className="flex">
       <div className="space-x-6 font-bold">
-        <ul className="inline-block">
+        <ul className="inline-block hover:text-orange-500">
           <li>
             <Link to='/'>
               Home
             </Link>
           </li>
         </ul>
-        <ul className="inline-block">
+        <ul className="inline-block hover:text-orange-500">
           <li>
             <Link to='/signup'>
               Signup
             </Link>
           </li>
         </ul>
-        <ul className="inline-block">
+        <ul className="inline-block hover:text-orange-500">
           <li>
             <Link to='/cart'>
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
