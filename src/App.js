@@ -1,20 +1,25 @@
+import React from 'react';
 
-import './App.css';
-import Header from './components/Header'
-import Product from './components/Products'
-import Footer from './components/Footer'
-import SignIn from './components/SignIn';
+import data from './components/server/db/Data';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import './index.css';
+import Header from './components/client/Header'
+// import Product from './components/Products'
+// import Footer from './components/Footer'
+
 
 
 function App() {
+  const {productItems} = data;
   return (
     <div >
-      <Header />
-      <SignIn />
-      <Product />
-      <Footer />
+        <Router>
+          <Header />
+        </Router>
     </div>
-  );
+  )
 }
 
 export default App;
