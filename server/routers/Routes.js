@@ -1,13 +1,13 @@
-import React from 'react';
+// import React from 'react';
 
 
 
-function Rout({productItems}) {
-  return (
-    <div>
+// function Rout({productItems}) {
+//   return (
+//     <div>
        
-    </div>
-  )
-}
+//     </div>
+//   )
+// }
 
-export default Rout;
+// export default Rout;

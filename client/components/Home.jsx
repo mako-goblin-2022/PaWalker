@@ -1,6 +1,7 @@
 import React from 'react';
 
-import data from '../data';
+// import data from '../data';
+
 
 // import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -8,17 +9,19 @@ import data from '../data';
 
 // import '../../index.css';
 
-import Header from './Header'
+// import Header from './Header'
+// import Products from './Products';
 // import Product from './components/Products'
 // import Footer from './components/Footer'
 
 
 
 function Home() {
-  const {productItems} = data;
+
   return (
     <div >
-      <Header />
+   
+
     </div>
   )
 }

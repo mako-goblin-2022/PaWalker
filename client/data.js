@@ -1,6 +1,5 @@
 
-const data = {
-  productItems: [
+const data = [
     {
       id: '1',
       name: 'Mousepad',
@@ -56,6 +55,6 @@ const data = {
       image: './images/macbook-pro.jpeg',
     },  
   ]
-}
+
 
 export default data;
