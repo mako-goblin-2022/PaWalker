@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import Signup from "./Signup";
+
 const Navbar = () => {
   return (
     <nav className="flex">
@@ -14,7 +14,7 @@ const Navbar = () => {
         </ul>
         <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
           <li>
-            <Link to='/signup' target='_blank'>
+            <Link to='/signup'>
               Signup
             </Link>
           </li>
