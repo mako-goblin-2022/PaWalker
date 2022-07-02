@@ -14,7 +14,7 @@ const Navbar = () => {
         </ul>
         <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
           <li>
-            <Link to='/signup'>
+            <Link to='/signup' target='_blank'>
               Signup
             </Link>
           </li>
