@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-// import { BrowserRouter as Router } from 'react-router-dom';
+
 import {getProducts} from '../apiClient'
 
 import { Route, Routes } from "react-router-dom";
@@ -14,9 +14,8 @@ import Footer from './Footer';
 function App() {
 
   const [products, setProducts] = useState([])
-
   const[productDisplay, setProductDisplay] = useState([]) 
-  // product displayed
+
 
   useEffect(() => {
     getProducts()
