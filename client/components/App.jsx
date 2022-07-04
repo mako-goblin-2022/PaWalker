@@ -30,15 +30,15 @@ function App() {
 
   return (
     <div  >
-        <Header />
-      <Products />
+      <Header />
+      
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/' element={<Products />} />
           <Route path='/Signup' element={<Signup />} />
           <Route path='/Cart' element={<Cart />} />
-          <Route path='Products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
+          <Route path='/Products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
         </Routes>
-        <Footer />
+      <Footer />
     </div>
   )
 }

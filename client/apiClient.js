@@ -1,6 +1,6 @@
 import request from 'superagent'
 
-const serverUrl = '/api/v1/'
+const serverUrl = '/api/v1/products'
 
 // export function getWelcome() {
 //   return request.get(`${serverUrl}/welcome`).then((response) => response.body)

@@ -1,10 +1,30 @@
 import React from 'react';
-import productDisplay from '../data'
+// import { fetchPosts } from '../actions'
+
+import {useState, useEffect}from 'react'
+import {getProducts} from '../apiClient.js'
 
 function Products (){
   // const products = props.products
   // const setProducts = props.setProducts
   // const productDisplay = props.productDisplay
+
+  const [productDisplay, setProductDisplay] = useState([]);
+
+
+useEffect(()=>{
+  // dispatch(fetchProducts())
+  getProducts()
+  .then(productDisplay => {
+    setProductDisplay(productDisplay)
+    // console.log(widgetsData)
+    
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+},[])
 
   return (
     <main className='flex mb-7 m-auto w-4/5 justify-around flex-wrap bg-stone-300 rounded-3xl drop-shadow-[0_8px_8px_rgba(0,0,0)]'>
