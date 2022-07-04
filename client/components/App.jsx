@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import {getProducts} from '../apiClient'
 
 import { Route, Routes } from "react-router-dom";
-import Home from './Home'
+
 import Products from './Products';
 import Header from './Header'
 import Signup  from "./Signup";
@@ -31,7 +31,6 @@ function App() {
   return (
     <div  >
       <Header />
-      
         <Routes>
           <Route path='/' element={<Products />} />
           <Route path='/Signup' element={<Signup />} />

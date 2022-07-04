@@ -3,10 +3,28 @@ import React from 'react';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import products from '../data'
-
+// import products from '../data'
+import { useEffect } from 'react'
+import { getProducts } from '../apiClient.js'
 export default function Cart() {
-  const [open, setOpen] = useState(true)
+  const [ open, setOpen ] = useState(true)
+
+  const [product, setProductDisplay] = useState([]);
+
+
+useEffect(()=>{
+  // dispatch(fetchProducts())
+  getProducts()
+  .then(product => {
+    setProductDisplay(product)
+    // console.log(productDisplay)
+    
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+},[])
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -55,8 +73,8 @@ export default function Cart() {
                       <div className="mt-8">
                         <div className="flow-root">
                           <ul role="list" className="-my-6 divide-y divide-gray-200">
-                            
-                            {products.map((product) => (
+
+                            {product.map((product) => (
                               <li key={product.id} className="flex py-6">
                                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
@@ -113,13 +131,15 @@ export default function Cart() {
                       <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                         <p>
                           or{' '}
-                          <button
-                            type="button"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
-                            onClick={() => setOpen(false)}
-                          >
-                            Continue Shopping<span aria-hidden="true"> &rarr;</span>
-                          </button>
+                          <a href="/Products">
+                            <button
+                              type="button"
+                              className="font-medium text-indigo-600 hover:text-indigo-500"
+                              onClick={() => setOpen(false)}
+                            >
+                              Continue Shopping<span aria-hidden="true"> &rarr;</span>
+                            </button>
+                          </a>
                         </p>
                       </div>
                     </div>

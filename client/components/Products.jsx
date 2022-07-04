@@ -5,9 +5,6 @@ import {useState, useEffect}from 'react'
 import {getProducts} from '../apiClient.js'
 
 function Products (){
-  // const products = props.products
-  // const setProducts = props.setProducts
-  // const productDisplay = props.productDisplay
 
   const [productDisplay, setProductDisplay] = useState([]);
 
@@ -17,7 +14,7 @@ useEffect(()=>{
   getProducts()
   .then(productDisplay => {
     setProductDisplay(productDisplay)
-    // console.log(widgetsData)
+    // console.log(productDisplay)
     
   })
   .catch(err => {
