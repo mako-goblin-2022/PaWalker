@@ -175,10 +175,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.js");
-/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/dialog/dialog.js");
-/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/XIcon.js");
-/* harmony import */ var _apiClient_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../apiClient.js */ "./client/apiClient.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/transitions/transition.js");
+/* harmony import */ var _headlessui_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/react */ "./node_modules/@headlessui/react/dist/components/dialog/dialog.js");
+/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/XIcon.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./client/actions/index.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -195,7 +196,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
- // import products from '../data'
 
 
 
@@ -205,27 +205,21 @@ function Cart() {
       open = _useState2[0],
       setOpen = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      product = _useState4[0],
-      setProductDisplay = _useState4[1];
-
+  var product = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.produreds;
+  });
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // dispatch(fetchProducts())
-    (0,_apiClient_js__WEBPACK_IMPORTED_MODULE_1__.getProducts)().then(function (product) {
-      setProductDisplay(product); // console.log(productDisplay)
-    }).catch(function (err) {
-      console.log(err);
-    });
-  }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Transition.Root, {
+    dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchProducts)());
+  }, [dispatch]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Transition.Root, {
     show: open,
     as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Dialog, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Dialog, {
     as: "div",
     className: "relative z-10",
     onClose: setOpen
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Transition.Child, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Transition.Child, {
     as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
     enter: "ease-in-out duration-500",
     enterFrom: "opacity-0",
@@ -241,7 +235,7 @@ function Cart() {
     className: "absolute inset-0 overflow-hidden"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_2__.Transition.Child, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Transition.Child, {
     as: react__WEBPACK_IMPORTED_MODULE_0__.Fragment,
     enter: "transform transition ease-in-out duration-500 sm:duration-700",
     enterFrom: "translate-x-full",
@@ -249,7 +243,7 @@ function Cart() {
     leave: "transform transition ease-in-out duration-500 sm:duration-700",
     leaveFrom: "translate-x-0",
     leaveTo: "translate-x-full"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Dialog.Panel, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Dialog.Panel, {
     className: "pointer-events-auto w-screen max-w-md"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex h-full flex-col overflow-y-scroll bg-stone-100 shadow-xl"
@@ -257,7 +251,7 @@ function Cart() {
     className: "flex-1 overflow-y-auto py-6 px-4 sm:px-6"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "flex items-start justify-between"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_3__.Dialog.Title, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_headlessui_react__WEBPACK_IMPORTED_MODULE_4__.Dialog.Title, {
     className: "text-lg font-medium text-gray-900"
   }, " Shopping cart "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "ml-3 flex h-7 items-center"
@@ -269,7 +263,7 @@ function Cart() {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "sr-only"
-  }, "Close panel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, "Close panel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_5__["default"], {
     className: "h-6 w-6",
     "aria-hidden": "true"
   })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -469,7 +463,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../actions */ "./client/actions/index.js");
 
 
- // import {getProducts} from '../apiClient.js'
+
 
 function Products() {
   var productDisplay = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
@@ -477,15 +471,8 @@ function Products() {
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchProducts)()); // getProducts()
-    // .then(productDisplay => {
-    //   setProductDisplay(productDisplay)
-    //   console.log(productDisplay) 
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
-  }, []);
+    dispatch((0,_actions__WEBPACK_IMPORTED_MODULE_2__.fetchProducts)());
+  }, [dispatch]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "flex mb-7 m-auto w-4/5 justify-around flex-wrap bg-stone-300 rounded-3xl drop-shadow-[0_8px_8px_rgba(0,0,0)]"
   }, productDisplay.map(function (prodItem) {

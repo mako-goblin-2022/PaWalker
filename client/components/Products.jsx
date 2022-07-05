@@ -4,23 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../actions'
 
 
-// import {getProducts} from '../apiClient.js'
-
 function Products (){
 const productDisplay = useSelector((state) => state.produreds)
 const dispatch = useDispatch()
 
 useEffect(()=>{
   dispatch(fetchProducts())
-  // getProducts()
-  // .then(productDisplay => {
-  //   setProductDisplay(productDisplay)
-  //   console.log(productDisplay) 
-  // })
-  // .catch(err => {
-  //   console.log(err)
-  // })
-}, [])
+}, [dispatch])
 
   return (
     <main className='flex mb-7 m-auto w-4/5 justify-around flex-wrap bg-stone-300 rounded-3xl drop-shadow-[0_8px_8px_rgba(0,0,0)]'>

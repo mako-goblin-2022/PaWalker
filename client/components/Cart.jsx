@@ -1,30 +1,22 @@
 /* This example requires Tailwind CSS v2.0+ */
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-// import products from '../data'
-import { useEffect } from 'react'
-import { getProducts } from '../apiClient.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchProducts } from '../actions'
+
+
+
+
 export default function Cart() {
   const [ open, setOpen ] = useState(true)
-
-  const [product, setProductDisplay] = useState([]);
-
+  const product = useSelector((state) => state.produreds)
+  const dispatch = useDispatch()
 
 useEffect(()=>{
-  // dispatch(fetchProducts())
-  getProducts()
-  .then(product => {
-    setProductDisplay(product)
-    // console.log(productDisplay)
-    
-  })
-  .catch(err => {
-    console.log(err)
-  })
-
-},[])
+  dispatch(fetchProducts())
+}, [dispatch])
 
   return (
     <Transition.Root show={open} as={Fragment}>
