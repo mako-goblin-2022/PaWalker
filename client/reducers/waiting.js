@@ -1,4 +1,4 @@
-import { SHOW_ERROR, REQUEST_PRODUCTS, RECEIVE_POSTS } from '../actions'
+import { SHOW_ERROR, REQUEST_PRODUCTS, RECEIVE_PRODUCTS } from '../actions'
 
 function waiting(state = false, action) {
   const { type } = action
@@ -6,7 +6,7 @@ function waiting(state = false, action) {
   switch (type) {
     case REQUEST_PRODUCTS:
       return true
-    case RECEIVE_POSTS:
+    case RECEIVE_PRODUCTS:
       return false
     case SHOW_ERROR:
       return false

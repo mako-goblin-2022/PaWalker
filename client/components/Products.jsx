@@ -1,37 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../actions'
 
-import {useState, useEffect}from 'react'
-import {getProducts} from '../apiClient.js'
+
+// import {getProducts} from '../apiClient.js'
 
 function Products (){
-
-const [productDisplay, setProductDisplay] = useState([]);
-
+const productDisplay = useSelector((state) => state.produreds)
 const dispatch = useDispatch()
 
 useEffect(()=>{
   dispatch(fetchProducts())
-
-  getProducts()
-  .then(productDisplay => {
-    setProductDisplay(productDisplay)
-    // console.log(productDisplay)
-    
-  })
-  .catch(err => {
-    console.log(err)
-  })
-
-},[])
+  // getProducts()
+  // .then(productDisplay => {
+  //   setProductDisplay(productDisplay)
+  //   console.log(productDisplay) 
+  // })
+  // .catch(err => {
+  //   console.log(err)
+  // })
+}, [])
 
   return (
-    
     <main className='flex mb-7 m-auto w-4/5 justify-around flex-wrap bg-stone-300 rounded-3xl drop-shadow-[0_8px_8px_rgba(0,0,0)]'>
       {productDisplay.map((prodItem) => (
-        <section className='w-72 h-100 mx-5 p-2 my-9 bg-slate-50 border border-slate-400 drop-shadow-[0_10px_10px_rgba(0,0,0)] rounded-md overflow-hidden'>
+        <section key={prodItem.id} className='w-72 h-100 mx-5 p-2 my-9 bg-slate-50 border border-slate-400 drop-shadow-[0_10px_10px_rgba(0,0,0)] rounded-md overflow-hidden'>
           <div>
             <img className='block w-5/5 h-52 object-cover' 
             src={prodItem.image} 
@@ -53,7 +47,7 @@ useEffect(()=>{
         </section> 
       ))}
     </main>
-  );
+  )
 }
 
 export default Products;

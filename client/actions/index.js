@@ -1,21 +1,23 @@
 import request from 'superagent'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
+export const REQUEST_PRODUCTS = 'REQUEST_PRODUCTS'
 
 const serverUrl = '/api/v1/products'
 
-export function requestPosts() {
+
+
+export function requestProducts() {
   return {
-    type: REQUEST_POSTS,
+    type: REQUEST_PRODUCTS,
   }
 }
 
-export function receivePosts(posts) {
+export function receiveProducts(prod) {
   return {
-    type: RECEIVE_POSTS,
-    payload: posts.map((post) => post.data),
+    type: RECEIVE_PRODUCTS,
+    payload: prod,
   }
 }
 
@@ -26,13 +28,14 @@ export function showError(errorMessage) {
   }
 }
 
-export function fetchProducts(prodredit) {
+
+export function fetchProducts() {
   return (dispatch) => {
-    dispatch(requestPosts())
+    dispatch(requestProducts())
     return request
       .get('http://localhost:3001' + serverUrl)
       .then((res) => {
-        dispatch(receivePosts(res.body))
+        dispatch(receiveProducts(res.body))
         return null
       })
       .catch((err) => {

@@ -4,7 +4,7 @@ function Footer() {
   return (
     <footer className="w-full flex h-6 bg-stone-600 text-slate-50 justify-around ">
       <div>
-        <a classname="p-1" href="#">
+        <a className="p-1" href="#">
           <ion-icon name="logo-facebook"></ion-icon>
         </a>
         <a href="#">
