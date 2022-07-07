@@ -3,8 +3,16 @@ const config = require('./knexfile').development
 const connection = require('knex')(config)
 
 function getProducts(db = connection) {
-  return db('products').select()
+  return db('products')
+  .select()
 }
+
+function updateProduct(id, product, db = connection) {
+  return db('product')
+  .update(product)
+  .where({ id })
+}
+
 
 // function dbAddTask(taskName, db = connection) {
 //   return db('todos').insert({ task: taskName })
@@ -29,5 +37,6 @@ function close(db = connection) {
 
 module.exports = {
   getProducts,
+  updateProduct,
   close,
 }

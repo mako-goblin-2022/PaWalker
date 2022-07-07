@@ -9,6 +9,7 @@ import Header from './Header'
 import Signup  from "./Signup";
 import Cart from './Cart'
 import Footer from './Footer';
+import AddProduct from './Addproducts';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path='/' element={<Products />} />
           <Route path='/Signup' element={<Signup />} />
           <Route path='/Cart' element={<Cart />} />
+          <Route path='/AddProduct' element={<AddProduct />} />
           <Route path='/Products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
         </Routes>
       <Footer />
