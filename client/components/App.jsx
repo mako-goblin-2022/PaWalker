@@ -6,19 +6,24 @@ import { Route, Routes } from "react-router-dom";
 
 import Products from './Products';
 import Header from './Header'
-import Signup  from "./Signup";
+import Registration  from "./Registration";
 import Cart from './Cart'
 import Footer from './Footer';
 import AddProduct from './Addproducts';
-
+import LogIn from './LogIn'
+import { CacheUser } from '../auth0-utils'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function App() {
+
+  CacheUser(useAuth0)
 
   const [products, setProducts] = useState([])
   const[productDisplay, setProductDisplay] = useState([]) 
 
 
   useEffect(() => {
+    
     getProducts()
     .then(productData => {
       setProducts(productData)
@@ -31,9 +36,10 @@ function App() {
   return (
     <div  >
       <Header />
+      <LogIn />
         <Routes>
           <Route path='/' element={<Products />} />
-          <Route path='/Signup' element={<Signup />} />
+          <Route path='/Registration' element={<Registration />} />
           <Route path='/Cart' element={<Cart />} />
           <Route path='/AddProduct' element={<AddProduct />} />
           <Route path='/Products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
