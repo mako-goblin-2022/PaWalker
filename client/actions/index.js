@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { patchProduct } from '../../client/apiClient'
+import { patchProduct } from '../../client/apis/apiProducts'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'

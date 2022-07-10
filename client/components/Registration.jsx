@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { useSelector } from 'react-redux'
-import { addUser } from '../../client/api'
+import { addUser } from '../apis/api'
 
 
 

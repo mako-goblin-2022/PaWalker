@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import {getProducts} from '../apiClient'
+import {getProducts} from '../../client/apis/apiProducts'
 
 import { Route, Routes } from "react-router-dom";
 
