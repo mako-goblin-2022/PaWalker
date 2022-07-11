@@ -35,7 +35,6 @@ router.post('/', checkJwt, async (req, res) => {
     name,
     email,
     password,
-    avatar: 'rodrigo.png',
   }
   try {
     // check if user exists using new db function that takes auth id as param

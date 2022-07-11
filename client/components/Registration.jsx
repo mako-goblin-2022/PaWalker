@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 import { addUser } from '../apis/api'
 import LogIn from './LogIn'
 
-
 export default function Registration() {
+  
 
     const user =  useSelector((state) => state.loggedInUser)
     const [formUserData, setFormUserData] = useState({
@@ -35,6 +35,7 @@ export default function Registration() {
     await addUser(formUserData)
   }
   
+
 
   return (
     <main>
@@ -143,6 +144,7 @@ export default function Registration() {
               </div>
             </div>
             <div>
+              
               <button href="/" onClick={LogIn.handleRegister}
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-stone-600 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
