@@ -28,20 +28,24 @@ function LogIn() {
   }
 
   return (
-    <div className=''>
+    <div>
         <IfAuthenticated>
-          <a href="/" onClick={handleLogoff}>
-            Log off
-          </a>
+          <button className='w-1/2 cursor-pointer mb-5 uppercase h-9 bg-stone-600 rounded-lg text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>
+            <a href="/" onClick={handleLogoff}>
+              Log off
+            </a>
+          </button>
         </IfAuthenticated>
         
         <IfNotAuthenticated>
           <a href="/" onClick={handleRegister}>
-            Register
+            regis
           </a>
-          <a href="/" onClick={handleSignIn}>
-            Sign in
-          </a>
+          <button className='w-1/2 cursor-pointer mb-5 uppercase h-9 bg-stone-600 rounded-lg text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>
+            <a href="/" onClick={handleSignIn}>
+              Sign in
+            </a>
+          </button>
         </IfNotAuthenticated>
     </div>
   )

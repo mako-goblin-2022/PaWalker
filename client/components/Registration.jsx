@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { useSelector } from 'react-redux'
 import { addUser } from '../apis/api'
-
+import LogIn from './LogIn'
 
 
 export default function Registration() {
@@ -37,8 +37,12 @@ export default function Registration() {
   
 
   return (
-    <>
+    <main>
+      <div className='w-full text-center'>
+        <LogIn />
+      </div>
       <div className="min-h-full flex items-center justify-center mt-10 py-12 px-4 sm:px-6 lg:px-8 bg-stone-100 drop-shadow-[0_10px_10px_rgba(0,0,0)]">
+        
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -47,7 +51,7 @@ export default function Registration() {
               alt="Workflow"
             />
             <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-              Sign in to your account
+              Register user account
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600">
               Or{' '}
@@ -139,7 +143,7 @@ export default function Registration() {
               </div>
             </div>
             <div>
-              <button
+              <button href="/" onClick={LogIn.handleRegister}
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-stone-600 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
@@ -155,6 +159,6 @@ export default function Registration() {
           </form>
         </div>
       </div>
-    </>
+    </main>
     )
   }

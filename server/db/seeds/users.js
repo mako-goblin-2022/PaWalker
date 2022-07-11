@@ -12,7 +12,7 @@ exports.seed = async function (knex) {
       name: 'Rodrigo Reis',
       email: 'onlinebordados@gmail.com',
       password: '123456',
-      avatar: 'rodrigo.png'
+      avatar: 'user.png',
     }  
   ])
 }

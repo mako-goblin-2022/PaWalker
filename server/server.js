@@ -6,6 +6,9 @@ const products = require('../server/routers/product')
 
 const server = express()
 
+const users = require('./routers/users')
+server.use('/api/v1/users', users)
+
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
