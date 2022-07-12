@@ -8,8 +8,9 @@ export function updateUser(user) {
     .send({ user })
 }
 
+
 // to register a new user
-export async function addUser(user) {
+export default async function addUser(user) {
   return request
     .post(`/api/v1/users`)
     .set('authorization', `Bearer ${user.token}`)

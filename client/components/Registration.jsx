@@ -1,49 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { useSelector } from 'react-redux'
-import { addUser } from '../apis/api'
+import addUser from '../apis/api'
 import LogIn from './Login'
 
 export default function Registration() {
-  
+  const user = useSelector((state) => state.loggedInUser)
+  const [formUserData, setFormUserData] = useState({
+    auth0Id: '',
+    name: '',
+    email: '',
+    password: '',
+  })
 
-    const user =  useSelector((state) => state.loggedInUser)
-    const [formUserData, setFormUserData] = useState({
-      auth0Id: '',
-      name: '',
-      email: '',
-      password: ''
-    })
-    
   useEffect(() => {
     setFormUserData({
       ...formUserData,
       auth0Id: user?.auth0Id,
-      token: user?.token
+      token: user?.token,
     })
   }, [user])
-  
+
   function handleInput(evt) {
     setFormUserData({
       ...formUserData,
       [evt.target.name]: evt.target.value,
     })
   }
-  
+
   async function handleSubmit(e) {
     e.preventDefault()
     await addUser(formUserData)
   }
-  
-
 
   return (
     <main>
-      <div className='w-full text-center'>
+      <div className="w-full text-center">
         <LogIn />
       </div>
       <div className="min-h-full flex items-center justify-center mt-10 py-12 px-4 sm:px-6 lg:px-8 bg-stone-100 drop-shadow-[0_10px_10px_rgba(0,0,0)]">
-        
         <div className="max-w-md w-full space-y-8">
           <div>
             <img
@@ -64,8 +59,13 @@ export default function Registration() {
               </a>
             </p>
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST" onSubmit={handleSubmit}>
-          <input type="hidden" name="remember" defaultValue="true" />
+          <form
+            className="mt-8 space-y-6"
+            action="#"
+            method="POST"
+            onSubmit={handleSubmit}
+          >
+            <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="name" className="sr-only">
@@ -75,7 +75,7 @@ export default function Registration() {
                   id="name"
                   name="name"
                   value={formUserData.name}
-                  type='text'
+                  type="text"
                   autoComplete="name"
                   required
                   onChange={handleInput}
@@ -83,7 +83,7 @@ export default function Registration() {
                   placeholder="Full name"
                 />
               </div>
-            </div>  
+            </div>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
@@ -144,8 +144,9 @@ export default function Registration() {
               </div>
             </div>
             <div>
-              
-              <button href="/" onClick={LogIn.handleRegister}
+              <button
+                href="/"
+                onClick={LogIn.handleRegister}
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-stone-600 hover:bg-orange-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
@@ -162,5 +163,5 @@ export default function Registration() {
         </div>
       </div>
     </main>
-    )
-  }
+  )
+}
