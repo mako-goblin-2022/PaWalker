@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav className="flex">
-      <div className="space-x-8 font-medium text-base uppercase tracking-wide">
+      <div className="space-x-8 font-medium text-sm uppercase tracking-wide">
         <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
           <li>
             <Link to='/'>
@@ -14,8 +14,15 @@ const Navbar = () => {
         </ul>
         <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
           <li>
-            <Link to='/signup'>
+            <Link to='/registration'>
               Signup
+            </Link>
+          </li>
+        </ul>
+        <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
+          <li>
+            <Link to='/users'>
+              Admin
             </Link>
           </li>
         </ul>

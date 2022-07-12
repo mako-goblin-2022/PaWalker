@@ -14,3 +14,16 @@ export function getProducts() {
       console.log(err)
     })
 }
+
+export function patchProduct(product) {
+  return request
+    .patch( serverUrl + '/' + product.id)
+    .send(product)
+    .then((res) => {
+      if (res.status !== 200) {
+        throw new Error('could not save')
+      } else {
+        return 'success'
+      }
+    })
+}
