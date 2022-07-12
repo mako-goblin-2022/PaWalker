@@ -8,7 +8,7 @@ function getUsersList(db = connection) {
 }
 
 function deleteUser(id, db = connection) {
-  return db('users').delete().where({ id: id })
+  return db('users').delete().where({ auth0_id: id })
 }
 
 

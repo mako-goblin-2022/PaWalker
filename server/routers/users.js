@@ -13,8 +13,8 @@ router.get('/', (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
-  db.updateUser(req.params.id, req.body)
+router.delete('/:id', (req, res) => {
+  db.deleteUser(req.params.id)
     .then(() => {
       res.sendStatus(200)
     })

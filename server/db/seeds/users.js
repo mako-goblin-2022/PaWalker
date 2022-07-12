@@ -13,6 +13,13 @@ exports.seed = async function (knex) {
       email: 'onlinebordados@gmail.com',
       password: '123456',
      
-    }  
+    },
+    {
+      auth0_id: 'auth0|002',
+      name: 'Caio R',
+      email: 'test@gmail.com',
+      password: 'cacaca',
+     
+    },    
   ])
 }

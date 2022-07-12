@@ -11,3 +11,16 @@ export function getUsers() {
       return response.body
     })
 }
+
+export function removeUser(id) {
+  console.log(id)
+  return request
+    .del(serverURL + '/users/' + id)
+    .then((res) => {
+      if (res.status !== 200) {
+        throw new Error('could not save')
+      } else {
+        return 'success'
+      }
+    })
+}

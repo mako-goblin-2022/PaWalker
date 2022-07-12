@@ -12,9 +12,6 @@ function createUser(user, db = connection) {
   return db('users').insert(user)
 }
 
-function deleteUser(id, db = connection) {
-  return db('users').delete().where({ id: id })
-}
 
 function userExists(auth0Id, db = connection) {
   return db('users')
@@ -28,5 +25,4 @@ module.exports = {
   updateUser,
   createUser,
   userExists,
-  deleteUser,
 }

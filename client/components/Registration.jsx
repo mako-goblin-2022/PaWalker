@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { LockClosedIcon } from '@heroicons/react/solid'
 import { useSelector } from 'react-redux'
 import { addUser } from '../apis/api'
-import LogIn from './LogIn'
+import LogIn from './Login'
 
 export default function Registration() {
   
