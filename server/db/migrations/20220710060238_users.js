@@ -8,7 +8,7 @@
     table.varchar('name')
     table.varchar('email')
     table.varchar('password')
-    table.varchar('avatar')
+    
    
   })
 }

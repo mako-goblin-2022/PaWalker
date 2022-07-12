@@ -1,4 +1,4 @@
-import { SET_USERS } from '../actions/usersIndex'
+import { SET_USERS, UPDATE_USERS, DEL_USERS } from '../actions/usersIndex'
 
 const initialUsersState = []
 
@@ -8,6 +8,14 @@ function usersReducer(state = initialUsersState, action) {
   switch (type) {
     case SET_USERS:
       return payload
+      case UPDATE_USERS:
+        return state.map((users) => {
+          return users === action.payload.oldUser
+            ? action.payload.newUser
+            : users
+        })
+    case DEL_USERS:
+      return state.filter((users) => users !== payload)
     default:
       return state
   }

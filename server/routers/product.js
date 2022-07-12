@@ -13,16 +13,16 @@ router.get('/', (req, res) => {
     })
 })
 
-router.patch('/:id', (req, res) => {
-  db.updateProduct(req.params.id, req.body)
-    .then(() => {
-      res.sendStatus(200)
-    })
-    .catch((err) => {
-      console.log(err)
-      res.sendStatus(500)
-    })
-})
+// router.patch('/:id', (req, res) => {
+//   db.updateProduct(req.params.id, req.body)
+//     .then(() => {
+//       res.sendStatus(200)
+//     })
+//     .catch((err) => {
+//       console.log(err)
+//       res.sendStatus(500)
+//     })
+// })
 
 // router.get('/:productId', (req, res) => {
 //   const id = req.params.productId

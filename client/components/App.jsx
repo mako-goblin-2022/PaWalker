@@ -9,7 +9,7 @@ import Header from './Header'
 import Registration  from "./Registration"
 import Cart from './Cart'
 import Footer from './Footer'
-import AddProduct from './Addproducts'
+
 import Users from './Users'
 
 import { CacheUser } from '../auth0-utils'
@@ -37,13 +37,12 @@ function App() {
   return (
     <div  >
       <Header />
-     
+   
         <Routes>
           <Route path='/' element={<Products />} />
           <Route path='/registration' element={<Registration />} />
           <Route path='/users' element={<Users />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/addProduct' element={<AddProduct />} />
           <Route path='/products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
         </Routes>
       <Footer />

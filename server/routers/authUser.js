@@ -28,7 +28,7 @@ router.put('/', checkJwt, async (req, res) => {
 })
 
 // POST /api/v1/users
-router.post('/', checkJwt, async (req, res) => {
+router.post('/registration', checkJwt, async (req, res) => {
   const { auth0Id, name, email, password } = req.body
   const user = {
     auth0_id: auth0Id,

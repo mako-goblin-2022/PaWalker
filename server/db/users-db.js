@@ -7,9 +7,12 @@ function getUsersList(db = connection) {
   return db('users').select()
 }
 
-
+function deleteUser(id, db = connection) {
+  return db('users').delete().where({ id: id })
+}
 
 
 module.exports = {
   getUsersList,
+  deleteUser,
 }

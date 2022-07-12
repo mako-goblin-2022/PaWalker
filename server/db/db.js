@@ -7,11 +7,11 @@ function getProducts(db = connection) {
   .select()
 }
 
-function updateProduct(id, product, db = connection) {
-  return db('product')
-  .update(product)
-  .where({ id })
-}
+// function updateProduct(id, product, db = connection) {
+//   return db('product')
+//   .update(product)
+//   .where({ id })
+// }
 
 
 // function dbAddTask(taskName, db = connection) {
@@ -37,6 +37,5 @@ function close(db = connection) {
 
 module.exports = {
   getProducts,
-  updateProduct,
   close,
 }
