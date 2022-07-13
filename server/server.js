@@ -3,22 +3,19 @@ const path = require('path')
 const express = require('express')
 const server = express()
 
-const authUserRoutes = require('./routers/authUser.js')
-const users = require('./routers/users')
-const products = require('../server/routers/product')
+const fruitRoutes = require('./routers/fruits')
+
+const petRoutes = require('./routers/pets')
+const reviewRoutes = require('./routers/reviews')
+const userRoutes = require('./routers/users')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 
-server.use('/api/v1/users', users)
-server.use('/api/v1/products', products)
-server.use('/api/v1/users', authUserRoutes)
+server.use('/api/v1/fruits', fruitRoutes)
 
-
-// --------------------------------------------- //
-
-server.get('*', (req, res) => {
-  res.sendFile(path.resolve('server/public/index.html'))
-})
+server.use('/api/v1/pets', petRoutes)
+server.use('/api/v1/reviews', reviewRoutes)
+server.use('/api/v1/users', userRoutes)
 
 module.exports = server

@@ -1,53 +1,28 @@
-import React, { useState, useEffect } from 'react'
-
-import {getProducts} from '../../client/apis/apiProducts'
-
-import { Route, Routes } from "react-router-dom"
-
-import Products from './Products'
-import Header from './Header'
-import Registration  from "./Registration"
-import Cart from './Cart'
-import Footer from './Footer'
-
-import Users from './Users'
-
-import { CacheUser } from '../auth0-utils'
-import { useAuth0 } from '@auth0/auth0-react'
-
-function App() {
-
-  CacheUser(useAuth0)
-
-  const [products, setProducts] = useState([])
-  const[productDisplay, setProductDisplay] = useState([]) 
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { fetchFruits } from '../actions'
+import '../../client/index.css'
 
 
+function App () {
+  const fruits = useSelector(state => state.fruits)
+  const dispatch = useDispatch()
   useEffect(() => {
-    
-    getProducts()
-    .then(productData => {
-      setProducts(productData)
-      setProductDisplay(productData)
-    }).catch(err => {
-      console.log(err)
-    })
-  }, [])
+    dispatch(fetchFruits())
+  }, [dispatch])
 
   return (
-    <div  >
-      <Header />
-   
-        <Routes>
-          <Route path='/' element={<Products />} />
-          <Route path='/registration' element={<Registration />} />
-          <Route path='/users' element={<Users />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/products' element={<Products products={products} setProducts={setProductDisplay} productDisplay={productDisplay}/>} />
-        </Routes>
-      <Footer />
-    </div>
+    <>
+      <div className='text-orange-500 text-center font-extrabold text-3xl'>
+        <h1>Tailwind CSS Working!</h1>
+        <ul>
+          {fruits.map(fruit => (
+            <li key={fruit}>{fruit}</li>
+          ))}
+        </ul>
+      </div>
+    </>
   )
 }
 
-export default App;
+export default App
