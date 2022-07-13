@@ -6,11 +6,11 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
   db.getPets()
-    .then(((result)s) => {
-      res.json({ pets: results.map(((pe)t) => pet.name) })
+    .then(results => {
+      res.json({ pets: results.map(pet => pet.name) })
       return null
     })
-    .catch(((er)r) => {
+    .catch(err => {
       console.log(err)
       res.status(500).json({ message: 'Somthing went wrong' })
     })

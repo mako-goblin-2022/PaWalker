@@ -2,11 +2,11 @@ const path = require('path')
 const express = require('express')
 const server = express()
 
-const fruitRoutes = require('./routers/fruits')
+const fruitRoutes = require('./routes/fruits')
 
-const petRoutes = require('./routers/pets')
-const reviewRoutes = require('./routers/reviews')
-const userRoutes = require('./routers/users')
+const petRoutes = require('./routes/pets')
+const reviewRoutes = require('./routes/reviews')
+const userRoutes = require('./routes/users')
 
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
