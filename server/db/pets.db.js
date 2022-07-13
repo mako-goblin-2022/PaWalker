@@ -6,4 +6,8 @@ function getPets(db = connection) {
 
 module.exports = {
   getPets,
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> tailwind

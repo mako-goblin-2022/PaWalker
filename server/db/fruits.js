@@ -6,4 +6,8 @@ function getFruits (db = connection) {
 
 module.exports = {
   getFruits
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> tailwind

@@ -12,4 +12,8 @@ const reducer = (state = initialState, action) => {
   }
 }
 
+<<<<<<< HEAD
 export default reducer
+=======
+export default reducer
+>>>>>>> tailwind

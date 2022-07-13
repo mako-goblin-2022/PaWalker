@@ -7,4 +7,8 @@ export function getFruits () {
     .then(res => {
       return res.body.fruits
     })
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> tailwind

@@ -17,3 +17,10 @@ export function fetchFruits() {
     })
   }
 }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> tailwind

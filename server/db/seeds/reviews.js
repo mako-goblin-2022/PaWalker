@@ -2,7 +2,11 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
+<<<<<<< HEAD
 exports.seed = async function (knex) {
+=======
+ exports.seed = async function (knex) {
+>>>>>>> tailwind
   // Deletes ALL existing entries
   await knex('reviews').del()
   await knex('reviews').insert([
@@ -68,4 +72,8 @@ exports.seed = async function (knex) {
       rating: 1,
     },
   ])
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> tailwind
