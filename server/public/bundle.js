@@ -10,27 +10,23 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SET_FRUITS": function() { return /* binding */ SET_FRUITS; },
-/* harmony export */   "fetchFruits": function() { return /* binding */ fetchFruits; },
-/* harmony export */   "setFruits": function() { return /* binding */ setFruits; }
+/* harmony export */   "SET_FRUITS": function() { return /* binding */ SET_FRUITS; }
 /* harmony export */ });
-Object(function webpackMissingModule() { var e = new Error("Cannot find module '../apis/fruits'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-
-var SET_FRUITS = 'SET_FRUITS';
-function setFruits(fruits) {
-  return {
-    type: SET_FRUITS,
-    payload: fruits
-  };
-}
-function fetchFruits() {
-  return function (dispatch) {
-    return Object(function webpackMissingModule() { var e = new Error("Cannot find module '../apis/fruits'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())().then(function (fruits) {
-      dispatch(setFruits(fruits));
-      return null;
-    });
-  };
-}
+// import { getFruits } from '../apis/fruits'
+var SET_FRUITS = 'SET_FRUITS'; // export function setFruits(fruits) {
+//   return {
+//     type: SET_FRUITS,
+//     payload: fruits,
+//   }
+// }
+// export function fetchFruits() {
+//   return (dispatch) => {
+//     return getFruits().then((fruits) => {
+//       dispatch(setFruits(fruits))
+//       return null
+//     })
+//   }
+// }
 
 /***/ }),
 
