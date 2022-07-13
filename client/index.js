@@ -10,10 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={store}>
       <App />
     </Provider>,
-<<<<<<< HEAD
-    document.getElementById('app')
-=======
     document.getElementById('root')
->>>>>>> tailwind
   )
 })

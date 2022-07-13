@@ -6,8 +6,4 @@ function getReviews(db = connection) {
 
 module.exports = {
   getReviews,
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> tailwind

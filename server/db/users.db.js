@@ -6,8 +6,4 @@ function getUsers(db = connection) {
 
 module.exports = {
   getUsers,
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> tailwind
