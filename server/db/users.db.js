@@ -1,6 +1,6 @@
 const connection = require('./connection')
 
-function getUsers(db = connection) {
+function getUsersdb(db = connection) {
   return db('users').select()
 }
 
