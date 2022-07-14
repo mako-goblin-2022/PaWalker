@@ -6,6 +6,7 @@ function getUsers(db = connection) {
 }
 
 function getUserById(id, db = connection) {
+  console.log(id)
   return db('users').select().where('auth0_id', id).first()
 }
 
