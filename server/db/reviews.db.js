@@ -1,6 +1,6 @@
 const connection = require('./connection')
 
-function getReviewsdb(db = connection) {
+function getReviews(db = connection) {
   return db('reviews').select()
 }
 
