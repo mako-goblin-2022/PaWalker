@@ -29,12 +29,11 @@ router.put('/', checkJwt, async (req, res) => {
 
 // POST /api/v1/users
 router.post('/', checkJwt, async (req, res) => {
-  const { auth0Id, name, email, password } = req.body
+  const { auth0Id, name, email } = req.body
   const user = {
     auth0_id: auth0Id,
     name,
     email,
-    password,
   }
   try {
     // check if user exists using new db function that takes auth id as param

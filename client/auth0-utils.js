@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoggedInUser } from './actions/loggedInUser'
+import { saveUser } from './features/auth/authSlice'
 
 // eslint-disable-next-line no-unused-vars
 export async function cacheUser(useAuth0) {
@@ -16,9 +17,10 @@ export async function cacheUser(useAuth0) {
       const userToSave = {
         auth0Id: user.sub,
         email: user.email,
+        name: user.name,
         token: token,
       }
-      dispatch(setLoggedInUser(userToSave))
+      dispatch(saveUser(userToSave))
     } catch (err) {
       console.error(err)
     }
