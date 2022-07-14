@@ -29,6 +29,7 @@
     "redux-thunk": "^2.3.0",
     "sqlite3": "^5.0.8",
     "superagent": "^8.0.0",
+    "supertest": "^6.2.4",
     "web-vitals": "^2.1.4"
   },
   "babel": {
