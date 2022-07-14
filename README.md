@@ -18,7 +18,7 @@ You can find the server running on [http://localhost:3000](http://localhost:3000
 
 This repo includes:
 
-* 3 API endpoints (`/api/v1/petsApi``/api/v1/reviewsApi``/api/v1/usersApi`)
+* 3 API endpoints (`/api/v1/petsApi`, `/api/v1/reviewsApi`, `/api/v1/usersApi`)
 * An auth0 landing page(register/logIn,logOut)
 * various react components (view user list, view user profile,ranking, reviews,history/favourites)
 * 3 diffent databases with multiple tables storing information on users,pets and reviews
