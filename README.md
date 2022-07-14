@@ -25,7 +25,8 @@ This repo includes:
 * configuration for Jest and testing library
 * configuration for server-side debugging in VS Code
 * approved and working tests on each feature component
-=======
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 ## Available Scripts
 
