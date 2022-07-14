@@ -6,22 +6,11 @@ import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
 
+import UserProfile from './UserProfile'
+
 // import '../../client/index.css'
 
 function App() {
-  const [users, setProducts] = useState([])
-  const [productDisplay, setProductDisplay] = useState([])
-
-  useEffect(() => {
-    getProducts()
-      .then((productData) => {
-        setProducts(productData)
-        setProductDisplay(productData)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  }, [])
   return (
     <div>
       <h1>Hello</h1>
@@ -29,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/users" element={<Users />} />
       </Routes>
+
+      <UserProfile />
     </div>
   )
 }

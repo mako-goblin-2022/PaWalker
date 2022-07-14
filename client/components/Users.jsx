@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchUsers } from '../actions/users'
+// import { fetchUsers } from '../actions/users' // we do not need actions for RTK -> actions get auto generated
 
 function Users() {
   const usersDisplay = useSelector((state) => state.users)
   const dispatch = useDispatch()
   // console.log(usersDisplay)
 
-  useEffect(() => {
-    dispatch(fetchUsers())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchUsers())
+  // }, [dispatch])
 
   return (
     <main className="">

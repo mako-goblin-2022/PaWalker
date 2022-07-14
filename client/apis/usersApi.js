@@ -7,3 +7,7 @@ export function getUsers() {
     return res.body.users
   })
 }
+
+export function getUserById(userId) {
+  return request.get(rootUrl + `/users/${userId}`).then((res) => res.body)
+}
