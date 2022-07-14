@@ -1,12 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getUserById } from '../../apis/usersApi'
+import { getPetsByUserId } from '../../apis/petsApi'
 
 export const fetchUserById = createAsyncThunk(
   'user/fetchByIdStatus',
   async (userId, thunkAPI) => {
     const response = await getUserById(userId)
+    const petResponse = await getPetsByUserId(userId)
+    const combinedResponse = {
+      userProfile: response,
+      petProfile: petResponse,
+    }
     console.log(response)
-    return response
+    return combinedResponse
   }
 )
 
