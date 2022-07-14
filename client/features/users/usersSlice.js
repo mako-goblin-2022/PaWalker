@@ -1,6 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getUserById } from '../../apis/usersApi'
+import { getAllUsers, getUserById } from '../../apis/usersApi'
 import { getPetsByUserId } from '../../apis/petsApi'
+
+
+
+
+export const fetchAllUsers = createAsyncThunk(
+  'user/fetchAllUsers',
+  async (thunkAPI) => {
+    const allUsersResponse = await getAllUsers()
+  
+    console.log(allUsersResponse)
+    return allUsersResponse
+  }
+)
 
 export const fetchUserById = createAsyncThunk(
   'user/fetchByIdStatus',

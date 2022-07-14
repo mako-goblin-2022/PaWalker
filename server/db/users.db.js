@@ -1,7 +1,7 @@
 const config = require('./knexfile')
 const connection = require('./connection')
 
-function getUsers(db = connection) {
+function getAllUsers(db = connection) {
   return db('users').select()
 }
 
@@ -11,6 +11,6 @@ function getUserById(id, db = connection) {
 }
 
 module.exports = {
-  getUsers,
+  getAllUsers,
   getUserById,
 }
