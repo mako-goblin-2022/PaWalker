@@ -4,17 +4,28 @@ import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
 
+import { getUsers } from '../../client/apis/usersApi'
 
-function App () {
+import { Route, Routes } from 'react-router-dom'
+
+import Users from './Users'
+
+import UserProfile from './UserProfile'
+
+// import '../../client/index.css'
+
+function App() {
   cacheUser(useAuth0)
-
   return (
-    <>
-      <div className='text-orange-500 text-center font-extrabold text-3xl'>
-        <h1>Tailwind CSS Working!</h1>
-        
-      </div>
-    </>
+    <div>
+      <h1>Hello</h1>
+      <Users />
+      <Routes>
+        <Route path="/users" element={<Users />} />
+      </Routes>
+
+      <UserProfile />
+    </div>
   )
 }
 

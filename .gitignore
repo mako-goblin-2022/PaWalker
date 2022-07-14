@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+=======
+node_modules
+*.log
+*.sqlite3
+server/public/bundle.js
+server/public/bundle.js.map
+server/public/styles.css
+server/public/styles.css.map
+.env
+tags
+>>>>>>> dev
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
