@@ -49,7 +49,7 @@
     "client": "npm run webpack -- --watch",
     "server": "nodemon index.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject",
     "knex": "knex --knexfile ./server/db/knexfile.js",
     "lint": "eslint --ext .js,.jsx ."
