@@ -16,20 +16,17 @@ const fakeUser = {
   name: 'Toothless',
   location: 'Toothland',
   bio: 'I wish I could chew.',
-  avatar: 'Toothless.png',
-  beans: 10,
 }
 
 describe('createUser()', () => {
   it('Create a new user in the db', () => {
-    expect.assertions(1)
     return createUser(fakeUser, testDb)
       .then(() => {
         return testDb('users').select()
       })
       .then((user) => {
-        expect(user).toHaveLength(5)
-        // expect(user[0][name]).toBe('Jack Spriggins')
+        expect(user).toHaveLength(7)
+        expect(user[0].name).toBe('Charline')
       })
   })
 })

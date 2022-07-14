@@ -1,8 +1,9 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useSelector, useDispatch } from 'react-redux'
 import { setLoggedInUser } from './actions/loggedInUser'
 
 // eslint-disable-next-line no-unused-vars
-export async function CacheUser(useAuth0) {
+export async function cacheUser(useAuth0) {
   const dispatch = useDispatch()
   const loggedInUser = useSelector((state) => state.loggedInUser)
 
