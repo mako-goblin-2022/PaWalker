@@ -14,7 +14,7 @@ function UserProfile() {
 
   let user = useSelector((state) => state.user.user)
 
-  console.log('user: ', user)
+  // console.log('user: ', user)
 
   return (
     <>

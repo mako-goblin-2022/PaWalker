@@ -9,7 +9,6 @@ export const fetchAllUsers = createAsyncThunk(
   'user/fetchAllUsers',
   async (thunkAPI) => {
     const allUsersResponse = await getAllUsers()
-  
     console.log(allUsersResponse)
     return allUsersResponse
   }
@@ -31,6 +30,7 @@ export const fetchUserById = createAsyncThunk(
 
 const initialState = {
   user: {},
+  users: []// can be whatever
   // newstate
 }
 
@@ -46,15 +46,21 @@ export const usersSlice = createSlice({
     builder.addCase(fetchUserById.fulfilled, (state, action) => {
       state.user = action.payload
     })
+    builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
+      state.users = action.payload
+    })
+  },
+})
+
+export const { setUserById } = usersSlice.actions
+
+
+export default usersSlice.reducer
+
+
     // builder.addCase(fetchUserById.rejected, (state, action) => {
     //   console.log(state, action)
     // })
     // builder.addCase(fetchUserById.pending, (state, action) => {
     //   console.log(state, action)
     // })
-  },
-})
-
-export const { setUserById } = usersSlice.actions
-
-export default usersSlice.reducer

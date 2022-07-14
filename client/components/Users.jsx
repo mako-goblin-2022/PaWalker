@@ -6,17 +6,24 @@ import { fetchAllUsers } from '../features/users/usersSlice'
 
 
 function Users() {
-  const usersDisplay = useSelector((state) => state.users)
+  const usersDisplay = useSelector((state) => {
+    console.log(state)
+    return state.user.users
+  })
+
   const dispatch = useDispatch()
-  // console.log(usersDisplay)
+  console.log(usersDisplay)
+
 
   useEffect(() => {
     dispatch(fetchAllUsers())
-  }, [dispatch])
+  }, [])
 
   return (
     <main className="">
-      {usersDisplay.map((user, i) => (
+      { usersDisplay.map((user, i) => {
+        console.log(user)
+        return (
           <section key={i} className="">
             <div>
               <img className="" src={user.image} alt={user.name} />
@@ -28,7 +35,8 @@ function Users() {
               <h3 className="">{user.location}</h3>
             </div>
           </section>
-        ))}
+        )})}
+        'app'
     </main>
   )
 }

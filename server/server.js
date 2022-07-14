@@ -13,4 +13,8 @@ server.use('/api/v1/pets', petRoutes)
 server.use('/api/v1/reviews', reviewRoutes)
 server.use('/api/v1/users', userRoutes)
 
+server.get('*', (req, res) => {
+  res.sendFile(path.resolve('server/public/index.html'))
+})
+
 module.exports = server
