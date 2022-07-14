@@ -89,6 +89,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/a
 ### Deployment
 
 We have used Vercel for deployment for this project
+https://vercel.com/
 
 ### `npm run build` fails to minify
 
