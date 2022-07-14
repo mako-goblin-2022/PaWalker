@@ -1,28 +1,26 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchFruits } from '../actions'
-import '../../client/index.css'
+import React, { useState, useEffect } from 'react'
+
+import { getUsers } from '../../client/apis/usersApi'
+
+import { Route, Routes } from 'react-router-dom'
+
+import Users from './Users'
+
 import UserProfile from './UserProfile'
 
-function App() {
-  // const fruits = useSelector(state => state.fruits)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(fetchFruits())
-  // }, [dispatch])
+// import '../../client/index.css'
 
+function App() {
   return (
-    <>
-      {/* <div className='text-orange-500 text-center font-extrabold text-3xl'>
-        <h1>Tailwind CSS Working!</h1>
-        <ul>
-          {fruits.map(fruit => (
-            <li key={fruit}>{fruit}</li>
-          ))}
-        </ul>
-      </div> */}
+    <div>
+      <h1>Hello</h1>
+      <Users />
+      <Routes>
+        <Route path="/users" element={<Users />} />
+      </Routes>
+
       <UserProfile />
-    </>
+    </div>
   )
 }
 

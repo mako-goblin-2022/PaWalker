@@ -18,6 +18,7 @@ export const fetchUserById = createAsyncThunk(
 
 const initialState = {
   user: {},
+  // newstate
 }
 
 export const usersSlice = createSlice({
@@ -25,7 +26,7 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     // setUserById: (state, action) => {
-    //   state.user = action.payload
+    //   state.user += 1
     // },
   },
   extraReducers: (builder) => {
