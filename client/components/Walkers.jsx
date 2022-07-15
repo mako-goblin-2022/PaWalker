@@ -1,40 +1,40 @@
 import React, { useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllUsers } from '../features/users/usersSlice'
+import { fetchAllWalkers } from '../features/users/walkersSlice'
 
 
 
-function Users() {
-  const usersDisplay = useSelector((state) => {
+function Walkers() {
+  const walkersDisplay = useSelector((state) => {
     console.log(state)
-    return state.user.users
+    return state.walker.walkers
   })
 
   const dispatch = useDispatch()
-  console.log(usersDisplay)
+  console.log(walkersDisplay)
 
 
   useEffect(() => {
-    dispatch(fetchAllUsers())
+    dispatch(fetchAllWalkers())
   }, [dispatch])
 
   return (
     <main className="">
-      { usersDisplay.map((user, i) => {
-        console.log(user)
+      { walkersDisplay.map((walker, i) => {
+        console.log(walker)
         return (
           <section key={i} className="">
             <div>
               <img className="" 
-              src={user.img} 
-              alt={user.name} />
+              src={walker.img} 
+              alt={walker.name} />
             </div>
             <div>
-              <h3 className="">{user.name}</h3>
+              <h3 className="">{walker.name}</h3>
             </div>
             <div>
-              <h3 className="">{user.location}</h3>
+              <h3 className="">{walker.location}</h3>
             </div>
           </section>
         )})}
@@ -43,4 +43,4 @@ function Users() {
   )
 }
 
-export default Users
+export default Walkers

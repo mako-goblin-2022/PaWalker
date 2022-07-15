@@ -5,9 +5,9 @@ const db = require('../db/users.db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  db.getUsers()
+  db.getAllUsers()
     .then((results) => {
-      res.json({ users: results.map((user) => user.name) })
+      res.json({ users: results})
       return null
     })
     .catch((err) => {

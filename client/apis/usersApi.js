@@ -2,7 +2,7 @@ import request from 'superagent'
 
 const rootUrl = '/api/v1'
 
-export function getUsers() {
+export function getAllUsers() {
   return request.get(rootUrl + '/users').then((res) => {
     return res.body.users
   })
