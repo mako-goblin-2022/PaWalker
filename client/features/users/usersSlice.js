@@ -9,7 +9,7 @@ export const fetchAllUsers = createAsyncThunk(
   'user/fetchAllUsers',
   async (thunkAPI) => {
     const allUsersResponse = await getAllUsers()
-    console.log(allUsersResponse)
+    // console.log(allUsersResponse)
     return allUsersResponse
   }
 )
@@ -23,7 +23,7 @@ export const fetchUserById = createAsyncThunk(
       userProfile: response,
       petProfile: petResponse,
     }
-    console.log(response)
+    // console.log(response)
     return combinedResponse
   }
 )
@@ -45,6 +45,7 @@ export const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchUserById.fulfilled, (state, action) => {
       state.user = action.payload
+      
     })
     builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
       state.users = action.payload

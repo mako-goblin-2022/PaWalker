@@ -7,16 +7,19 @@ import { Route, Routes } from 'react-router-dom'
 import Users from './Users'
 
 import UserProfile from './UserProfile'
+import Pets from './Pets'
 
 // import '../../client/index.css'
 
 function App() {
   return (
     <div>
-      <h1>Hello</h1>
+      {/* <h1>Hello</h1> */}
       
       <Routes>
         <Route path="/users" element={<Users />} />
+        <Route path="/pets" element={<Pets />} />
+
       </Routes>
 
       <UserProfile />
