@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getReviews()
     .then((results) => {
-      res.json({ reviews: results.map((review) => review.name) })
+      res.json(results)
       return null
     })
     .catch((err) => {
@@ -19,6 +19,8 @@ router.get('/', (req, res) => {
 
 router.post('/post', checkJwt, (req, res) => {
   const reviewer_id = req.user?.sub
+  // const { reviewForm } = req.body
+
   db.postReview(reviewer_id, req.body)
     .then((result) => {
       res.json(result)
