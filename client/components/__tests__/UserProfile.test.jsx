@@ -27,16 +27,17 @@ afterAll(() => {
   jest.restoreAllMocks()
 })
 
-const fakeInitialState = {
-  user: {
-    user: {
-      petProfile: [{ name: 'jay', breed: 'jays', age: 23 }],
-      userProfile: {
-        name: 'Jay',
-      },
-    },
-  },
-}
+// use the below when faking the store not the useSelector/useDispatch
+// const fakeInitialState = {
+//   user: {
+//     user: {
+//       petProfile: [{ name: 'jay', breed: 'jays', age: 23 }],
+//       userProfile: {
+//         name: 'Jay',
+//       },
+//     },
+//   },
+// }
 
 const fakeInitialStateS = {
   petProfile: [{ name: 'jay', breed: 'jays', age: 23 }],
@@ -59,13 +60,14 @@ describe('<UserProfile />', () => {
       //</Provider>
     )
     const userInfo = screen.getAllByRole('heading')
-    console.log(userInfo)
-    // expect(userInfo[0]).toBe('User Profile')
-    // expect(fetchUserById()).toHaveBeenCalled()
+
+    expect.assertions(1)
+    expect(userInfo[0].innerHTML).toContain('User Profile')
   })
   it('dispatches fetchUserById', () => {
     fetchUserById.mockReturnValue('SUCCESS')
     render(<UserProfile />)
+    expect.assertions(1)
     expect(fakeFunct).toHaveBeenCalledWith('SUCCESS')
   })
 })
