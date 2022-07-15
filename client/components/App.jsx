@@ -25,11 +25,11 @@ function App() {
       <Login />
       <Users />
       {/* <h1>Hello</h1> */}
-      
+
       <Routes>
-        <Route path="/users" element={<Users />} />
-        <Route path="/pets" element={<Pets />} />
-        <Route path="/walkers" element={<Walkers />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/pets' element={<Pets />} />
+        <Route path='/walkers' element={<Walkers />} />
       </Routes>
 
       <UserProfile />

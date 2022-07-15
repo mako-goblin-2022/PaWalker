@@ -20,6 +20,7 @@
     "jest": "^27.5.1",
     "jwks-rsa": "^2.1.4",
     "knex": "^1.0.7",
+    "nock": "^13.2.8",
     "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dispatch": "^1.2.0",
@@ -30,6 +31,7 @@
     "redux-thunk": "^2.3.0",
     "sqlite3": "^5.0.8",
     "superagent": "^8.0.0",
+    "supertest": "^6.2.4",
     "web-vitals": "^2.1.4"
   },
   "babel": {
@@ -73,6 +75,9 @@
       "last 1 safari version"
     ]
   },
+  "jest":{
+    "testEnvironment": "jsdom"
+},
   "devDependencies": {
     "@babel/core": "^7.15.6",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

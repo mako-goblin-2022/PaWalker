@@ -2,19 +2,14 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { getAllUsers, getUserById } from '../../apis/usersApi'
 import { getPetsByUserId } from '../../apis/petsApi'
 
-
-
-
-export const fetchAllUsers = createAsyncThunk(
-  'user/fetchAllUsers',
-  async (thunkAPI) => {
-    const allUsersResponse = await getAllUsers()
-    // console.log(allUsersResponse)
-    return allUsersResponse
-  }
-)
+export const fetchAllUsers = createAsyncThunk('user/fetchAllUsers', async (thunkAPI) => {
+  const allUsersResponse = await getAllUsers()
+  // console.log(allUsersResponse)
+  return allUsersResponse
+})
 
 export const fetchUserById = createAsyncThunk(
+  // type
   'user/fetchByIdStatus',
   async (userId, thunkAPI) => {
     const response = await getUserById(userId)
@@ -30,8 +25,14 @@ export const fetchUserById = createAsyncThunk(
 
 const initialState = {
   user: {},
-  users: []// can be whatever
+  users: [], // can be whatever
   // newstate
+}
+
+// reducer function
+export const fetchUserByIdFulFilledReducer = (state, action) => {
+  console.log(action)
+  state.user = action.payload
 }
 
 export const usersSlice = createSlice({
@@ -45,7 +46,6 @@ export const usersSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchUserById.fulfilled, (state, action) => {
       state.user = action.payload
-      
     })
     builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
       state.users = action.payload
@@ -53,15 +53,19 @@ export const usersSlice = createSlice({
   },
 })
 
+// builder.addCase(fetchUserById.rejected, (state, action) => {
+//   console.log(state, action)
+// })
+// builder.addCase(fetchUserById.pending, (state, action) => {
+//   console.log(state, action)
+// })
 export const { setUserById } = usersSlice.actions
-
 
 export default usersSlice.reducer
 
-
-    // builder.addCase(fetchUserById.rejected, (state, action) => {
-    //   console.log(state, action)
-    // })
-    // builder.addCase(fetchUserById.pending, (state, action) => {
-    //   console.log(state, action)
-    // })
+// builder.addCase(fetchUserById.rejected, (state, action) => {
+//   console.log(state, action)
+// })
+// builder.addCase(fetchUserById.pending, (state, action) => {
+//   console.log(state, action)
+// })
