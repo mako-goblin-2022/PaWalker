@@ -9,6 +9,7 @@ import { getUsers } from '../../client/apis/usersApi'
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
+import Login from './Login'
 
 import UserProfile from './UserProfile'
 
@@ -19,6 +20,7 @@ function App() {
   return (
     <div>
       <h1>Hello</h1>
+      <Login />
       <Users />
       <Routes>
         <Route path="/users" element={<Users />} />

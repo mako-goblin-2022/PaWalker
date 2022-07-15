@@ -2642,9 +2642,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth0_utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../auth0-utils */ "./client/auth0-utils.js");
 /* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @auth0/auth0-react */ "./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js");
 /* harmony import */ var _client_apis_usersApi__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../client/apis/usersApi */ "./client/apis/usersApi.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Users */ "./client/components/Users.jsx");
-/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./UserProfile */ "./client/components/UserProfile.jsx");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Login */ "./client/components/Login.jsx");
+/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./UserProfile */ "./client/components/UserProfile.jsx");
+
 
 
 
@@ -2657,13 +2659,106 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   (0,_auth0_utils__WEBPACK_IMPORTED_MODULE_3__.cacheUser)(_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_4__.useAuth0);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hello"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Hello"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/users",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UserProfile__WEBPACK_IMPORTED_MODULE_7__["default"], null));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UserProfile__WEBPACK_IMPORTED_MODULE_8__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
+
+/***/ }),
+
+/***/ "./client/components/Authenticated.jsx":
+/*!*********************************************!*\
+  !*** ./client/components/Authenticated.jsx ***!
+  \*********************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "IfAuthenticated": function() { return /* binding */ IfAuthenticated; },
+/* harmony export */   "IfNotAuthenticated": function() { return /* binding */ IfNotAuthenticated; },
+/* harmony export */   "isAuthenticated": function() { return /* binding */ isAuthenticated; }
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @auth0/auth0-react */ "./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js");
+
+ // take isAuthenticated property from useAuth0 
+
+var isAuthenticated = function isAuthenticated() {
+  var _useAuth = (0,_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_1__.useAuth0)(),
+      isAuthenticated = _useAuth.isAuthenticated;
+
+  return isAuthenticated;
+};
+function IfAuthenticated(_ref) {
+  var children = _ref.children;
+  return isAuthenticated() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, children) : null;
+}
+function IfNotAuthenticated(_ref2) {
+  var children = _ref2.children;
+  return !isAuthenticated() ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, children) : null;
+}
+
+/***/ }),
+
+/***/ "./client/components/Login.jsx":
+/*!*************************************!*\
+  !*** ./client/components/Login.jsx ***!
+  \*************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @auth0/auth0-react */ "./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js");
+/* harmony import */ var _Authenticated__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Authenticated */ "./client/components/Authenticated.jsx");
+
+
+
+
+function Login() {
+  var _useAuth = (0,_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_1__.useAuth0)(),
+      logout = _useAuth.logout,
+      loginWithRedirect = _useAuth.loginWithRedirect;
+
+  function handleLogoff(e) {
+    e.preventDefault();
+    console.log('log off');
+    logout();
+  }
+
+  function handleRegister(e) {
+    e.preventDefault();
+    console.log('register');
+    loginWithRedirect({
+      redirectUri: "".concat(window.location.origin, "/register")
+    });
+  }
+
+  function handleSignIn(e) {
+    e.preventDefault();
+    console.log('sign in');
+    loginWithRedirect();
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Authenticated__WEBPACK_IMPORTED_MODULE_2__.IfAuthenticated, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/",
+    onClick: handleLogoff
+  }, "Log off")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Authenticated__WEBPACK_IMPORTED_MODULE_2__.IfNotAuthenticated, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/",
+    onClick: handleRegister
+  }, "Register"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: "/",
+    onClick: handleSignIn
+  }, "Sign in")));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Login);
 
 /***/ }),
 
