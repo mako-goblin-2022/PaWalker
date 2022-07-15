@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const walkerUserId = req.params.id
-  db.getPetsByWalkId(walkerUserId)
+  db.getWalkersByUserId(walkerUserId)
     .then((result) => {
       res.json(result)
       return null

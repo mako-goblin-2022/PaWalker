@@ -5,6 +5,7 @@ import { getUsers } from '../../client/apis/usersApi'
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
+import Walkers from './Walkers'
 
 import UserProfile from './UserProfile'
 import Pets from './Pets'
@@ -19,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/users" element={<Users />} />
         <Route path="/pets" element={<Pets />} />
-
+        <Route path="/walkers" element={<Walkers />} />
       </Routes>
 
       <UserProfile />
