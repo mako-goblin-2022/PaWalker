@@ -1,14 +1,14 @@
 const express = require('express')
 
-const db = require('../db/pets.db')
+const db = require('../db/walkers.db')
 
 const router = express.Router()
 
 
 router.get('/', (req, res) => {
-  db.getAllPets()
+  db.getAllWalkers()
     .then((results) => {
-      res.json({ pets: results })
+      res.json({ walkers: results })
       return null
     })
     .catch((err) => {
@@ -20,8 +20,8 @@ router.get('/', (req, res) => {
 
 
 router.get('/:id', (req, res) => {
-  const petUserId = req.params.id
-  db.getPetsByUserId(petUserId)
+  const walkerUserId = req.params.id
+  db.getWalkersByUserId(walkerUserId)
     .then((result) => {
       res.json(result)
       return null
@@ -34,9 +34,9 @@ router.get('/:id', (req, res) => {
 
 // Create a new server side route for the api request we are creating.
 // This will access the db from a db function.
-router.get('/pet/:id', (req, res) => {
+router.get('/walker/:id', (req, res) => {
   const id = req.params.id
-  db.getPetById(id)
+  db.getWalkerById(id)
     .then((result) => {
       res.json(result)
       return null

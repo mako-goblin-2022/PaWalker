@@ -1,46 +1,45 @@
 import React, { useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllUsers } from '../features/users/usersSlice'
+import { fetchAllPets } from '../features/users/petsSlice'
 
 
 
-function Users() {
-  const usersDisplay = useSelector((state) => {
+function Pets() {
+  const petsDisplay = useSelector((state) => {
     console.log(state)
-    return state.user.users
+    return state.pet.pets
   })
 
   const dispatch = useDispatch()
-  console.log(usersDisplay)
 
 
   useEffect(() => {
-    dispatch(fetchAllUsers())
-  }, [dispatch])
+    dispatch(fetchAllPets())
+  }, [])
 
   return (
     <main className="">
-      { usersDisplay.map((user, i) => {
-        console.log(user)
+      {petsDisplay.map((pets, i) => {
+        console.log(pets)
         return (
           <section key={i} className="">
             <div>
               <img className="" 
-              src={user.img} 
-              alt={user.name} />
+              src={pets.img} 
+              alt={pets.name} />
             </div>
             <div>
-              <h3 className="">{user.name}</h3>
+              <h3 className="">{pets.name}</h3>
             </div>
             <div>
-              <h3 className="">{user.location}</h3>
+              <h3 className="">{pets.location}</h3>
             </div>
           </section>
         )})}
-        'app'
+       
     </main>
   )
 }
 
-export default Users
+export default Pets
