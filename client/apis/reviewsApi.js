@@ -10,6 +10,7 @@ export function getReviews() {
 
 export function postReview() {
   return request.post(rootUrl + '/reviews/post').then((res) => {
+    console.log(res)
     return res
   })
 }

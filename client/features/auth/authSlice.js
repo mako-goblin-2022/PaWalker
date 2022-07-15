@@ -1,14 +1,13 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { addUser } from '../../apis/AuthApi'
 
-export const saveUser = createAsyncThunk(
-  'auth/saveUserId',
-  async (user, thunkAPI) => {
-    const response = await addUser(user)
-    // payload of the action
-    return response
-  }
-)
+export const saveUser = createAsyncThunk('auth/saveUserId', async (user, thunkAPI) => {
+  const response = await addUser(user)
+  // payload of the action
+  console.log('hi')
+  console.log(response)
+  return response
+})
 
 const initialState = {
   user: {},
