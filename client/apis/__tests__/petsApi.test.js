@@ -24,9 +24,9 @@ describe('getPetById', () => {
       .reply(200, fakePetData)
 
     const result = await getPetsByUserId(fakeUserId)
-    console.log(result)
-    // expect.assertions(2)
+    expect.assertions(2)
     expect(scope).toBeTruthy()
-    expect(scope).toEqual(fakePetData)
+    expect(result).toEqual(fakePetData)
+    scope.done()
   })
 })

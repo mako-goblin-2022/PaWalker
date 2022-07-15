@@ -24,9 +24,8 @@ describe('getUserById', () => {
       .reply(200, fakeUserData)
 
     const result = await getUserById(fakeUserId)
-    console.log(result)
-    console.log(scope)
-    expect(scope).toStrictEqual(result)
-    expect(scope).not.toBe('hi')
+    expect.assertions(1)
+    expect(result).toStrictEqual(fakeUserData)
+    scope.done()
   })
 })
