@@ -2721,8 +2721,8 @@ function App() {
     path: "/pets",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pets__WEBPACK_IMPORTED_MODULE_10__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Route, {
-    path: "/walkers",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Walkers__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+    path: "/Review",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ReviewForm, null)
   })));
 }
 

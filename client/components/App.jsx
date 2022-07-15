@@ -30,7 +30,7 @@ function App() {
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />
-        <Route path='/walkers' element={<Walkers />} />
+        <Route path='/Review' element={<ReviewForm />} />
       </Routes>
     </div>
   )
