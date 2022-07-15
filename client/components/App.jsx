@@ -28,11 +28,10 @@ function App() {
 
       <Routes>
         <Route path='/users' element={<Users />} />
+        <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/walkers' element={<Walkers />} />
       </Routes>
-
-      <UserProfile />
     </div>
   )
 }
