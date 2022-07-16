@@ -26,7 +26,7 @@ function Walkers() {
         return (
           <section key={i} className="">
             <div>
-              <img className="w-80" 
+              <img className="w-44" 
               src={walker.img} 
               alt={walker.name} />
             </div>

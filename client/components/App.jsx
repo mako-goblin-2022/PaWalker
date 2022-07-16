@@ -12,6 +12,7 @@ import Walkers from './Walkers'
 import Navbar from './FilterView'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
+import Footer from './Footer'
 
 // import '../../client/index.css'
 
@@ -31,8 +32,8 @@ function App() {
         <Route path='/pets' element={<Pets />} />
         <Route path='/walkers' element={<Walkers />} />
       </Routes>
-
       {/* <UserProfile /> */}
+      <Footer />
     </div>
   )
 }

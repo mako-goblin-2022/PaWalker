@@ -1,19 +1,19 @@
-import { logDOM } from "@testing-library/react";
-import React from "react";
-import {Link} from 'react-router-dom';
+
+import React from "react"
+import {Link} from 'react-router-dom'
 
 const NavbarFilter = () => {
   return (
-    <nav className="flex space-x-8">
+    <nav className="flex space-x-8 h-32 items-center">
       <ul className="">
           <li>
           <img className="w-14 rounded-full " 
               src={'./images/paWalker.png'} 
-              />
+              alt='logo'/><strong>PaWalker</strong>
           </li>
         </ul>
-      <div className="space-x-8 font-bold text-sm uppercase tracking-wide">
-        <ul className="inline-block hover:text-orange-300 hover:translate-y-px">
+      <div className="space-x-6 items-center font-bold text-base uppercase tracking-wide">
+        <ul className="inline-block hover:text-orange-500 hover:translate-y-px">
           <li>
             <Link to='/'>
               Home

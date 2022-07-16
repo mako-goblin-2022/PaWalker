@@ -26,7 +26,7 @@ function Users() {
         return (
           <section key={i} className="">
             <div>
-              <img className="" 
+              <img className="w-44" 
               src={user.img} 
               alt={user.name} />
             </div>
