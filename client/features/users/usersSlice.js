@@ -26,7 +26,7 @@ export const fetchUserById = createAsyncThunk(
 const initialState = {
   user: {},
   users: [], // can be whatever
-  // newstate
+  history: [],
 }
 
 // reducer function
@@ -42,6 +42,9 @@ export const usersSlice = createSlice({
     // setUserById: (state, action) => {
     //   state.user += 1
     // },
+    addToHistory: (state, action) => {
+      state.history.push(action.payload)
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserById.fulfilled, (state, action) => {

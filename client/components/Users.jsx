@@ -18,10 +18,11 @@ function Users() {
     dispatch(fetchAllUsers())
   }, [dispatch])
 
-  const addToHistory = (userId) => {
-    setHistoryList(userId)
+  const addToHistory = async (userId) => {
+    await setHistoryList(userId)
   }
 
+  console.log(historyList)
   return (
     <main className=''>
       <Link to={'/users/myProfile'}>My Profile</Link>

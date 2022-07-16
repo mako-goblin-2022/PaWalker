@@ -7,10 +7,7 @@ import StarRate from './StarRate'
 
 function ReviewForm() {
   const dispatch = useDispatch()
-  const [currentValue, setCurrentValue] = useState(0)
-  const [hoverValue, setHoverValue] = useState(undefined)
   const [rating, setRating] = useState(0)
-  const [rating2, setRating2] = useState(0)
 
   const user = useSelector((state) => {
     console.log(state)
@@ -32,6 +29,7 @@ function ReviewForm() {
     setReviewForm({
       ...reviewForm,
       date: currentDate,
+      rating: rating,
       auth0Id: user?.auth0Id,
       token: user?.token,
     })
@@ -51,22 +49,6 @@ function ReviewForm() {
     await postReview(reviewForm)
   }
 
-  const stars = useMemo(() => {
-    return Array(5).fill(0)
-  }, [])
-
-  const handleClick = (value) => {
-    setCurrentValue(value)
-  }
-
-  const handleMouseOver = (value) => {
-    setHoverValue(value)
-  }
-
-  const handleMouseLeave = () => {
-    setHoverValue(undefined)
-  }
-
   return (
     <div>
       <form className='flex flex-col' onSubmit={handleSubmit}>
@@ -77,27 +59,9 @@ function ReviewForm() {
           value={reviewForm.rating}
           onChange={handleInput}
         ></input>
-        {/* <div className='flex cursor-pointer'>
-          {stars.map((_, idx) => {
-            return (
-              <FaStar
-                key={idx}
-                className={
-                  (hoverValue || currentValue) > idx
-                    ? 'text-orange-400 '
-                    : 'text-gray-300'
-                }
-                onClick={() => handleClick(idx + 1)}
-                onMouseOver={() => handleMouseOver(idx + 1)}
-                onMouseLeave={handleMouseLeave}
-              />
-            )
-          })}
-        </div> */}
+
         <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
         <p>Rating - {rating}</p>
-        <StarRate rating={rating2} onRating={(rate) => setRating2(rate)} />
-        <p>Rating - {rating2}</p>
         <label htmlFor='title'>Title: </label>
         <input
           id='title'
@@ -122,7 +86,7 @@ function ReviewForm() {
           value={reviewForm.date}
           onChange={handleInput}
         ></input>
-        <button type='submit'>Leave a Review</button>
+        <button type='submit'>Submit a Review</button>
       </form>
     </div>
   )
