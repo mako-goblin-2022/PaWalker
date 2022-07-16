@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 // import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { fetchAllUsers } from '../features/users/usersSlice'
+import { fetchAllUsers, addToHistory } from '../features/users/usersSlice'
+import WalkHistory from './WalkHistory'
 
 function Users() {
-  const [historyList, setHistoryList] = useState('')
   const usersDisplay = useSelector((state) => {
-    console.log(state)
+    // console.log(state)
     return state.user.users
   })
 
@@ -16,13 +16,10 @@ function Users() {
 
   useEffect(() => {
     dispatch(fetchAllUsers())
-  }, [dispatch])
+  }, [])
 
-  const addToHistory = async (userId) => {
-    await setHistoryList(userId)
-  }
+  // console.log(historyList)
 
-  console.log(historyList)
   return (
     <main className=''>
       <Link to={'/users/myProfile'}>My Profile</Link>
@@ -39,15 +36,10 @@ function Users() {
             <div>
               <h3 className=''>{user.location}</h3>
             </div>
-            <button
-              className='border border-black'
-              onClick={(user) => addToHistory(user.auth0_id)}
-            >
-              Add to History
-            </button>
           </section>
         )
       })}
+      <WalkHistory history={historyList} />
     </main>
   )
 }

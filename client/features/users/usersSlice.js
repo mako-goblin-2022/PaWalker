@@ -43,6 +43,7 @@ export const usersSlice = createSlice({
     //   state.user += 1
     // },
     addToHistory: (state, action) => {
+      console.log(action)
       state.history.push(action.payload)
     },
   },
@@ -62,7 +63,7 @@ export const usersSlice = createSlice({
 // builder.addCase(fetchUserById.pending, (state, action) => {
 //   console.log(state, action)
 // })
-export const { setUserById } = usersSlice.actions
+export const { setUserById, addToHistory } = usersSlice.actions
 
 export default usersSlice.reducer
 
