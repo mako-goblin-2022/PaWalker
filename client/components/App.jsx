@@ -12,9 +12,11 @@ import Users from './Users'
 import Login from './Login'
 import Walkers from './Walkers'
 import ReviewForm from './ReviewForm'
+import MyProfile from './MyProfile'
 
 import UserProfile from './UserProfile'
 import Pets from './Pets'
+import WalkHistory from './WalkHistory'
 
 // import '../../client/index.css'
 
@@ -29,6 +31,8 @@ function App() {
       <Routes>
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
+        <Route path='/users/myProfile' element={<MyProfile />} />
+        <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/Review' element={<ReviewForm />} />
       </Routes>
