@@ -34,7 +34,8 @@ function App() {
         <Route path='/users/myProfile' element={<MyProfile />} />
         <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/pets' element={<Pets />} />
-        <Route path='/Review' element={<ReviewForm />} />
+        <Route path='/pets/:id/review' element={<ReviewForm />} />
+        {/* <Route path='/Review' element={<ReviewForm />} /> */}
       </Routes>
     </div>
   )

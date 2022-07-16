@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { postReview } from '../apis/reviewsApi'
 import { saveUser } from '../features/auth/authSlice'
-import { FaStar } from 'react-icons/fa'
 import StarRate from './StarRate'
 
 function ReviewForm() {
@@ -13,6 +12,7 @@ function ReviewForm() {
     console.log(state)
     return state
   })
+
   const [reviewForm, setReviewForm] = useState({
     auth0Id: '',
     date: '',

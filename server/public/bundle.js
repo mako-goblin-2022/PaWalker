@@ -2735,7 +2735,7 @@ function App() {
     path: "/pets",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pets__WEBPACK_IMPORTED_MODULE_12__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
-    path: "/Review",
+    path: "/pets/:id/review",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_ReviewForm__WEBPACK_IMPORTED_MODULE_9__["default"], null)
   })));
 }
@@ -3013,7 +3013,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function ReviewForm() {
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
 
@@ -3151,7 +3150,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -3327,6 +3325,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
 /* harmony import */ var _features_users_petsSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/users/petsSlice */ "./client/features/users/petsSlice.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+
 
 
 
@@ -3339,28 +3339,29 @@ function WalkHistory() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_features_users_petsSlice__WEBPACK_IMPORTED_MODULE_3__.fetchAllPets)());
-  }, [historyList]); // console.log(history)
+  }, [allUserList]); // console.log(history)
 
-  var historyList = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+  var allUserList = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.user;
   });
-  var historyPetList = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+  var allPetList = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     return state.pet;
-  });
-  console.log(historyList);
-  console.log(historyPetList);
+  }); // console.log(allUserList)
+  // console.log(allPetList)
 
   var findPetsFromList = function findPetsFromList() {
-    var filteredPets = historyPetList.pets.filter(function (pet) {
-      return historyPetList.history.indexOf(pet.id) !== -1;
+    var historyPets = allPetList.pets.filter(function (pet) {
+      return allPetList.history.indexOf(pet.id) !== -1;
     });
-    return filteredPets.map(function (i, idx) {
+    return historyPets.map(function (i, idx) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
         key: idx
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
         src: i.img,
         alt: i.img + i.name
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, i.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, i.size), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Leave a Review"));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, i.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, i.size), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+        to: "/pets/".concat(i.id, "/review")
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Leave a Review")));
     });
   }; // useEffect(() => {
   //   setInitialUser(history)
@@ -3370,7 +3371,7 @@ function WalkHistory() {
   // }, [])
 
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, historyPetList.pets !== [] && findPetsFromList());
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, allPetList.pets !== [] && findPetsFromList());
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (WalkHistory);

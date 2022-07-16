@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import PropTypes from 'prop-types'
 import { FaStar } from 'react-icons/fa'
 
 function StarRate({ count, rating, color, onRating }) {
