@@ -7,12 +7,12 @@ import { fetchAllUsers } from '../features/users/usersSlice'
 
 function Users() {
   const usersDisplay = useSelector((state) => {
-    console.log(state)
+    // console.log(state)
     return state.user.users
   })
 
   const dispatch = useDispatch()
-  console.log(usersDisplay)
+  // console.log(usersDisplay)
 
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function Users() {
   return (
     <main className="">
       { usersDisplay.map((user, i) => {
-        console.log(user)
+        // console.log(user)
         return (
           <section key={i} className="">
             <div>
