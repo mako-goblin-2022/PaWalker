@@ -39,7 +39,6 @@ function Users() {
           </section>
         )
       })}
-      <WalkHistory history={historyList} />
     </main>
   )
 }

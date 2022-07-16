@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllPets } from '../features/users/petsSlice'
-import { addToHistoryPet } from '../features/users/petsSlice'
+import { addToHistoryPet, fetchAllPets } from '../features/users/petsSlice'
 
 function Pets() {
   const [historyList, setHistoryList] = useState([])
 
   const petsDisplay = useSelector((state) => {
     console.log(state)
-    return state.pet.pets
+    return state.pet
   })
 
   const dispatch = useDispatch()
@@ -27,7 +26,7 @@ function Pets() {
     <main className=''>
       <Link to={'/users/myProfile'}>My Profile</Link>
 
-      {petsDisplay.map((pets, i) => {
+      {petsDisplay.pets.map((pets, i) => {
         console.log(pets)
         return (
           <section key={i} className=''>
@@ -43,6 +42,9 @@ function Pets() {
             <button className='border border-black' onClick={() => addHistory(pets.id)}>
               Add to History
             </button>
+            <p className={petsDisplay.history.includes(pets.id) ? '' : 'invisible'}>
+              {pets.name} has been added to your history.
+            </p>
           </section>
         )
       })}

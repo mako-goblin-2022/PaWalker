@@ -18,7 +18,6 @@ exports.seed = async function (knex) {
       size: '3XL',
       age: 5,
       img: './images/pets/sample.jpg',
-      history: 'auth0_id',
     },
     {
       id: 2,

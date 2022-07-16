@@ -15,7 +15,6 @@ exports.up = function (knex) {
     table.string('size')
     table.integer('age')
     table.string('img')
-    table.string('history')
   })
 }
 
