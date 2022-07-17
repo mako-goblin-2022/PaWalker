@@ -2,11 +2,7 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-<<<<<<< HEAD
 exports.seed = async function (knex) {
-=======
- exports.seed = async function (knex) {
->>>>>>> tailwind
   // Deletes ALL existing entries
   await knex('pets').del()
   await knex('pets').insert([
@@ -21,7 +17,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: '3XL',
       age: 5,
-      img: '',
+      img: './images/pets/sample.jpg',
     },
     {
       id: 2,
@@ -141,8 +137,4 @@ exports.seed = async function (knex) {
       img: './images/pets/sample.jpg',
     },
   ])
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> tailwind
