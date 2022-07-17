@@ -17,8 +17,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  const petUserId = req.params.id
-  db.getPetsByUserId(petUserId)
+  const petOwnerId = req.params.id
+  db.getPetsByUserId(petOwnerId)
     .then((result) => {
       res.json(result)
       return null

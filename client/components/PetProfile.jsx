@@ -6,20 +6,21 @@ import { fetchUserById } from '../features/users/usersSlice'
 function UserProfile() {
   const params = useParams()
   const dispatch = useDispatch()
-  const userId = params.id
+  const petId = params.id
 
   useEffect(() => {
+    console.log('first dispatch fired')
     dispatch(fetchPetById(1))
   }, [])
 
-  let pet = useSelector((state) => {
-    console.log('pet state: ', state.pet.pet)
+  let pet = useSelector(async (state) => {
     return state.pet.pet
   })
 
   useEffect(() => {
+    console.log('second dispatch fired')
     dispatch(fetchUserById(`${pet.owner_id}`))
-  }, [pet])
+  }, [])
 
   let owner = useSelector((state) => {
     console.log('owner state: ', state)

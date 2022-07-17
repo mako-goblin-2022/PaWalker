@@ -18,14 +18,14 @@ export const fetchUserById = createAsyncThunk(
       userProfile: response,
       petProfile: petResponse,
     }
-    // console.log(response)
+    console.log(combinedResponse)
     return combinedResponse
   }
 )
 
 const initialState = {
   user: {},
-  users: [], // can be whatever
+  users: [],
   history: [],
 }
 
