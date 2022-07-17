@@ -7,7 +7,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getAllUsers()
     .then((results) => {
-      res.json({ users: results})
+      res.json({ users: results })
       return null
     })
     .catch((err) => {
@@ -32,5 +32,17 @@ router.get('/:id', (req, res) => {
     // })
     .catch((err) => res.status(500).send(err))
 })
+
+// router.get('/pets/:id', (req, res) => {
+//   const petId = req.params.id
+//   // console.log(userId)
+//   db.getUserByPetId(petId)
+//     .then((result) => {
+//       console.log(result)
+//       res.json(result)
+//       return null
+//     })
+//     .catch((err) => res.status(500).send(err))
+// })
 
 module.exports = router

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllPets, getPetById } from '../../apis/petsApi'
+import { getPetsByUserId, getAllPets, getPetById } from '../../apis/petsApi'
 // import { getPetByUserId } from '../../apis/petsApi'
 // import { getUsersByPetId} from '../../apis/petsApi'
 
@@ -16,6 +16,14 @@ export const fetchPetById = createAsyncThunk(
     // Change API function name to something more correct.
     // Get an individual pet by it's ID (change userId)
     const response = await getPetById(petId)
+    return response
+  }
+)
+
+export const fetchPetsByUserId = createAsyncThunk(
+  'pet/getPetsByUserId',
+  async (userId, thunkAPI) => {
+    const response = await getPetsByUserId(userId)
     return response
   }
 )
@@ -47,6 +55,11 @@ export const petsSlice = createSlice({
     builder.addCase(fetchPetById.fulfilled, (state, action) => {
       // console.log('action', action)
 
+      state.pet = action.payload
+    })
+    builder.addCase(fetchPetsByUserId.fulfilled, (state, action) => {
+      // console.log('action', action)
+      console.log(action)
       state.pet = action.payload
     })
   },

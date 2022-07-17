@@ -14,5 +14,5 @@ export function getPetsByUserId(userId) {
 
 // Create the api to get the information
 export function getPetById(petId) {
-  return request.get(rootUrl + `/pets/${petId}`).then((res) => res.body)
+  return request.get(rootUrl + `/pets/pet/${petId}`).then((res) => res.body)
 }

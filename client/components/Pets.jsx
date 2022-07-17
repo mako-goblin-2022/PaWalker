@@ -22,13 +22,11 @@ function Pets() {
 
   return (
     <main className=''>
-      <Link to={'/users/myProfile'}>My Profile</Link>
-
       {petsDisplay.pets.map((pets, i) => {
         return (
           <section key={i} className=''>
             <div>
-              <img className='' src={pets.img} alt={pets.name} />
+              <img className='w-14 h-14' src={pets.img} alt={pets.name} />
             </div>
             <div>
               <h3 className=''>{pets.name}</h3>

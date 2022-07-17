@@ -13,7 +13,7 @@ import Login from './Login'
 import Walkers from './Walkers'
 import ReviewForm from './ReviewForm'
 import MyProfile from './MyProfile'
-
+import PetProfile from './PetProfile'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
 import WalkHistory from './WalkHistory'
@@ -35,6 +35,7 @@ function App() {
         <Route path='/users/myProfile' element={<MyProfile />} />
         <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/pets' element={<Pets />} />
+        <Route path='/pets/:id' element={<PetProfile />} />
         <Route path='/pets/:id/review' element={<ReviewForm />} />
         {/* <Route path='/Review' element={<ReviewForm />} /> */}
       </Routes>

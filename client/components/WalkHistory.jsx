@@ -29,7 +29,11 @@ function WalkHistory() {
       console.log(pet)
       return (
         <div key={idx}>
-          <img src={'/images/pets/sample.jpg'} alt={pet.img + pet.name} />
+          <img
+            className='w-14 h-14'
+            src={'/images/pets/sample.jpg'}
+            alt={pet.img + pet.name}
+          />
           <div>{pet.name}</div>
           <div>{pet.size}</div>
           <Link to={`/pets/${pet.id}/review`}>

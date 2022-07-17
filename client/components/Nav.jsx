@@ -5,7 +5,10 @@ import Login from './Login'
 function Nav() {
   return (
     <div className='flex justify-end'>
-      <Link className='' to={'/users/myProfile'}>
+      <Link className='' to={'/pets'}>
+        View Pets
+      </Link>
+      <Link className='ml-7' to={'/users/myProfile'}>
         My Profile
       </Link>
       <Link className='mx-7' to={'/users/myProfile/walkHistory'}>

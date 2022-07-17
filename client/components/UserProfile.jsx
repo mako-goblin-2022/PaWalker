@@ -12,9 +12,10 @@ function UserProfile() {
     dispatch(fetchUserById(1))
   }, [])
 
-  let user = useSelector((state) => state.user.user)
-
-  // console.log('user: ', user)
+  let user = useSelector((state) => {
+    console.log('state: ', state)
+    return state.user
+  })
 
   return (
     <>
