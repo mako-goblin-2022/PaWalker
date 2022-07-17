@@ -13,30 +13,37 @@ function UserProfile() {
     dispatch(fetchPetById(1))
   }, [])
 
-  let pet = useSelector(async (state) => {
+  let pet = useSelector((state) => {
+    console.log(state)
     return state.pet.pet
   })
 
   useEffect(() => {
-    console.log('second dispatch fired')
+    console.log(pet.owner_id)
     dispatch(fetchUserById(`${pet.owner_id}`))
-  }, [])
+  }, [pet])
 
   let owner = useSelector((state) => {
     console.log('owner state: ', state)
-    return state
+    return state.user.user
   })
 
-  // console.log(pet[0].name)
+  // how to access 'owner' after getting the state?
 
   return (
     <>
-      {pet !== {} && (
+      {pet.name && (
         <div>
           <p>{pet.name}</p>
-          <p></p>
         </div>
       )}
+
+      {/* {owner.userProfile.name}
+      {owner.userProfile.name && (
+        <div>
+          <p>I am the owner: {owner.userProfile.name}</p>
+        </div>
+      )} */}
     </>
   )
 }

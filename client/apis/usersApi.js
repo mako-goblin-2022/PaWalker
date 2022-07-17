@@ -10,7 +10,7 @@ export function getAllUsers() {
 
 export function getUserById(userId) {
   return request.get(rootUrl + `/users/${userId}`).then((res) => {
-    console.log(res)
+    // console.log(res)
     return res.body
   })
 }
