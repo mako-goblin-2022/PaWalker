@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { formStage, formSignup } from '../../store/rootSlice'
 
-function FormUserSignup({ pageTitle, submitButtonText, previousButton }) {
+function OwnerForm(SignupOwner) {
   const dispatch = useDispatch()
 
   const InitialStage = useSelector((state) => state.FormStage)
@@ -19,7 +19,6 @@ function FormUserSignup({ pageTitle, submitButtonText, previousButton }) {
     quantity: petQuantity || '',
   })
 
-  // form values onchange
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData({
@@ -56,19 +55,16 @@ function FormUserSignup({ pageTitle, submitButtonText, previousButton }) {
 
 const [isSubmitted, setIsSubmitted] = useState(false)
 const handleSubmit = (e) => {
-  e.preventDefault() // stop form submission
-  setErrors(validate(formData)) // check errors
-  setIsSubmitted(true) // update submit status
+  e.preventDefault()
+  setErrors(validate(formData))
+  setIsSubmitted(true)
 }
 
 useEffect(() => {
   if (Object.keys(errors).length === 0 && isSubmitted) {
-    dispatch(
-      formStage(2) // update formStage
-    )
+    dispatch(formStage(2))
     dispatch(
       formSignup({
-        // update formSignup
         name: Owner.name,
         name: Pet.name,
         img: Pet.img,
@@ -80,7 +76,7 @@ useEffect(() => {
 
 return (
   <>
-    <h2>{pageTitle || 'Signup as an Owner'}</h2>
+    <h2>{SignupOwner || 'Signup as an Owner'}</h2>
 
     <form name="Ownersform" id="Ownersform" onSubmit={(e) => handleSubmit(e)}>
       <p>
@@ -162,11 +158,11 @@ return (
           </p>
         )}
         <p>
-          <input type="submit" value={submitButtonText || 'Submit'} />
+          <input type="submit" value={submitButton || 'Submit'} />
         </p>
       </div>
     </form>
   </>
 )
 
-export default FormUserSignup
+export default OwnerProfileForm
