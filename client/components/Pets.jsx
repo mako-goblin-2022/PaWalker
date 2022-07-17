@@ -85,9 +85,9 @@ export default function Pets() {
           <>
             <Listbox.Label className="block mt-20 text-2xl font-bold text-gray-700">Pet list</Listbox.Label>
             <div className="mt-1 h-2/4 relative">
-              <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-orange-400 focus:border-orange-400 sm:text-sm">
+              <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-orange-300 focus:border-orange-300 sm:text-sm">
                 <span className="flex items-center">
-                  <img src={selected.avatar} alt="" className="flex-shrink-0 h-40 w-40 rounded-full" />
+                  <img src={selected.avatar} alt="" className="flex-shrink-0 h-28 w-28 rounded-full" />
                   <span className="ml-3 block truncate">{selected.name}</span>
                 </span>
                 <span className="ml-3 absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -107,7 +107,7 @@ export default function Pets() {
                       key={pet.id}
                       className={({ active }) =>
                         classNames(
-                          active ? 'text-white bg-orange-400' : 'text-gray-900',
+                          active ? 'text-white bg-orange-300' : 'text-gray-900',
                           'cursor-default select-none relative py-2 pl-3 pr-9'
                         )
                       }
@@ -120,7 +120,8 @@ export default function Pets() {
                             <span
                               className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
                             >
-                              {pet.name}
+                              <span className='m-2 text-slate-900'>Heya, I am {pet.name}, and
+                              my owner is {pet.owner_id}</span>
                             </span>
                           </div>
                           {selected ? (

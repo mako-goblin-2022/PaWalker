@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router-dom'
 import Users from './Users'
 import Login from './Login'
 import Walkers from './Walkers'
-import Navbar from './FilterView'
+import Navbar from './Header'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
 import Footer from './Footer'
@@ -20,7 +20,7 @@ function App() {
   cacheUser(useAuth0)
 
   return (
-    <div>
+    <main className='w-full h-full'>
     <Navbar />
       {/* <Login /> */}
       {/* <Users /> */}
@@ -34,7 +34,7 @@ function App() {
       </Routes>
       {/* <UserProfile /> */}
       <Footer />
-    </div>
+    </main>
   )
 }
 
