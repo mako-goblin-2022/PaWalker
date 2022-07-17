@@ -7,16 +7,28 @@ function OwnerForm(SignupOwner) {
 
   const InitialStage = useSelector((state) => state.FormStage)
   const OwnerName = useSelector((state) => state.Owner.name)
-  const PetName = useSelector((state) => state.pet.name)
-  const PetImage = useSelector((state) => state.pet.img)
-  const petQuantity = useSelector((state) => state.int)
+  const location = useSelector((state) => state.owner.location)
+  const bio = useSelector((state) => state.owner.bio)
+  const email = useSelector((state) => state.owner.email)
+  const phone_number = useSelector((state) => state.owner.phone)
+  const approachable = useSelector((state) => state.owner.approch)
+  const rank = useSelector((state) => state.walker.rank)
+  const img = useSelector((state) => state.owner.image)
+  const walker = useSelector((state) => state.walker.bool)
+  const owner = useSelector((state) => state.owner.bool)
 
   // form values initial state
   const [formData, setFormData] = useState({
     name: OwnerName || '',
-    name: PetName || '',
-    img: PetImage || '',
-    quantity: petQuantity || '',
+    location: location || '',
+    bio: bio || '',
+    email: email || '',
+    phone_number: phone || '',
+    approachable: approch || '',
+    rank: walker.rank || '',
+    img: image || '',
+    walker: walker.bool || '',
+    owner: owner.bool || '',
   })
 
   const handleChange = (e) => {
@@ -36,133 +48,168 @@ function OwnerForm(SignupOwner) {
       formErrors.OwnerName = 'Name required'
     }
 
-    //pet Name
-    if (!formData.PetName) {
-      formErrors.PetName = 'Name required'
+    //location
+    if (!formData.location) {
+      formErrors.location = 'address required'
     }
 
-    // pet Image
-    if (!formData.PetImage == ' ') formErrors.petImage = 'Image Required'
-  }
+    // bio
+    if (!formData.bio == ' ') {
+      formErrors.bio = 'Bio Required'
+    }
 
-  //pet Quantity
-  if (!formData.petQuantity) {
-    formErrors.petQuantity = 'Amount of pets required'
-  }
-
-  return formErrors
-}
-
-const [isSubmitted, setIsSubmitted] = useState(false)
-const handleSubmit = (e) => {
-  e.preventDefault()
-  setErrors(validate(formData))
-  setIsSubmitted(true)
-}
-
-useEffect(() => {
-  if (Object.keys(errors).length === 0 && isSubmitted) {
-    dispatch(formStage(2))
-    dispatch(
-      formSignup({
-        name: Owner.name,
-        name: Pet.name,
-        img: Pet.img,
-        quantity: pet.quantity,
-      })
+    //email
+    email = new RegExp(
+      /^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i
     )
-  }
-}, [formData, isSubmitted, dispatch, errors])
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      formErrors.email = 'Valid Email required'
+    }
 
-return (
-  <>
-    <h2>{SignupOwner || 'Signup as an Owner'}</h2>
+    // phone
+    if (!formData.phone_number == ' ') {
+      formErrors.phone = 'Phone number Required'
+    }
 
-    <form name="Ownersform" id="Ownersform" onSubmit={(e) => handleSubmit(e)}>
-      <p>
-        <label htmlFor="Ownername">
-          Owners Name<span className="OwnersForm"></span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="Owner name"
-          autoComplete="name"
-          placeholder="name"
-          value={formData.Owner.name}
-          onChange={handleChange}
-        />
-      </p>
-      {errors.name && <span className="error-message">{errors.name}</span>}
+    // approch
+    if (!formData.approachable == ' ') {
+      formErrors.approch =
+        'Please click on the button which relects your approach status'
+    }
 
-      <p>
-        <label htmlFor="PetName">
-          Pet Name<span className="OwnersForm"></span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="Pet Name"
-          autoComplete="name"
-          placeholder="name"
-          value={formData.Pet.name}
-          onChange={handleChange}
-        />
-      </p>
+    // image
+    if (!formData.img == ' ') {
+      formErrors.image = 'Please upload an image'
+    }
 
-      <p>
-        <label htmlFor="PetImg">
-          Pets Image<span className="OwnersForm"></span>
-        </label>
-        <input
-          type="Image"
-          id="img"
-          name="pet Image"
-          autoComplete=""
-          placeholder=""
-          value={formData.pet.img}
-          onChange={handleChange}
-        />
-      </p>
-      {errors.image && <span className="error-message">{errors.PetImage}</span>}
+    // isWalker
+    if (!formData.walker == ' ') {
+      formErrors.walker.bool = 'Please identify as a Walker or Owner'
+    }
 
-      <p>
-        <label htmlFor="PetQuantity">
-          Pet Quantity<span className="OwnersForm"></span>
-        </label>
-        <input
-          type="Interger"
-          id="Int"
-          name="pet Quantity"
-          placeholder="0"
-          value={formData.Pet.quantity}
-          onChange={handleChange}
-        />
-      </p>
-      {errors.quantity && (
-        <span className="error-message">{errors.petQuantity}</span>
-      )}
+    // isOwner
+    if (!formData.owner == ' ') {
+      formErrors.owner.bool = 'Please identify as an Owner or walker'
+    }
 
-      <p className="disclaimer-text">
-        <span className="OwnersForm"></span> required fields
-      </p>
+    const [isSubmitted, setIsSubmitted] = useState(false)
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      setErrors(validate(formData))
+      setIsSubmitted(true)
+    }
 
-      <div className="Submit">
-        {previousButton && (
+    useEffect(() => {
+      if (Object.keys(errors).length === 0 && isSubmitted) {
+        dispatch(formStage(2))
+        dispatch(
+          formSignup({
+            name: Owner.name,
+            name: Pet.name,
+            img: Pet.img,
+            quantity: pet.quantity,
+          })
+        )
+      }
+    }, [formData, isSubmitted, dispatch, errors])
+
+    return (
+      <>
+        <h2>{SignupOwner || 'Signup as an Owner'}</h2>
+
+        <form
+          name="Ownersform"
+          id="Ownersform"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <p>
+            <label htmlFor="Ownername">
+              Owners Name<span className="OwnersForm"></span>
+            </label>
             <input
-              type="submit"
-              value={`Back`}
-              onClick={() => dispatch(formStage(currentStage - 1))}
+              type="text"
+              id="name"
+              name="Owner name"
+              autoComplete="name"
+              placeholder="name"
+              value={formData.Owner.name}
+              onChange={handleChange}
             />
           </p>
-        )}
-        <p>
-          <input type="submit" value={submitButton || 'Submit'} />
-        </p>
-      </div>
-    </form>
-  </>
-)
+          {errors.name && <span className="error-message">{errors.name}</span>}
+
+          <p>
+            <label htmlFor="PetName">
+              Pet Name<span className="OwnersForm"></span>
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="Pet Name"
+              autoComplete="name"
+              placeholder="name"
+              value={formData.Pet.name}
+              onChange={handleChange}
+            />
+          </p>
+
+          <p>
+            <label htmlFor="PetImg">
+              Pets Image<span className="OwnersForm"></span>
+            </label>
+            <input
+              type="Image"
+              id="img"
+              name="pet Image"
+              autoComplete=""
+              placeholder=""
+              value={formData.pet.img}
+              onChange={handleChange}
+            />
+          </p>
+          {errors.image && (
+            <span className="error-message">{errors.PetImage}</span>
+          )}
+
+          <p>
+            <label htmlFor="PetQuantity">
+              Pet Quantity<span className="OwnersForm"></span>
+            </label>
+            <input
+              type="Interger"
+              id="Int"
+              name="pet Quantity"
+              placeholder="0"
+              value={formData.Pet.quantity}
+              onChange={handleChange}
+            />
+          </p>
+          {errors.quantity && (
+            <span className="error-message">{errors.petQuantity}</span>
+          )}
+
+          <p className="disclaimer-text">
+            <span className="OwnersForm"></span> required fields
+          </p>
+
+          <div className="Submit">
+            {previousButton && (
+              <p>
+                <input
+                  type="submit"
+                  value={`Back`}
+                  onClick={() => dispatch(formStage(currentStage - 1))}
+                />
+              </p>
+            )}
+            <p>
+              <input type="submit" value={submitButton || 'Submit'} />
+            </p>
+          </div>
+        </form>
+      </>
+    )
+  }
+}
 
 export default OwnerProfileForm
