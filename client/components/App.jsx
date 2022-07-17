@@ -17,6 +17,7 @@ import MyProfile from './MyProfile'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
 import WalkHistory from './WalkHistory'
+import Nav from './Nav'
 
 // import '../../client/index.css'
 
@@ -24,8 +25,8 @@ function App() {
   cacheUser(useAuth0)
   return (
     <div>
-      <h1>Hello</h1>
-      <Login />
+      <Nav />
+
       {/* <h1>Hello</h1> */}
 
       <Routes>

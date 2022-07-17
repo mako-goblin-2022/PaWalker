@@ -25,13 +25,14 @@ function WalkHistory() {
     let historyPets = allPetList.pets.filter((pet) => {
       return allPetList.history.indexOf(pet.id) !== -1
     })
-    return historyPets.map((i, idx) => {
+    return historyPets.map((pet, idx) => {
+      console.log(pet)
       return (
         <div key={idx}>
-          <img src={i.img} alt={i.img + i.name} />
-          <div>{i.name}</div>
-          <div>{i.size}</div>
-          <Link to={`/pets/${i.id}/review`}>
+          <img src={'/images/pets/sample.jpg'} alt={pet.img + pet.name} />
+          <div>{pet.name}</div>
+          <div>{pet.size}</div>
+          <Link to={`/pets/${pet.id}/review`}>
             <p>Leave a Review</p>
           </Link>
         </div>

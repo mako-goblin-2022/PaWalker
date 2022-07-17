@@ -1,5 +1,5 @@
 const config = require('./knexfile')
-const connection = require('./connection')
+const connection = require('./connection')(config)
 
 function getAllUsers(db = connection) {
   return db('users').select()

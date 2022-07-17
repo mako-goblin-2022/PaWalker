@@ -4,8 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToHistoryPet, fetchAllPets } from '../features/users/petsSlice'
 
 function Pets() {
-  const [historyList, setHistoryList] = useState([])
-
   const petsDisplay = useSelector((state) => {
     console.log(state)
     return state.pet
@@ -27,7 +25,6 @@ function Pets() {
       <Link to={'/users/myProfile'}>My Profile</Link>
 
       {petsDisplay.pets.map((pets, i) => {
-        console.log(pets)
         return (
           <section key={i} className=''>
             <div>

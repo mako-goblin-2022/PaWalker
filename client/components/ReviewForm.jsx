@@ -50,7 +50,7 @@ function ReviewForm() {
   }
 
   return (
-    <div>
+    <div className='flex justify-center'>
       <form className='flex flex-col' onSubmit={handleSubmit}>
         <label htmlFor='rating'>Rating </label>
         <input

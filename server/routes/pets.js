@@ -4,7 +4,6 @@ const db = require('../db/pets.db')
 
 const router = express.Router()
 
-
 router.get('/', (req, res) => {
   db.getAllPets()
     .then((results) => {
@@ -16,8 +15,6 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
-
-
 
 router.get('/:id', (req, res) => {
   const petUserId = req.params.id

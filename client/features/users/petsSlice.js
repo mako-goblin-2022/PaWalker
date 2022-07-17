@@ -39,13 +39,13 @@ export const petsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchAllPets.fulfilled, (state, action) => {
       // action.payload IS the returned response above.
-      console.log('state', state)
-      console.log('action', action)
+      // console.log('state', state)
+      // console.log('action', action)
 
       state.pets = action.payload
     })
     builder.addCase(fetchPetById.fulfilled, (state, action) => {
-      console.log('action', action)
+      // console.log('action', action)
 
       state.pet = action.payload
     })
