@@ -3,13 +3,24 @@ import { useSelector, useDispatch } from 'react-redux'
 import { postReview } from '../apis/reviewsApi'
 import { saveUser } from '../features/auth/authSlice'
 import StarRate from './StarRate'
+import { useParams } from 'react-router-dom'
 
 function ReviewForm() {
   const dispatch = useDispatch()
+  const params = useParams()
+  const petId = params.id
+
   const [rating, setRating] = useState(0)
 
+  const pet = useSelector((state) => {
+    // console.log(state)
+    return state.pet.pets
+  })
+
+  const petSelected = pet.find((pet) => pet.id === Number(petId))
+
   const user = useSelector((state) => {
-    console.log(state)
+    // console.log(state)
     return state
   })
 
@@ -19,6 +30,7 @@ function ReviewForm() {
     title: '',
     review: '',
     rating: '',
+    reviewee_id: NaN,
   })
 
   let dateInM = new Date()
@@ -26,14 +38,17 @@ function ReviewForm() {
     dateInM.getDate() + '-' + (dateInM.getMonth() + 1) + '-' + dateInM.getFullYear()
 
   useEffect(() => {
-    setReviewForm({
-      ...reviewForm,
-      date: currentDate,
-      rating: rating,
-      auth0Id: user?.auth0Id,
-      token: user?.token,
-    })
-  }, [user])
+    if (petSelected && user) {
+      setReviewForm({
+        ...reviewForm,
+        date: currentDate,
+        rating: rating,
+        auth0Id: user?.auth0Id,
+        token: user?.token,
+        reviewee_id: petSelected.owner_id,
+      })
+    }
+  }, [user, pet])
 
   function handleInput(e) {
     const { name, value } = e.target
@@ -52,16 +67,16 @@ function ReviewForm() {
   return (
     <div className='flex justify-center'>
       <form className='flex flex-col' onSubmit={handleSubmit}>
-        <label htmlFor='rating'>Rating </label>
+        {/* <label htmlFor='rating'>Rating </label>
         <input
           id='rating'
           name='rating'
           value={reviewForm.rating}
           onChange={handleInput}
-        ></input>
+        ></input> */}
 
         <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
-        <p>Rating - {rating}</p>
+        {/* <p>Rating - {rating}</p> */}
         <label htmlFor='title'>Title: </label>
         <input
           id='title'

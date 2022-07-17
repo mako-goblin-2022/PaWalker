@@ -17,10 +17,12 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/post', checkJwt, (req, res) => {
-  const reviewer_id = req.user?.sub
+// router.post('/post', checkJwt, (req, res) => {
+router.post('/post', (req, res) => {
+  // const reviewer_id = req.user?.sub
+  const reviewer_id = 1
   // const { reviewForm } = req.body
-
+  console.log(req.body)
   db.postReview(reviewer_id, req.body)
     .then((result) => {
       res.json(result)

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
+import { addToHistoryPet, fetchAllPets } from '../features/users/petsSlice'
 
 import { getUsers } from '../../client/apis/usersApi'
 
@@ -22,6 +23,12 @@ import Nav from './Nav'
 // import '../../client/index.css'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchAllPets())
+  }, [])
+
   cacheUser(useAuth0)
   return (
     <div>

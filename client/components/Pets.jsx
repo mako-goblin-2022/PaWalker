@@ -11,9 +11,9 @@ function Pets() {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchAllPets())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchAllPets())
+  // }, [])
 
   const addHistory = async (userId) => {
     // await setHistoryList(historyList.push(userId))

@@ -8,9 +8,12 @@ export function getReviews() {
   })
 }
 
-export function postReview() {
-  return request.post(rootUrl + '/reviews/post').then((res) => {
-    console.log(res)
-    return res
-  })
+export function postReview(reviewForm) {
+  return request
+    .post(rootUrl + '/reviews/post')
+    .send(reviewForm)
+    .then((res) => {
+      console.log(res)
+      return res
+    })
 }

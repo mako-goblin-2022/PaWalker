@@ -5,8 +5,11 @@ function getReviews(db = connection) {
 }
 
 function postReview(reviewer_id, reviewForm, db = connection) {
-  const { date, title, review, rating, reviewee_id } = reviewForm
-  return db('reviews').insert({ date, title, review, rating, reviewer_id, reviewee_id })
+  return db('reviews')
+    .insert({ ...reviewForm, reviewer_id })
+    .then(([id]) => {
+      return { ...reviewForm, reviewer_id, id }
+    })
 }
 
 module.exports = {
