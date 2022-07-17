@@ -2899,7 +2899,7 @@ function Nav() {
   }, "My Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__.Link, {
     className: "mx-7",
     to: '/users/myProfile/walkHistory'
-  }, "View My Walk History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "Walk History"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Nav);
@@ -3563,6 +3563,7 @@ var authSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)({
   initialState: initialState,
   extraReducers: function extraReducers(builder) {
     builder.addCase(saveUser.fulfilled, function (state, action) {
+      console.log('action: ', action);
       state.user = action.payload;
     });
     builder.addCase(saveUser.rejected, function (state, action) {

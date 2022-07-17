@@ -12,7 +12,7 @@ function Nav() {
         My Profile
       </Link>
       <Link className='mx-7' to={'/users/myProfile/walkHistory'}>
-        View My Walk History
+        Walk History
       </Link>
       <Login />
     </div>
