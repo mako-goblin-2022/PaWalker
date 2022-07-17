@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useSelector, useDispatch } from 'react-redux'
-import { setLoggedInUser } from './actions/loggedInUser'
+// import { setLoggedInUser } from './actions/loggedInUser'
 import { saveUser } from './features/auth/authSlice'
 
 // eslint-disable-next-line no-unused-vars

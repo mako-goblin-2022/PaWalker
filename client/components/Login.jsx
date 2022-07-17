@@ -8,13 +8,13 @@ function Login() {
 
   function handleLogoff(e) {
     e.preventDefault()
-    console.log('log off')
+    // console.log('log off')
     logout()
   }
 
   function handleRegister(e) {
     e.preventDefault()
-    console.log('register')
+    // console.log('register')
     loginWithRedirect({
       redirectUri:`${window.location.origin}/register` 
     })
@@ -22,25 +22,27 @@ function Login() {
 
   function handleSignIn(e) {
     e.preventDefault()
-    console.log('sign in')
+    // console.log('sign in')
     loginWithRedirect()
   }
 
   return (
-    <div>
+    <div className='block text-center' >
         <IfAuthenticated>
-          <a href="/" onClick={handleLogoff}>
+        <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-teal-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>  <a href="/" onClick={handleLogoff}>
             Log off
-          </a>
+          </a></button>
+         
         </IfAuthenticated>
         
         <IfNotAuthenticated>
-          <a href="/" onClick={handleRegister}>
+        <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-teal-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'> <a href="/" onClick={handleRegister}>
             Register
-          </a>
-          <a href="/" onClick={handleSignIn}>
+          </a></button>
+
+          <button className='w-52 cursor-pointer mb-5 uppercase h-9 bg-teal-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>  <a href="/" onClick={handleSignIn}>
             Sign in
-          </a>
+          </a></button>
         </IfNotAuthenticated>
     </div>
   )
