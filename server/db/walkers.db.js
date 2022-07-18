@@ -10,14 +10,9 @@ function getwalkerById(id, db = connection) {
   return db('walkers').select().where('id', id).first()
 }
 
-
-
 function getWalkersByUserId(auth0_id, db = connection) {
   return db('walkers').where('id', auth0_id)
 }
-
-
-
 
 module.exports = {
   getAllWalkers,

@@ -4,7 +4,7 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable('reviews', (table) => {
-    table.integer('id')
+    table.increments('id')
     table.integer('reviewer_id')
     table.integer('reviewee_id')
     table.string('date')

@@ -18,15 +18,15 @@ export const fetchUserById = createAsyncThunk(
       userProfile: response,
       petProfile: petResponse,
     }
-    // console.log(response)
+    console.log(combinedResponse)
     return combinedResponse
   }
 )
 
 const initialState = {
   user: {},
-  users: [], // can be whatever
-  // newstate
+  users: [],
+  history: [],
 }
 
 // reducer function
@@ -42,9 +42,14 @@ export const usersSlice = createSlice({
     // setUserById: (state, action) => {
     //   state.user += 1
     // },
+    addToHistory: (state, action) => {
+      console.log(action)
+      state.history.push(action.payload)
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserById.fulfilled, (state, action) => {
+      console.log(action)
       state.user = action.payload
     })
     builder.addCase(fetchAllUsers.fulfilled, (state, action) => {
@@ -59,7 +64,7 @@ export const usersSlice = createSlice({
 // builder.addCase(fetchUserById.pending, (state, action) => {
 //   console.log(state, action)
 // })
-export const { setUserById } = usersSlice.actions
+export const { setUserById, addToHistory } = usersSlice.actions
 
 export default usersSlice.reducer
 
