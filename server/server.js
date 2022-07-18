@@ -6,6 +6,7 @@ const petRoutes = require('./routes/pets')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 const walkerRoutes = require('./routes/walkers')
+// I think authUser routes need to be pulled in here, as well.
 
 
 server.use(express.json())
