@@ -17,7 +17,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: '3XL',
       age: 5,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: 'S',
       age: 15,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: 'S',
       age: 2,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 4,
@@ -56,7 +56,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: '2XL',
       age: 6,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 5,
@@ -69,7 +69,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: '3XL',
       age: 9,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 6,
@@ -82,7 +82,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: 'L',
       age: 12,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 7,
@@ -95,7 +95,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: 'XL',
       age: 9,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 8,
@@ -108,7 +108,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: '2XL',
       age: 5,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 9,
@@ -121,7 +121,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: 'S',
       age: 10,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
     {
       id: 10,
@@ -134,7 +134,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: 'XS',
       age: 4,
-      img: './images/pets/sample.jpg',
+      img: '/images/pets/sample.jpg',
     },
   ])
 }

@@ -75,6 +75,7 @@ export default function Walkers() {
                       {({ selected, active }) => (
                         <section className="h-22 mb-3">
 
+<<<<<<< HEAD
                           <div className="flex items-center">
                             <img src={walker.img} alt="" className="flex-shrink-0 h-20 w-20 rounded-full" />
                             <h3
@@ -112,6 +113,30 @@ export default function Walkers() {
           </>
         )}
       </Listbox>
+=======
+  useEffect(() => {
+    dispatch(fetchAllWalkers())
+  }, [dispatch])
+
+  return (
+    <main className=''>
+      {walkersDisplay.map((walker, i) => {
+        // console.log(walker)
+        return (
+          <section key={i} className=''>
+            <div>
+              <img className='w-44' src={walker.img} alt={walker.name} />
+            </div>
+            <div>
+              <h3 className=''>{walker.name}</h3>
+            </div>
+            <div>
+              <h3 className=''>{walker.location}</h3>
+            </div>
+          </section>
+        )
+      })}
+>>>>>>> dev
     </main>
   )
 }

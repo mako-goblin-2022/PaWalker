@@ -3,13 +3,10 @@ import { getAllPets, getPetById, getPetsByUserId} from '../../apis/petsApi'
 // import { getPetByUserId } from '../../apis/petsApi'
 // import { getUsersByPetId} from '../../apis/petsApi'
 
-export const fetchAllPets = createAsyncThunk(
-  'pet/fetchAllPets',
-  async (thunkAPI) => {
-    const allPetsResponse = await getAllPets()
-    return allPetsResponse
-  }
-)
+export const fetchAllPets = createAsyncThunk('pet/fetchAllPets', async (thunkAPI) => {
+  const allPetsResponse = await getAllPets()
+  return allPetsResponse
+})
 
 export const fetchPetById = createAsyncThunk(
   // Change name here

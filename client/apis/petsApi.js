@@ -9,10 +9,13 @@ export function getAllPets() {
 }
 
 export function getPetsByUserId(userId) {
-  return request.get(rootUrl + `/pets/${userId}`).then((res) => res.body)
+  return request.get(rootUrl + `/pets/${userId}`).then((res) => {
+    console.log(res)
+    return res.body
+  })
 }
 
 // Create the api to get the information
 export function getPetById(petId) {
-  return request.get(rootUrl + `/pets/${petId}`).then((res) => res.body)
+  return request.get(rootUrl + `/pets/pet/${petId}`).then((res) => res.body)
 }

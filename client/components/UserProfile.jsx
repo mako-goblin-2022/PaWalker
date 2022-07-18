@@ -8,13 +8,14 @@ function UserProfile() {
   const dispatch = useDispatch()
   const userId = params.id
 
+  let user = useSelector((state) => {
+    console.log('state: ', state)
+    return state.user.user
+  })
+
   useEffect(() => {
     dispatch(fetchUserById(1))
   }, [])
-
-  let user = useSelector((state) => state.user.user)
-
-  // console.log('user: ', user)
 
   return (
     <>

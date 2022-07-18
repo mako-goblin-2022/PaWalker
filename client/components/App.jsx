@@ -24,22 +24,19 @@ function App() {
     dispatch(fetchAllPets())
   }, [])
 
-
-
   return (
     <main className='w-full h-full'>
-    <Navbar />
-      {/* <Login /> */}
-      {/* <Users /> */}
-      
+      <Navbar />
+      {/* <Login /> /}
+      {/ <Users /> /} */}
+
       <Routes>
-    
-      <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/walkers' element={<Walkers />} />
       </Routes>
-      {/* <UserProfile /> */}
+      {/* {/ <UserProfile /> */}
       <Footer />
     </main>
   )
