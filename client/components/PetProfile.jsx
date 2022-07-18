@@ -8,11 +8,6 @@ function UserProfile() {
   const dispatch = useDispatch()
   const petId = params.id
 
-  // useEffect(() => {
-  //   console.log('first dispatch fired')
-  //   dispatch(fetchPetById(1))
-  // }, [])
-
   const pet = useSelector((state) => {
     console.log(state)
     return state.pet.pets
@@ -32,12 +27,6 @@ function UserProfile() {
     return state.user.user.userProfile
   })
 
-  // let displayOwner = () => {
-  //   if (owner.name !== '') {
-  //     return owner.name
-  //   }
-  // }
-
   return (
     <>
       {petSelected && (
@@ -45,8 +34,6 @@ function UserProfile() {
           <p>{petSelected.name}</p>
         </div>
       )}
-
-      {/* {displayOwner()} */}
 
       {owner && (
         <div>
