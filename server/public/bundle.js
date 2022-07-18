@@ -2935,25 +2935,32 @@ __webpack_require__.r(__webpack_exports__);
 function UserProfile() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useParams)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var petId = params.id;
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log('first dispatch fired');
-    dispatch((0,_features_users_petsSlice__WEBPACK_IMPORTED_MODULE_2__.fetchPetById)(1));
-  }, []);
+  var petId = params.id; // useEffect(() => {
+  //   console.log('first dispatch fired')
+  //   dispatch(fetchPetById(1))
+  // }, [])
+
   var pet = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     console.log(state);
-    return state.pet.pet;
+    return state.pet.pets;
   });
+  var petSelected = pet.find(function (pet) {
+    return pet.id === Number(petId);
+  }); // let petOfInterest
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     console.log(pet.owner_id);
-    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__.fetchUserById)("".concat(pet.owner_id)));
+
+    if (petSelected) {
+      dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__.fetchUserById)(petSelected.owner_id));
+    }
   }, [pet]);
   var owner = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     console.log('owner state: ', state);
     return state.user.user;
   }); // how to access 'owner' after getting the state?
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, pet.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, pet.name)));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, petSelected && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, petSelected.name)));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (UserProfile);
@@ -3094,7 +3101,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function ReviewForm() {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useParams)();
   var petId = params.id;
 

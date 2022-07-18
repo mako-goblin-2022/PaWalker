@@ -8,19 +8,25 @@ function UserProfile() {
   const dispatch = useDispatch()
   const petId = params.id
 
-  useEffect(() => {
-    console.log('first dispatch fired')
-    dispatch(fetchPetById(1))
-  }, [])
+  // useEffect(() => {
+  //   console.log('first dispatch fired')
+  //   dispatch(fetchPetById(1))
+  // }, [])
 
-  let pet = useSelector((state) => {
+  const pet = useSelector((state) => {
     console.log(state)
-    return state.pet.pet
+    return state.pet.pets
   })
+
+  const petSelected = pet.find((pet) => pet.id === Number(petId))
+
+  // let petOfInterest
 
   useEffect(() => {
     console.log(pet.owner_id)
-    dispatch(fetchUserById(`${pet.owner_id}`))
+    if (petSelected) {
+      dispatch(fetchUserById(petSelected.owner_id))
+    }
   }, [pet])
 
   let owner = useSelector((state) => {
@@ -32,9 +38,9 @@ function UserProfile() {
 
   return (
     <>
-      {pet.name && (
+      {petSelected && (
         <div>
-          <p>{pet.name}</p>
+          <p>{petSelected.name}</p>
         </div>
       )}
 

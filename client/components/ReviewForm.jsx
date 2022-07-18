@@ -6,7 +6,6 @@ import StarRate from './StarRate'
 import { useParams } from 'react-router-dom'
 
 function ReviewForm() {
-  const dispatch = useDispatch()
   const params = useParams()
   const petId = params.id
 
