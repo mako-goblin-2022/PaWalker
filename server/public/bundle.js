@@ -2915,6 +2915,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -2930,20 +2932,60 @@ function Hof() {
   //   }
   // }, [reviews])
   // let please = reviewCopy.sort((a, b) => a.rating)
+  // const getRank = () => {
+  //   let sorted = reviews
+  //     .map((i) => i.rating)
+  //     .sort((a, b) => b - a)
+  //     .slice(0, 3)
+  //   let sortedArr = String(sorted).split(',')
+  //   let toNumbers = sortedArr.map(Number)
+  //   let topThree = reviews.filter((review) => toNumbers.includes(review.rating))
+  //   console.log(topThree)
+  //   return topThree
+  // }
+  // const getRank = () => {
+  //   let ans = []
+  //   reviews.forEach(function (item) {
+  //     if (ans.hasOwnProperty(item.reviewee_id)) {
+  //       ans[item.reviewee_id] = ans[item.reviewee_id] + item.rating
+  //     } else {
+  //       ans[item.reviewee_id] = item.rating
+  //     }
+  //   })
+  //   console.log(ans)
+  //   return ans[2]
+  // }
+  // const getRank = () => {
+  //   let ans = Array.from(
+  //     reviews.reduce((a, { reviewee_id, rating }) => {
+  //       return a.set(reviewee_id, (a.get(reviewee_id) || 0) + rating)
+  //     }, new Map())
+  //   )
+  //   console.log(ans.sort((a, b) => b[1] - a[1]))
+  //   return ans.sort((a, b) => b - a)[0]
+  // }
 
   var getRank = function getRank() {
-    var sorted = reviews.map(function (i) {
-      return i.rating;
-    }).sort(function (a, b) {
-      return b - a;
-    }).slice(0, 3);
-    var sortedArr = String(sorted).split(',');
-    var toNumbers = sortedArr.map(Number);
-    var topThree = reviews.filter(function (review) {
-      return toNumbers.includes(review.rating);
+    var sums = {};
+
+    for (var i = 0; i < reviews.length; i++) {
+      var obj = reviews[i];
+      sums[obj.reviewee_id] = sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id];
+      sums[obj.reviewee_id] += obj.rating;
+    }
+
+    console.log(sums);
+    var sortedArr;
+    sortedArr = Object.keys(sums).sort(function (a, b) {
+      return sums[b] - sums[a];
+    }).map(function (key) {
+      return _defineProperty({}, key, sums[key]);
     });
-    console.log(topThree);
-    return topThree;
+    console.log(sortedArr); // pulling out the first obj
+
+    var trial = sortedArr.shift();
+    console.log(Object.entries(trial)[0][1]);
+    return sortedArr.shift();
   }; // get all the reviews (done)
   // add all the rating for each reviewee_id
   // sort the rating in order
