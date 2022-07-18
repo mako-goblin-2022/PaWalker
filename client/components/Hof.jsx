@@ -18,6 +18,7 @@ function Hof() {
 
   // let please = reviewCopy.sort((a, b) => a.rating)
 
+  // my attempt
   // const getRank = () => {
   //   let sorted = reviews
   //     .map((i) => i.rating)
@@ -30,19 +31,7 @@ function Hof() {
   //   return topThree
   // }
 
-  // const getRank = () => {
-  //   let ans = []
-  //   reviews.forEach(function (item) {
-  //     if (ans.hasOwnProperty(item.reviewee_id)) {
-  //       ans[item.reviewee_id] = ans[item.reviewee_id] + item.rating
-  //     } else {
-  //       ans[item.reviewee_id] = item.rating
-  //     }
-  //   })
-  //   console.log(ans)
-  //   return ans[2]
-  // }
-
+  /// arr of arr
   // const getRank = () => {
   //   let ans = Array.from(
   //     reviews.reduce((a, { reviewee_id, rating }) => {
@@ -53,35 +42,54 @@ function Hof() {
   //   return ans.sort((a, b) => b - a)[0]
   // }
 
-  const getRank = () => {
-    let sums = {}
-    for (let i = 0; i < reviews.length; i++) {
-      let obj = reviews[i]
-      sums[obj.reviewee_id] =
-        sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id]
+  //// best so far
+  // const getRank = () => {
+  //   let sums = {}
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     let obj = reviews[i]
+  //     sums[obj.reviewee_id] =
+  //       sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id]
 
-      sums[obj.reviewee_id] += obj.rating
-    }
-    console.log(sums)
-    let sortedArr
-    sortedArr = Object.keys(sums)
-      .sort((a, b) => {
-        return sums[b] - sums[a]
-      })
-      .map((key) => ({ [key]: sums[key] }))
-    console.log(sortedArr)
-    // pulling out the first obj
-    let trial = sortedArr.shift()
-    console.log(Object.entries(trial)[0][1])
-    return sortedArr.shift()
+  //     sums[obj.reviewee_id] += obj.rating
+  //   }
+  //   console.log(sums)
+  //   let sortedArr
+  //   sortedArr = Object.keys(sums)
+  //     .sort((a, b) => {
+  //       return sums[b] - sums[a]
+  //     })
+  //     .map((key) => ({ [key]: sums[key] }))
+  //   console.log(sortedArr)
+  //   // pulling out the first obj
+  //   return sortedArr
+  // }
+
+  const getRank = () => {
+    let result = Object.values(
+      reviews.reduce((c, { reviewee_id, rating }) => {
+        c[reviewee_id] = c[reviewee_id] || { reviewee_id, rating: 0 }
+        c[reviewee_id].rating += rating
+        return c
+      }, {})
+    )
+
+    let sorted = result.sort((a, b) => b.rating - a.rating)
+    console.log('the whole list: ', sorted)
+    console.log('the first element: ', sorted[0])
+    console.log('first key within the first element: ', sorted[0]?.reviewee_id)
+
+    return sorted
   }
+  console.log(getRank()[0]?.reviewee_id)
+
+  const topRev = getRank()
 
   // get all the reviews (done)
   // add all the rating for each reviewee_id
   // sort the rating in order
   // display reviewee_id's name in descending order
 
-  return <div>{reviews && getRank()}</div>
+  return <div>{reviews && topRev[0]?.reviewee_id}</div>
 }
 
 export default Hof

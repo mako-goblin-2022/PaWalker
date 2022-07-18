@@ -2915,13 +2915,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 
 
 function Hof() {
+  var _getRank$, _topRev$;
+
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     console.log(state.review.reviews);
@@ -2932,6 +2932,7 @@ function Hof() {
   //   }
   // }, [reviews])
   // let please = reviewCopy.sort((a, b) => a.rating)
+  // my attempt
   // const getRank = () => {
   //   let sorted = reviews
   //     .map((i) => i.rating)
@@ -2943,18 +2944,7 @@ function Hof() {
   //   console.log(topThree)
   //   return topThree
   // }
-  // const getRank = () => {
-  //   let ans = []
-  //   reviews.forEach(function (item) {
-  //     if (ans.hasOwnProperty(item.reviewee_id)) {
-  //       ans[item.reviewee_id] = ans[item.reviewee_id] + item.rating
-  //     } else {
-  //       ans[item.reviewee_id] = item.rating
-  //     }
-  //   })
-  //   console.log(ans)
-  //   return ans[2]
-  // }
+  /// arr of arr
   // const getRank = () => {
   //   let ans = Array.from(
   //     reviews.reduce((a, { reviewee_id, rating }) => {
@@ -2964,35 +2954,56 @@ function Hof() {
   //   console.log(ans.sort((a, b) => b[1] - a[1]))
   //   return ans.sort((a, b) => b - a)[0]
   // }
+  //// best so far
+  // const getRank = () => {
+  //   let sums = {}
+  //   for (let i = 0; i < reviews.length; i++) {
+  //     let obj = reviews[i]
+  //     sums[obj.reviewee_id] =
+  //       sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id]
+  //     sums[obj.reviewee_id] += obj.rating
+  //   }
+  //   console.log(sums)
+  //   let sortedArr
+  //   sortedArr = Object.keys(sums)
+  //     .sort((a, b) => {
+  //       return sums[b] - sums[a]
+  //     })
+  //     .map((key) => ({ [key]: sums[key] }))
+  //   console.log(sortedArr)
+  //   // pulling out the first obj
+  //   return sortedArr
+  // }
 
   var getRank = function getRank() {
-    var sums = {};
+    var _sorted$;
 
-    for (var i = 0; i < reviews.length; i++) {
-      var obj = reviews[i];
-      sums[obj.reviewee_id] = sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id];
-      sums[obj.reviewee_id] += obj.rating;
-    }
-
-    console.log(sums);
-    var sortedArr;
-    sortedArr = Object.keys(sums).sort(function (a, b) {
-      return sums[b] - sums[a];
-    }).map(function (key) {
-      return _defineProperty({}, key, sums[key]);
+    var result = Object.values(reviews.reduce(function (c, _ref) {
+      var reviewee_id = _ref.reviewee_id,
+          rating = _ref.rating;
+      c[reviewee_id] = c[reviewee_id] || {
+        reviewee_id: reviewee_id,
+        rating: 0
+      };
+      c[reviewee_id].rating += rating;
+      return c;
+    }, {}));
+    var sorted = result.sort(function (a, b) {
+      return b.rating - a.rating;
     });
-    console.log(sortedArr); // pulling out the first obj
+    console.log('the whole list: ', sorted);
+    console.log('the first element: ', sorted[0]);
+    console.log('first key within the first element: ', (_sorted$ = sorted[0]) === null || _sorted$ === void 0 ? void 0 : _sorted$.reviewee_id);
+    return sorted;
+  };
 
-    var trial = sortedArr.shift();
-    console.log(Object.entries(trial)[0][1]);
-    return sortedArr.shift();
-  }; // get all the reviews (done)
+  console.log((_getRank$ = getRank()[0]) === null || _getRank$ === void 0 ? void 0 : _getRank$.reviewee_id);
+  var topRev = getRank(); // get all the reviews (done)
   // add all the rating for each reviewee_id
   // sort the rating in order
   // display reviewee_id's name in descending order
 
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && getRank());
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Hof);
