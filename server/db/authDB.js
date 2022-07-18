@@ -13,6 +13,7 @@ function createUser(user, db = connection) {
 }
 
 function userExists(auth0Id, db = connection) {
+  console.log('auth0Id', auth0Id)
   return db('users')
     .count('auth0_id as n')
     .where('auth0_id', auth0Id)

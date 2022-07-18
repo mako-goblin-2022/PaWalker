@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { formStage, formSignup } from '../../store/rootSlice'
+//import { formStage, formSignup } from '../../store/rootSlice'
 
-function OwnerForm(SignupOwner) {
+function OwnerProfileForm(SignupOwner) {
   const dispatch = useDispatch()
 
-  const InitialStage = useSelector((state) => state.FormStage)
-  const OwnerName = useSelector((state) => state.Owner.name)
-  const location = useSelector((state) => state.owner.location)
-  const bio = useSelector((state) => state.owner.bio)
-  const email = useSelector((state) => state.owner.email)
-  const phone_number = useSelector((state) => state.owner.phone)
-  const approachable = useSelector((state) => state.owner.approch)
-  const rank = useSelector((state) => state.walker.rank)
-  const img = useSelector((state) => state.owner.image)
-  const walker = useSelector((state) => state.walker.bool)
-  const owner = useSelector((state) => state.owner.bool)
-
+  // const InitialStage = useSelector((state) => state.FormStage)
+  // const OwnerName = useSelector((state) => state.Owner.name)
+  // const location = useSelector((state) => state.owner.location)
+  // const bio = useSelector((state) => state.owner.bio)
+  // const email = useSelector((state) => state.owner.email)
+  // const phoneNumber = useSelector((state) => state.owner.phone)
+  // const approachable = useSelector((state) => state.owner.approch)
+  // const rank = useSelector((state) => state.walker.rank)
+  // const img = useSelector((state) => state.owner.image)
+  // const walker = useSelector((state) => state.walker.bool)
+  // const owner = useSelector((state) => state.owner.bool)
   // form values initial state
+
   const [formData, setFormData] = useState({
-    name: OwnerName || '',
-    location: location || '',
-    bio: bio || '',
-    email: email || '',
-    phone_number: phone || '',
-    approachable: approch || '',
-    rank: walker.rank || '',
-    img: image || '',
-    walker: walker.bool || '',
-    owner: owner.bool || '',
+    name: '',
+    location: '',
+    bio: '',
+    email: '',
+    phone_number: '',
+    approachable: '',
+    rank: '',
+    img: '',
+    walker: '',
+    owner: '',
   })
 
   const handleChange = (e) => {
@@ -105,9 +105,15 @@ function OwnerForm(SignupOwner) {
         dispatch(
           formSignup({
             name: Owner.name,
-            name: Pet.name,
-            img: Pet.img,
-            quantity: pet.quantity,
+            location: owner.location,
+            bio: owner.bio,
+            email: owner.email,
+            phone_number: phone,
+            approachable: approch,
+            rank: rank,
+            img: image,
+            walker: walker,
+            owner: owner,
           })
         )
       }
@@ -130,8 +136,8 @@ function OwnerForm(SignupOwner) {
               type="text"
               id="name"
               name="Owner name"
-              autoComplete="name"
-              placeholder="name"
+              autoComplete="enter name"
+              placeholder="enter name"
               value={formData.Owner.name}
               onChange={handleChange}
             />
@@ -139,28 +145,28 @@ function OwnerForm(SignupOwner) {
           {errors.name && <span className="error-message">{errors.name}</span>}
 
           <p>
-            <label htmlFor="PetName">
-              Pet Name<span className="OwnersForm"></span>
+            <label htmlFor="location">
+              <span className="OwnersForm"></span>
             </label>
             <input
               type="text"
               id="name"
-              name="Pet Name"
-              autoComplete="name"
-              placeholder="name"
-              value={formData.Pet.name}
+              name="location"
+              autoComplete="enter location"
+              placeholder="enter location"
+              value={formData.owner.location}
               onChange={handleChange}
             />
           </p>
 
           <p>
-            <label htmlFor="PetImg">
+            <label htmlFor="bio">
               Pets Image<span className="OwnersForm"></span>
             </label>
             <input
-              type="Image"
+              type="text"
               id="img"
-              name="pet Image"
+              name="Bio"
               autoComplete=""
               placeholder=""
               value={formData.pet.img}

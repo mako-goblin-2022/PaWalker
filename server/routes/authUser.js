@@ -29,6 +29,7 @@ router.put('/', checkJwt, async (req, res) => {
 
 // POST /api/v1/users
 router.post('/', checkJwt, async (req, res) => {
+  console.log(req.body)
   const { auth0Id, name, email } = req.body
   const user = {
     auth0_id: auth0Id,
@@ -38,6 +39,7 @@ router.post('/', checkJwt, async (req, res) => {
   try {
     // check if user exists using new db function that takes auth id as param
     const userExists = await db.userExists(auth0Id)
+    console.log(userExists)
     if (userExists) return res.sendStatus(200)
     await db.createUser(user)
     res.sendStatus(201)

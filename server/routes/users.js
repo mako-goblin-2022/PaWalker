@@ -7,7 +7,7 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getAllUsers()
     .then((results) => {
-      res.json({ users: results})
+      res.json({ users: results })
       return null
     })
     .catch((err) => {

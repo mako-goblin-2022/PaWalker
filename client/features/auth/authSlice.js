@@ -5,6 +5,7 @@ export const saveUser = createAsyncThunk(
   'auth/saveUserId',
   async (user, thunkAPI) => {
     const response = await addUser(user)
+    console.log(response.status)
     // payload of the action
     return response
   }
