@@ -19,19 +19,27 @@ const NavbarFilter = () => {
             </Link>
           </li>
        
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          {/* <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
             <Link to='/users'>
               Owners
             </Link>
-          </li>
+          </li> */}
        
           <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
             <Link to='/walkers'>
               Walkers
             </Link>
           </li>
-        
-       
+          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+            <Link to={'/users/myProfile'}>
+              My Profile
+            </Link>
+          </li>
+          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+            <Link to={'/users/myProfile/walkHistory'}>
+              Walk History
+            </Link>
+          </li>
           <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
             <Link to='/login'>
               Login

@@ -48,7 +48,7 @@ const Footer = () => {
 
   <div className="text-center p-4">
     2022 Mako-Goblin22 
-    <a className="text-white" href="/"> <br/> ' Callan '  Cameron '  Jay '  Rodrigo ' </a>
+    <a className="text-white" href="/"> <br/> ' Callan '  Cameron ' Harry ' Jay '  Rodrigo ' </a>
   </div>
 </footer>
 </>
