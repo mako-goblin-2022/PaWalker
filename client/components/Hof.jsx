@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchAllReviews } from '../features/users/reviewsSlice'
 import { fetchAllUsers } from '../features/users/usersSlice'
 
 function Hof() {
@@ -15,7 +14,7 @@ function Hof() {
   }, [reviews])
 
   const allUsers = useSelector((state) => {
-    console.log(state.user.users)
+    // console.log(state.user.users)
     return state.user.users
   })
 
@@ -41,37 +40,37 @@ function Hof() {
     let result = allUsers.filter((el) =>
       topRev.some((topRev) => topRev.reviewee_id === el.auth0_id)
     )
-    console.log(result)
+    // console.log(result)
     return result
   }
 
   let rankerProfile = getRankerProfile()
 
-  let goldName = rankerProfile?.find((i) => i.auth0_id === topRev[0].reviewee_id)
-  let silverName = rankerProfile?.find((i) => i.auth0_id === topRev[1].reviewee_id)
-  let bronzeName = rankerProfile?.find((i) => i.auth0_id === topRev[2].reviewee_id)
+  let goldProfile = rankerProfile?.find((i) => i.auth0_id === topRev[0].reviewee_id)
+  let silverProfile = rankerProfile?.find((i) => i.auth0_id === topRev[1].reviewee_id)
+  let bronzeProfile = rankerProfile?.find((i) => i.auth0_id === topRev[2].reviewee_id)
 
   return (
     <>
       <div>Gold</div>
       <div>User ID: {reviews && topRev[0]?.reviewee_id}</div>
       <div>Total Rating: {reviews && topRev[0]?.rating}</div>
-      <div>Name: {reviews && goldName?.name}</div>
-      <div>{reviews && <img src={goldName?.img} alt='goldRanker' />}</div>
+      <div>Name: {reviews && goldProfile?.name}</div>
+      <div>{reviews && <img src={goldProfile?.img} alt='goldRanker' />}</div>
       <div>--------------------------</div>
 
       <div>Silver</div>
       <div>User ID: {reviews && topRev[1]?.reviewee_id}</div>
       <div>Total Rating: {reviews && topRev[1]?.rating}</div>
-      <div>Name: {reviews && silverName?.name}</div>
-      <div>{reviews && <img src={silverName?.img} alt='silverRanker' />}</div>
+      <div>Name: {reviews && silverProfile?.name}</div>
+      <div>{reviews && <img src={silverProfile?.img} alt='silverRanker' />}</div>
       <div>--------------------------</div>
 
       <div>Bronze</div>
       <div>User ID: {reviews && topRev[2]?.reviewee_id}</div>
       <div>Total Rating: {reviews && topRev[2]?.rating}</div>
-      <div>Name: {reviews && bronzeName?.name}</div>
-      <div>{reviews && <img src={bronzeName?.img} alt='bronzeRanker' />}</div>
+      <div>Name: {reviews && bronzeProfile?.name}</div>
+      <div>{reviews && <img src={bronzeProfile?.img} alt='bronzeRanker' />}</div>
     </>
   )
 }

@@ -2914,9 +2914,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
-/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
-
+/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
 
 
 
@@ -2929,10 +2927,10 @@ function Hof() {
     return state.review.reviews;
   });
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__.fetchAllUsers)());
+    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
   }, [reviews]);
   var allUsers = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    console.log(state.user.users);
+    // console.log(state.user.users)
     return state.user.users;
   });
 
@@ -2963,29 +2961,29 @@ function Hof() {
       return topRev.some(function (topRev) {
         return topRev.reviewee_id === el.auth0_id;
       });
-    });
-    console.log(result);
+    }); // console.log(result)
+
     return result;
   };
 
   var rankerProfile = getRankerProfile();
-  var goldName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+  var goldProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
     return i.auth0_id === topRev[0].reviewee_id;
   });
-  var silverName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+  var silverProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
     return i.auth0_id === topRev[1].reviewee_id;
   });
-  var bronzeName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+  var bronzeProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
     return i.auth0_id === topRev[2].reviewee_id;
   });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Gold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$2 = topRev[0]) === null || _topRev$2 === void 0 ? void 0 : _topRev$2.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (goldName === null || goldName === void 0 ? void 0 : goldName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: goldName === null || goldName === void 0 ? void 0 : goldName.img,
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Gold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$2 = topRev[0]) === null || _topRev$2 === void 0 ? void 0 : _topRev$2.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.img,
     alt: "goldRanker"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Silver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$3 = topRev[1]) === null || _topRev$3 === void 0 ? void 0 : _topRev$3.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$4 = topRev[1]) === null || _topRev$4 === void 0 ? void 0 : _topRev$4.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (silverName === null || silverName === void 0 ? void 0 : silverName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: silverName === null || silverName === void 0 ? void 0 : silverName.img,
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Silver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$3 = topRev[1]) === null || _topRev$3 === void 0 ? void 0 : _topRev$3.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$4 = topRev[1]) === null || _topRev$4 === void 0 ? void 0 : _topRev$4.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.img,
     alt: "silverRanker"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bronze"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$5 = topRev[2]) === null || _topRev$5 === void 0 ? void 0 : _topRev$5.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$6 = topRev[2]) === null || _topRev$6 === void 0 ? void 0 : _topRev$6.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (bronzeName === null || bronzeName === void 0 ? void 0 : bronzeName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: bronzeName === null || bronzeName === void 0 ? void 0 : bronzeName.img,
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bronze"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$5 = topRev[2]) === null || _topRev$5 === void 0 ? void 0 : _topRev$5.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$6 = topRev[2]) === null || _topRev$6 === void 0 ? void 0 : _topRev$6.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.img,
     alt: "bronzeRanker"
   })));
 }
