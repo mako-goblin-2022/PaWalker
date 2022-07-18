@@ -1,3 +1,5 @@
+// Could this file be removed?
+
 // const config = require('./knexfile')
 // const connection = require('./connection')(config)
 
