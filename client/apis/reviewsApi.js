@@ -4,7 +4,7 @@ const rootUrl = '/api/v1'
 
 export function getAllReviews() {
   return request.get(rootUrl + '/reviews').then((res) => {
-    return res.body.reviews
+    return res.body
   })
 }
 

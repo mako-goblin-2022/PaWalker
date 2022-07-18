@@ -2527,7 +2527,7 @@ __webpack_require__.r(__webpack_exports__);
 var rootUrl = '/api/v1';
 function getAllReviews() {
   return superagent__WEBPACK_IMPORTED_MODULE_0___default().get(rootUrl + '/reviews').then(function (res) {
-    return res.body.reviews;
+    return res.body;
   });
 }
 function postReview(reviewForm) {
@@ -2914,15 +2914,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
+
 
 
 
 function Hof() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    console.log(state);
-    return state;
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Hof");
+    console.log(state.review.reviews);
+    return state.review.reviews;
+  }); // useEffect(() => {
+  //   if (reviews) {
+  //     setReviewCopy(...reviews)
+  //   }
+  // }, [reviews])
+  // let please = reviewCopy.sort((a, b) => a.rating)
+
+  var getRank = function getRank() {
+    var sorted = reviews.map(function (i) {
+      return i.rating;
+    }).sort(function (a, b) {
+      return b - a;
+    }).slice(0, 3);
+    var sortedArr = String(sorted).split(',');
+    var toNumbers = sortedArr.map(Number);
+    var topThree = reviews.filter(function (review) {
+      return toNumbers.includes(review.rating);
+    });
+    console.log(topThree);
+    return topThree;
+  }; // get all the reviews (done)
+  // add all the rating for each reviewee_id
+  // sort the rating in order
+  // display reviewee_id's name in descending order
+
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && getRank());
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Hof);
@@ -3715,7 +3743,7 @@ var reviewsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createSlice)
   reducers: {},
   extraReducers: function extraReducers(builder) {
     builder.addCase(fetchAllReviews.fulfilled, function (state, action) {
-      console.log(action);
+      // console.log(action)
       state.reviews = action.payload;
     });
   }

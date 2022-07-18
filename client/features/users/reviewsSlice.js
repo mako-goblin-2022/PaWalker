@@ -5,6 +5,7 @@ export const fetchAllReviews = createAsyncThunk(
   'user/fetchAllReviews',
   async (thunkAPI) => {
     const reviewRes = await getAllReviews()
+    // console.log(reviewRes)
     return reviewRes
   }
 )
@@ -19,7 +20,7 @@ export const reviewsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllReviews.fulfilled, (state, action) => {
-      console.log(action)
+      // console.log(action)
       state.reviews = action.payload
     })
   },
