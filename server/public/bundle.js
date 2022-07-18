@@ -2863,7 +2863,7 @@ var Footer = function Footer() {
   }, "2022 Mako-Goblin22", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "text-white",
     href: "/"
-  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " ' Callan '  Cameron ' Harry ' Jay '  Rodrigo ' "))));
+  }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " ' Callan ' Cameron ' Harry ' Jay ' Rodrigo '", ' '))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -2915,69 +2915,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
+/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
+
 
 
 
 
 function Hof() {
-  var _getRank$, _topRev$;
+  var _topRev$, _topRev$2, _topRev$3, _topRev$4, _topRev$5, _topRev$6;
 
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    console.log(state.review.reviews);
     return state.review.reviews;
-  }); // useEffect(() => {
-  //   if (reviews) {
-  //     setReviewCopy(...reviews)
-  //   }
-  // }, [reviews])
-  // let please = reviewCopy.sort((a, b) => a.rating)
-  // my attempt
-  // const getRank = () => {
-  //   let sorted = reviews
-  //     .map((i) => i.rating)
-  //     .sort((a, b) => b - a)
-  //     .slice(0, 3)
-  //   let sortedArr = String(sorted).split(',')
-  //   let toNumbers = sortedArr.map(Number)
-  //   let topThree = reviews.filter((review) => toNumbers.includes(review.rating))
-  //   console.log(topThree)
-  //   return topThree
-  // }
-  /// arr of arr
-  // const getRank = () => {
-  //   let ans = Array.from(
-  //     reviews.reduce((a, { reviewee_id, rating }) => {
-  //       return a.set(reviewee_id, (a.get(reviewee_id) || 0) + rating)
-  //     }, new Map())
-  //   )
-  //   console.log(ans.sort((a, b) => b[1] - a[1]))
-  //   return ans.sort((a, b) => b - a)[0]
-  // }
-  //// best so far
-  // const getRank = () => {
-  //   let sums = {}
-  //   for (let i = 0; i < reviews.length; i++) {
-  //     let obj = reviews[i]
-  //     sums[obj.reviewee_id] =
-  //       sums[obj.reviewee_id] === undefined ? 0 : sums[obj.reviewee_id]
-  //     sums[obj.reviewee_id] += obj.rating
-  //   }
-  //   console.log(sums)
-  //   let sortedArr
-  //   sortedArr = Object.keys(sums)
-  //     .sort((a, b) => {
-  //       return sums[b] - sums[a]
-  //     })
-  //     .map((key) => ({ [key]: sums[key] }))
-  //   console.log(sortedArr)
-  //   // pulling out the first obj
-  //   return sortedArr
-  // }
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_3__.fetchAllUsers)());
+  }, [reviews]);
+  var allUsers = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    console.log(state.user.users);
+    return state.user.users;
+  });
 
   var getRank = function getRank() {
-    var _sorted$;
-
     var result = Object.values(reviews.reduce(function (c, _ref) {
       var reviewee_id = _ref.reviewee_id,
           rating = _ref.rating;
@@ -2990,20 +2949,45 @@ function Hof() {
     }, {}));
     var sorted = result.sort(function (a, b) {
       return b.rating - a.rating;
-    });
-    console.log('the whole list: ', sorted);
-    console.log('the first element: ', sorted[0]);
-    console.log('first key within the first element: ', (_sorted$ = sorted[0]) === null || _sorted$ === void 0 ? void 0 : _sorted$.reviewee_id);
+    }).slice(0, 3);
+    console.log('the whole list: ', sorted); // console.log('the first element: ', sorted[0])
+    // console.log('first key within the first element: ', sorted[0]?.reviewee_id)
+
     return sorted;
   };
 
-  console.log((_getRank$ = getRank()[0]) === null || _getRank$ === void 0 ? void 0 : _getRank$.reviewee_id);
-  var topRev = getRank(); // get all the reviews (done)
-  // add all the rating for each reviewee_id
-  // sort the rating in order
-  // display reviewee_id's name in descending order
+  var topRev = getRank();
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id));
+  var getRankerProfile = function getRankerProfile() {
+    var result = allUsers.filter(function (el) {
+      return topRev.some(function (topRev) {
+        return topRev.reviewee_id === el.auth0_id;
+      });
+    });
+    console.log(result);
+    return result;
+  };
+
+  var rankerProfile = getRankerProfile();
+  var goldName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[0].reviewee_id;
+  });
+  var silverName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[1].reviewee_id;
+  });
+  var bronzeName = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[2].reviewee_id;
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Gold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$2 = topRev[0]) === null || _topRev$2 === void 0 ? void 0 : _topRev$2.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (goldName === null || goldName === void 0 ? void 0 : goldName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: goldName === null || goldName === void 0 ? void 0 : goldName.img,
+    alt: "goldRanker"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Silver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$3 = topRev[1]) === null || _topRev$3 === void 0 ? void 0 : _topRev$3.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$4 = topRev[1]) === null || _topRev$4 === void 0 ? void 0 : _topRev$4.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (silverName === null || silverName === void 0 ? void 0 : silverName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: silverName === null || silverName === void 0 ? void 0 : silverName.img,
+    alt: "silverRanker"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bronze"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$5 = topRev[2]) === null || _topRev$5 === void 0 ? void 0 : _topRev$5.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$6 = topRev[2]) === null || _topRev$6 === void 0 ? void 0 : _topRev$6.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (bronzeName === null || bronzeName === void 0 ? void 0 : bronzeName.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: bronzeName === null || bronzeName === void 0 ? void 0 : bronzeName.img,
+    alt: "bronzeRanker"
+  })));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Hof);
