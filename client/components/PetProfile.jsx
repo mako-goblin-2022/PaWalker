@@ -20,8 +20,6 @@ function UserProfile() {
 
   const petSelected = pet.find((pet) => pet.id === Number(petId))
 
-  // let petOfInterest
-
   useEffect(() => {
     console.log(pet.owner_id)
     if (petSelected) {
@@ -30,11 +28,15 @@ function UserProfile() {
   }, [pet])
 
   let owner = useSelector((state) => {
-    console.log('owner state: ', state)
-    return state.user.user
+    console.log('owner state: ', state.user.user)
+    return state.user.user.userProfile
   })
 
-  // how to access 'owner' after getting the state?
+  // let displayOwner = () => {
+  //   if (owner.name !== '') {
+  //     return owner.name
+  //   }
+  // }
 
   return (
     <>
@@ -44,12 +46,13 @@ function UserProfile() {
         </div>
       )}
 
-      {/* {owner.userProfile.name}
-      {owner.userProfile.name && (
+      {/* {displayOwner()} */}
+
+      {owner && (
         <div>
-          <p>I am the owner: {owner.userProfile.name}</p>
+          <p>I am the owner: {owner?.name}</p>
         </div>
-      )} */}
+      )}
     </>
   )
 }

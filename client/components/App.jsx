@@ -19,6 +19,7 @@ import UserProfile from './UserProfile'
 import Pets from './Pets'
 import WalkHistory from './WalkHistory'
 import Nav from './Nav'
+import { fetchAllUsers, addToHistory } from '../features/users/usersSlice'
 
 // import '../../client/index.css'
 
@@ -28,6 +29,10 @@ function App() {
   useEffect(() => {
     dispatch(fetchAllPets())
   }, [])
+
+  // useEffect(() => {
+  //   dispatch(fetchAllUsers())
+  // }, [])
 
   cacheUser(useAuth0)
   return (
