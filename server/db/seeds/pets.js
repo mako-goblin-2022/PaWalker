@@ -17,7 +17,7 @@ exports.seed = async function (knex) {
       neutured: false,
       size: '3XL',
       age: 5,
-      img: '/images/pets/sample.jpg',
+      img: '/images/pets/james-barker.jpg',
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: 'S',
       age: 15,
-      img: '/images/pets/sample.jpg',
+      img: '/images/pets/overture.jpg',
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ exports.seed = async function (knex) {
       neutured: true,
       size: 'S',
       age: 2,
-      img: '/images/pets/sample.jpg',
+      img: '/images/pets/jamie-street.jpg',
     },
     {
       id: 4,

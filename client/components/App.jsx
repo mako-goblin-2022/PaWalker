@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux'
 import { fetchAllPets } from '../features/users/petsSlice'
 import { Route, Routes } from 'react-router-dom'
 
+
 import Users from './Users'
 import Login from './Login'
 import Walkers from './Walkers'
@@ -25,18 +26,21 @@ function App() {
   }, [])
 
   return (
-    <main className='w-full h-full'>
+    <main>
       <Navbar />
       {/* <Login /> /}
       {/ <Users /> /} */}
+     
 
       <Routes>
+   
         <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/walkers' element={<Walkers />} />
       </Routes>
-      {/* {/ <UserProfile /> */}
+       {/* <UserProfile /> */}
+       
       <Footer />
     </main>
   )

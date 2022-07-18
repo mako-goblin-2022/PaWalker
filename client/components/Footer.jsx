@@ -4,9 +4,9 @@ import React from "react";
 const Footer = () => {
   return (
 <>
-<footer className=" w-full text-white fixed bottom-0 bg-teal-900 items-center ">
+<footer className=" w-full text-white fixed bottom-0  bg-sky-900 items-center ">
   <div className="container p-6 m-auto">
-    <div className="grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 gap-4 items-center justify-items-center">
+    <div className="max-w-5xl m-auto grid lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-3 gap-4 items-center justify-items-center">
     
         <img
           src="https://res.cloudinary.com/updater-marketing/images/w_800,h_542/f_auto,q_auto/v1607012143/french-bulldogs_find-dog-walker-800x542/french-bulldogs_find-dog-walker-800x542.jpg?_i=AA"
@@ -46,9 +46,9 @@ const Footer = () => {
     </div>
   </div>
 
-  <div className="text-center p-4">
+  <div className="text-center p-4 text-yellow-400">
     2022 Mako-Goblin22 
-    <a className="text-white" href="/"> <br/> ' Callan '  Cameron ' Harry ' Jay '  Rodrigo ' </a>
+    <a className="" href="/"> <br/> ' Callan '  Cameron ' Harry ' Jay '  Rodrigo ' </a>
   </div>
 </footer>
 </>
