@@ -1,9 +1,9 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
-
-
+import { useDispatch } from 'react-redux'
+import { fetchAllPets } from '../features/users/petsSlice'
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
@@ -18,6 +18,13 @@ import Footer from './Footer'
 
 function App() {
   cacheUser(useAuth0)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchAllPets())
+  }, [])
+
+
 
   return (
     <main className='w-full h-full'>
