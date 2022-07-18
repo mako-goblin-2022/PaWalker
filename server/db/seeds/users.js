@@ -18,6 +18,7 @@ exports.seed = async function (knex) {
       img: './images/users/sample.jpg',
       walker: true,
       owner: false,
+      history: 1,
     },
     {
       auth0_id: 2,

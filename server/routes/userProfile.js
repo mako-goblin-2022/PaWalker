@@ -1,14 +1,19 @@
-// const express = require('express')
-// const router = express.Router()
-// const db = require('../db/user.db')
+const express = require('express')
 
-// // get user by Id
+const db = require('../db/user.db')
+const checkJwt = require('../auth0')
+const router = express.Router()
 
-// router.get('/:id', (req, res) => {
-//   const userId = req.body.id
-//   db.getUserById(userId)
-//     .then((res) => console.log(res))
-//     .catch((err) => console.log(err))
-// })
+// add pets to user history
+// router.put('/history', checkJwt, (req, res) => {
+router.put('/:id/history', (req, res) => {
+  // const { petToAdd } = req.body
+  // const reviewer_id = req.user?.sub
+  const userId = req.params.id
 
-// module.exports = router
+  db.addToHistory(1, 1)
+    .then((result) => console.log(result))
+    .catch((err) => console.log(err))
+})
+
+module.exports = router
