@@ -4,12 +4,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addToHistoryPet, fetchAllPets } from '../features/users/petsSlice'
 
 function Pets() {
+  const dispatch = useDispatch()
   const petsDisplay = useSelector((state) => {
     console.log(state)
     return state.pet
   })
 
-  const dispatch = useDispatch()
+  /* This example requires Tailwind CSS v2.0+ */
+  // import { Fragment, useState } from 'react'
+  // import { Listbox, Transition } from '@headlessui/react'
+  // import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 
   // useEffect(() => {
   //   dispatch(fetchAllPets())

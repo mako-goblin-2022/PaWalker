@@ -1,57 +1,44 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
-import { addToHistoryPet, fetchAllPets } from '../features/users/petsSlice'
-
-import { getUsers } from '../../client/apis/usersApi'
-
+import { useDispatch } from 'react-redux'
+import { fetchAllPets } from '../features/users/petsSlice'
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
 import Login from './Login'
 import Walkers from './Walkers'
-import ReviewForm from './ReviewForm'
-import MyProfile from './MyProfile'
-import PetProfile from './PetProfile'
+import Navbar from './Header'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
-import WalkHistory from './WalkHistory'
-import Nav from './Nav'
-import { fetchAllUsers, addToHistory } from '../features/users/usersSlice'
+import Footer from './Footer'
 
 // import '../../client/index.css'
 
 function App() {
+  cacheUser(useAuth0)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(fetchAllPets())
   }, [])
 
-  // useEffect(() => {
-  //   dispatch(fetchAllUsers())
-  // }, [])
-
-  cacheUser(useAuth0)
   return (
-    <div>
-      <Nav />
-
-      {/* <h1>Hello</h1> */}
+    <main className='w-full h-full'>
+      <Navbar />
+      {/* <Login /> /}
+      {/ <Users /> /} */}
 
       <Routes>
+        <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
-        <Route path='/users/:id' element={<UserProfile />} />
-        <Route path='/users/myProfile' element={<MyProfile />} />
-        <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/pets' element={<Pets />} />
-        <Route path='/pets/:id' element={<PetProfile />} />
-        <Route path='/pets/:id/review' element={<ReviewForm />} />
-        {/* <Route path='/Review' element={<ReviewForm />} /> */}
+        <Route path='/walkers' element={<Walkers />} />
       </Routes>
-    </div>
+      {/* {/ <UserProfile /> */}
+      <Footer />
+    </main>
   )
 }
 

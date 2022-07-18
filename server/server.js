@@ -17,6 +17,7 @@ server.use('/api/v1/users', userRoutes)
 server.use('/api/v1/userProfile', userProfileRoutes)
 server.use('/api/v1/walkers', walkerRoutes)
 
+
 server.get('*', (req, res) => {
   res.sendFile(path.resolve('server/public/index.html'))
 })

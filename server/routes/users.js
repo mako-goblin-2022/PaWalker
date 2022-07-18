@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
   // console.log('from routes: ', userId)
   db.getUserById(userId)
     .then((result) => {
-      console.log(result)
+      // console.log(result)
       res.json(result)
       return null
     })

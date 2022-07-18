@@ -11,7 +11,6 @@ function Users() {
   })
 
   const dispatch = useDispatch()
-  // console.log(usersDisplay)
 
   useEffect(() => {
     dispatch(fetchAllUsers())
@@ -21,13 +20,12 @@ function Users() {
 
   return (
     <main className=''>
-      <Link to={'/users/myProfile'}>My Profile</Link>
       {usersDisplay.map((user, i) => {
         // console.log(user)
         return (
           <section key={i} className=''>
             <div>
-              <img className='' src={user.img} alt={user.name} />
+              <img className='w-44' src={user.img} alt={user.name} />
             </div>
             <div>
               <h3 className=''>{user.name}</h3>
