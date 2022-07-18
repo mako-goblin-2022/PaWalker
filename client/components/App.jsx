@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, {useEffect} from 'react'
 import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
