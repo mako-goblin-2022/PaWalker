@@ -21,6 +21,7 @@ export const authSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder.addCase(saveUser.fulfilled, (state, action) => {
+      console.log('action: ', action)
       state.user = action.payload
     })
     builder.addCase(saveUser.rejected, (state, action) => {

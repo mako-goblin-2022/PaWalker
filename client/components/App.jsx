@@ -1,8 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import '../../client/index.css'
 import { cacheUser } from '../auth0-utils'
 import { useAuth0 } from '@auth0/auth0-react'
+<<<<<<< HEAD
 
+=======
+import { useDispatch } from 'react-redux'
+import { fetchAllPets } from '../features/users/petsSlice'
+>>>>>>> dev
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
@@ -18,8 +23,14 @@ import OwnerProfileForm from './OwnerProfileForm'
 
 function App() {
   cacheUser(useAuth0)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchAllPets())
+  }, [])
 
   return (
+<<<<<<< HEAD
     <main className="w-full h-full">
       <Navbar />
       {/* <Login /> */}
@@ -32,8 +43,20 @@ function App() {
         <Route path="/pets" element={<Pets />} />
         <Route path="/walkers" element={<Walkers />} />
         <Route path="register" element={<OwnerProfileForm />} />
+=======
+    <main className='w-full h-full'>
+      <Navbar />
+      {/* <Login /> /}
+      {/ <Users /> /} */}
+
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/users' element={<Users />} />
+        <Route path='/pets' element={<Pets />} />
+        <Route path='/walkers' element={<Walkers />} />
+>>>>>>> dev
       </Routes>
-      {/* <UserProfile /> */}
+      {/* {/ <UserProfile /> */}
       <Footer />
     </main>
   )

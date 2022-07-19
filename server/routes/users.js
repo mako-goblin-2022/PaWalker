@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
   const userId = req.params.id
-  console.log(userId)
+  // console.log('from routes: ', userId)
   db.getUserById(userId)
     .then((result) => {
       // console.log(result)
@@ -32,5 +32,17 @@ router.get('/:id', (req, res) => {
     // })
     .catch((err) => res.status(500).send(err))
 })
+
+// router.get('/pets/:id', (req, res) => {
+//   const petId = req.params.id
+//   // console.log(userId)
+//   db.getUserByPetId(petId)
+//     .then((result) => {
+//       console.log(result)
+//       res.json(result)
+//       return null
+//     })
+//     .catch((err) => res.status(500).send(err))
+// })
 
 module.exports = router

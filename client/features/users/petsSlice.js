@@ -1,15 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getAllPets, getPetById} from '../../apis/petsApi'
+import { getAllPets, getPetById, getPetsByUserId} from '../../apis/petsApi'
 // import { getPetByUserId } from '../../apis/petsApi'
 // import { getUsersByPetId} from '../../apis/petsApi'
 
-export const fetchAllPets = createAsyncThunk(
-  'pet/fetchAllPets',
-  async (thunkAPI) => {
-    const allPetsResponse = await getAllPets()
-    return allPetsResponse
-  }
-)
+export const fetchAllPets = createAsyncThunk('pet/fetchAllPets', async (thunkAPI) => {
+  const allPetsResponse = await getAllPets()
+  return allPetsResponse
+})
 
 export const fetchPetById = createAsyncThunk(
   // Change name here
@@ -23,29 +20,50 @@ export const fetchPetById = createAsyncThunk(
   }
 )
 
+export const fetchPetsByUserId = createAsyncThunk(
+  'pet/getPetsByUserId',
+  async (userId, thunkAPI) => {
+    const response = await getPetsByUserId(userId)
+    return response
+  }
+)
+
 const initialState = {
   pet: {},
-  pets: []// can be whatever
-  // newstate
+  pets: [],
+  history: [],
 }
 
 export const petsSlice = createSlice({
   name: 'pets',
   initialState,
+  reducers: {
+    addToHistoryPet: (state, action) => {
+      console.log(action)
+      state.history.push(action.payload)
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchAllPets.fulfilled, (state, action) => {
       // action.payload IS the returned response above.
-      console.log("state", state)
-      console.log("action", action)
+      // console.log("state", state)
+      // console.log("action", action)
       
       state.pets = action.payload
     })
     builder.addCase(fetchPetById.fulfilled, (state, action) => {
-      console.log("action", action)
+      // console.log("action", action)
 
+      state.pet = action.payload
+    })
+    builder.addCase(fetchPetsByUserId.fulfilled, (state, action) => {
+      // console.log('action', action)
+      console.log(action)
       state.pet = action.payload
     })
   },
 })
+
+export const { addToHistoryPet } = petsSlice.actions
 
 export default petsSlice.reducer

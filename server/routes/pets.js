@@ -4,7 +4,6 @@ const db = require('../db/pets.db')
 
 const router = express.Router()
 
-
 router.get('/', (req, res) => {
   db.getAllPets()
     .then((results) => {
@@ -17,11 +16,9 @@ router.get('/', (req, res) => {
     })
 })
 
-
-
 router.get('/:id', (req, res) => {
-  const petUserId = req.params.id
-  db.getPetsByUserId(petUserId)
+  const petOwnerId = req.params.id
+  db.getPetsByUserId(petOwnerId)
     .then((result) => {
       res.json(result)
       return null

@@ -4,7 +4,6 @@ const db = require('../db/walkers.db')
 
 const router = express.Router()
 
-
 router.get('/', (req, res) => {
   db.getAllWalkers()
     .then((results) => {
@@ -16,8 +15,6 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Something went wrong' })
     })
 })
-
-
 
 router.get('/:id', (req, res) => {
   const walkerUserId = req.params.id

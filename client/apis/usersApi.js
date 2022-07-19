@@ -9,5 +9,12 @@ export function getAllUsers() {
 }
 
 export function getUserById(userId) {
-  return request.get(rootUrl + `/users/${userId}`).then((res) => res.body)
+  return request.get(rootUrl + `/users/${userId}`).then((res) => {
+    // console.log(res)
+    return res.body
+  })
 }
+
+// export function getUserByPetId(petId) {
+//   return request.get(rootUrl + `/users/pets/${petId}`).then((res) => res.body)
+// }

@@ -7,3 +7,13 @@ export function getReviews() {
     return res.body.reviews
   })
 }
+
+export function postReview(reviewForm) {
+  return request
+    .post(rootUrl + '/reviews/post')
+    .send(reviewForm)
+    .then((res) => {
+      console.log(res)
+      return res
+    })
+}
