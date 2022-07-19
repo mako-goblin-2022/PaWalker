@@ -1,18 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const NavbarFilter = () => {
+const Navbar = () => {
   return (
  
       <nav className=" flex flex-wrap  p-3 font-semibold text-slate-50 text-sm uppercase tracking-wide">
         <ul className=" flex flex-wrap ">
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px shadow-2xl'>
+          <li className='p-2  hover:text-yellow-500 hover:translate-y-px shadow-2xl'>
             <Link to='/'>
               Home
             </Link>
           </li>
         
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <li className='p-2  hover:text-yellow-500 hover:translate-y-px'>
             <Link to='/pets'>
               Pets
             </Link>
@@ -24,12 +24,12 @@ const NavbarFilter = () => {
             </Link>
           </li> */}
        
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <li className='p-2  hover:text-yellow-500 hover:translate-y-px'>
             <Link to='/walkers'>
               Walkers
             </Link>
           </li>
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <li className='p-2  hover:text-yellow-500 hover:translate-y-px'>
             <Link to={'/users/myProfile'}>
               My Profile
             </Link>
@@ -39,7 +39,7 @@ const NavbarFilter = () => {
               Walk History
             </Link>
           </li> */}
-          <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <li className='p-2  hover:text-yellow-500 hover:translate-y-px'>
             <Link to='/login'>
               Login
             </Link>
@@ -50,4 +50,4 @@ const NavbarFilter = () => {
   )
 }
 
-export default NavbarFilter
+export default Navbar

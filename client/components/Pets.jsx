@@ -29,11 +29,11 @@ function Pets() {
               alt={pets.name}
             />
 
-            <h3 className="text-sky-600 font-semibold">{pets.name}</h3>
+            <h3 className="text-blue-500 font-semibold">{pets.name}</h3>
             <h3 className="">{pets.location}</h3>
 
             <button
-              className="w-20 cursor-pointer uppercase h-9 bg-yellow-600 rounded-3xl text-slate-50 text-xs font-bold  drop-shadow-[0_5px_5px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px"
+              className="w-20 cursor-pointer uppercase h-9 bg-yellow-500 rounded-3xl text-white text-xs font-semibold  shadow-xl hover:bg-yellow-600 hover:text-black hover:translate-y-px"
               onClick={() => addHistory(pets.id)}
             >
               Add History
