@@ -117,8 +117,8 @@ function OwnerProfileForm(SignupOwner) {
             type="text"
             id="name"
             name="name"
-            autoComplete="enter name"
-            placeholder="enter name"
+            autoComplete=""
+            placeholder=""
             value={formData.name}
             onChange={handleChange}
           />
@@ -164,6 +164,7 @@ function OwnerProfileForm(SignupOwner) {
             type="text"
             id="email"
             name="email"
+            autoComplete=""
             placeholder=""
             value={formData.email}
             onChange={handleChange}
@@ -192,7 +193,7 @@ function OwnerProfileForm(SignupOwner) {
             approachable<span className="OwnersForm"></span>
           </label>
           <input
-            type="boolean"
+            type="radio"
             id="approachable"
             name="approachable"
             autoComplete=""
@@ -224,7 +225,7 @@ function OwnerProfileForm(SignupOwner) {
             Are You a Walker?<span className="OwnersForm"></span>
           </label>
           <input
-            type="boolean"
+            type="radio"
             id="walker"
             name="walker"
             autoComplete=""
@@ -241,9 +242,9 @@ function OwnerProfileForm(SignupOwner) {
             Are you an Owner?<span className="OwnersForm"></span>
           </label>
           <input
-            type="boolean"
+            type="radio"
             id="owner"
-            name="owner"
+            name="walker"
             autoComplete=""
             placeholder=""
             value={formData.owner}

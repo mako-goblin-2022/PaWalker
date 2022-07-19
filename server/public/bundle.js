@@ -3135,8 +3135,8 @@ function OwnerProfileForm(SignupOwner) {
     type: "text",
     id: "name",
     name: "name",
-    autoComplete: "enter name",
-    placeholder: "enter name",
+    autoComplete: "",
+    placeholder: "",
     value: formData.name,
     onChange: handleChange
   })), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
@@ -3175,6 +3175,7 @@ function OwnerProfileForm(SignupOwner) {
     type: "text",
     id: "email",
     name: "email",
+    autoComplete: "",
     placeholder: "",
     value: formData.email,
     onChange: handleChange
@@ -3199,7 +3200,7 @@ function OwnerProfileForm(SignupOwner) {
   }, "approachable", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "OwnersForm"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "boolean",
+    type: "radio",
     id: "approachable",
     name: "approachable",
     autoComplete: "",
@@ -3227,7 +3228,7 @@ function OwnerProfileForm(SignupOwner) {
   }, "Are You a Walker?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "OwnersForm"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "boolean",
+    type: "radio",
     id: "walker",
     name: "walker",
     autoComplete: "",
@@ -3241,9 +3242,9 @@ function OwnerProfileForm(SignupOwner) {
   }, "Are you an Owner?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "OwnersForm"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "boolean",
+    type: "radio",
     id: "owner",
-    name: "owner",
+    name: "walker",
     autoComplete: "",
     placeholder: "",
     value: formData.owner,
