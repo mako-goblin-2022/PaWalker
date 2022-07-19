@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { fetchAllUsers } from '../features/users/usersSlice'
+import Header from './Header'
 
 function MyProfile() {
   const dispatch = useDispatch()
@@ -28,7 +29,11 @@ function MyProfile() {
 
   // need to be able to update / delete my profile
 
-  return <div></div>
+  return (
+    <div>
+      <Header />
+    </div>
+  )
 }
 
 export default MyProfile

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserById } from '../features/users/usersSlice'
+import Header from './Header'
 
 function UserProfile() {
   const params = useParams()
@@ -28,6 +29,7 @@ function UserProfile() {
 
   return (
     <>
+      <Header />
       {user.userProfile && (
         <>
           <h1>User Profile</h1>

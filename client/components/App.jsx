@@ -35,13 +35,12 @@ function App() {
 
   return (
     <main className='w-full h-full'>
-      {/* <Header /> */}
       {/* <Login /> */}
       {/* <Users /> */}
 
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/main' element={<Header />} />
+        {/* <Route path='/main' element={<Header />} /> */}
 
         <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
