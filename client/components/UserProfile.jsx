@@ -8,14 +8,23 @@ function UserProfile() {
   const dispatch = useDispatch()
   const userId = params.id
 
+  useEffect(() => {
+    dispatch(fetchUserById(1))
+  }, [])
+
   let user = useSelector((state) => {
     console.log('state: ', state)
     return state.user.user
   })
 
-  useEffect(() => {
-    dispatch(fetchUserById(1))
-  }, [])
+  const reviews = useSelector((state) => {
+    // console.log(state.review.reviews)
+    return state.review.reviews
+  })
+
+  // returns an array of obj containing review for this user
+  const userReview = reviews?.filter((review) => review.reviewee_id === userId)
+  console.log(userReview)
 
   return (
     <>

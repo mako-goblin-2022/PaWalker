@@ -19,7 +19,6 @@ function OwnerProfileForm(SignupOwner) {
   // const walker = useSelector((state) => state.walker.bool)
   // const owner = useSelector((state) => state.owner.bool)
   // form values initial state
-  console.log(formData)
   const [formData, setFormData] = useState({
     name: '',
     location: '',
@@ -34,8 +33,6 @@ function OwnerProfileForm(SignupOwner) {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-
-    console.log(name, value)
     setFormData({
       ...formData,
       [name]: value,
