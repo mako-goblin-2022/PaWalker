@@ -31,7 +31,7 @@ function Login() {
     <div>
       <div className='block text-center'>
         <IfAuthenticated>
-          <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>
+          <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
             {' '}
             <a href='/' onClick={handleLogoff}>
               Log off
@@ -39,13 +39,13 @@ function Login() {
           </button>
         </IfAuthenticated>
         <IfNotAuthenticated>
-          <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>
+          <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
             {' '}
             <a href='/' onClick={handleRegister}>
               Register
             </a>
           </button>
-          <button className='w-52 cursor-pointer mb-5 uppercase h-9 bg-yellow-600 rounded-3xl text-slate-50 font-bold  drop-shadow-[0_35px_35px_rgba(0,0,0)] hover:bg-orange-500 hover:text-slate-900 hover:translate-y-px'>
+          <button className='w-52 cursor-pointer mb-5 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
             {' '}
             <a href='/' onClick={handleSignIn}>
               Sign in
