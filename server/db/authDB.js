@@ -5,7 +5,14 @@ function getUsers(db = connection) {
 }
 
 function updateUser(auth0Id, formUserData, db = connection) {
-  return db('users').where('auth0_id', auth0Id).insert(formUserData)
+  console.log(auth0Id)
+  console.log(formUserData)
+  return db('users')
+    .where('auth0_id', auth0Id)
+    .update(formUserData)
+    .then(() => {
+      return { ...formUserData, auth0Id }
+    })
 }
 
 function createUser(user, db = connection) {

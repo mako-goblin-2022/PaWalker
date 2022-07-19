@@ -1,11 +1,14 @@
 import request from 'superagent'
 
 // to update existing user
-export function updateUser(user) {
+export function updateUser(user, token) {
+  console.log(user)
+  console.log(token)
   return request
     .put('/api/v1/authusers')
-    .set('authorization', `Bearer ${user.token}`)
+    .set('authorization', `Bearer ${token}`)
     .send({ user })
+    .catch((error) => console.log(error.message))
 }
 
 // to register a new user
@@ -14,5 +17,5 @@ export async function addUser(user) {
     .post(`/api/v1/authusers`)
     .set('authorization', `Bearer ${user.token}`)
     .send(user)
-    .then((res) => console.log('res', res))
+    .then((res) => res.body)
 }

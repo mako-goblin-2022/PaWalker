@@ -2410,9 +2410,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
  // to update existing user
 
-function updateUser(user) {
-  return superagent__WEBPACK_IMPORTED_MODULE_0___default().put('/api/v1/authusers').set('authorization', "Bearer ".concat(user.token)).send({
+function updateUser(user, token) {
+  console.log(user);
+  console.log(token);
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default().put('/api/v1/authusers').set('authorization', "Bearer ".concat(token)).send({
     user: user
+  }).catch(function (error) {
+    return console.log(error.message);
   });
 } // to register a new user
 
@@ -2427,7 +2431,7 @@ function _addUser() {
         switch (_context.prev = _context.next) {
           case 0:
             return _context.abrupt("return", superagent__WEBPACK_IMPORTED_MODULE_0___default().post("/api/v1/authusers").set('authorization', "Bearer ".concat(user.token)).send(user).then(function (res) {
-              return console.log('res', res);
+              return res.body;
             }));
 
           case 1:
@@ -2615,32 +2619,38 @@ function _cacheUser() {
             });
             _useAuth = useAuth0(), isAuthenticated = _useAuth.isAuthenticated, getAccessTokenSilently = _useAuth.getAccessTokenSilently, user = _useAuth.user; // await can be used since we are within an asynchronous function
 
-            _context.next = 5;
-            return getAccessTokenSilently();
-
-          case 5:
-            token = _context.sent;
-
-            if (isAuthenticated && !(loggedInUser !== null && loggedInUser !== void 0 && loggedInUser.token)) {
-              try {
-                userToSave = {
-                  auth0Id: user.sub,
-                  email: user.email,
-                  name: user.name,
-                  token: token
-                };
-                dispatch((0,_features_auth_authSlice__WEBPACK_IMPORTED_MODULE_1__.saveUser)(userToSave));
-              } catch (err) {
-                console.error(err);
-              }
+            if (!(isAuthenticated && !(loggedInUser !== null && loggedInUser !== void 0 && loggedInUser.token))) {
+              _context.next = 15;
+              break;
             }
 
+            _context.prev = 4;
+            _context.next = 7;
+            return getAccessTokenSilently();
+
           case 7:
+            token = _context.sent;
+            userToSave = {
+              auth0Id: user.sub,
+              email: user.email,
+              name: user.name,
+              token: token
+            };
+            dispatch((0,_features_auth_authSlice__WEBPACK_IMPORTED_MODULE_1__.saveUser)(userToSave));
+            _context.next = 15;
+            break;
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context["catch"](4);
+            console.error(_context.t0);
+
+          case 15:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[4, 12]]);
   }));
   return _cacheUser.apply(this, arguments);
 }
@@ -2688,6 +2698,9 @@ function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "w-full h-full"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
+    path: "/",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_5__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_5__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Route, {
@@ -2943,6 +2956,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/AuthApi */ "./client/apis/AuthApi.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -2962,10 +2976,14 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
  //import { formStage, formSignup } from '../../store/rootSlice'
 
 function OwnerProfileForm(SignupOwner) {
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)(); // const InitialStage = useSelector((state) => state.FormStage)
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var token = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.auth.user.token;
+  }); // const InitialStage = useSelector((state) => state.FormStage)
   // const OwnerName = useSelector((state) => state.Owner.name)
   // const location = useSelector((state) => state.owner.location)
   // const bio = useSelector((state) => state.owner.bio)
@@ -3009,8 +3027,8 @@ function OwnerProfileForm(SignupOwner) {
   var validate = function validate(formData) {
     var formErrors = {}; // name
 
-    if (!formData.OwnerName) {
-      formErrors.OwnerName = 'Name required';
+    if (!formData.name) {
+      formErrors.name = 'Name required';
     } //location
 
 
@@ -3024,7 +3042,7 @@ function OwnerProfileForm(SignupOwner) {
     } //email
 
 
-    email = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+    var emailRegex = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
 
     if (!formData.email || !emailRegex.test(formData.email)) {
       formErrors.email = 'Valid Email required';
@@ -3032,133 +3050,114 @@ function OwnerProfileForm(SignupOwner) {
 
 
     if (!formData.phone_number == ' ') {
-      formErrors.phone = 'Phone number Required';
+      formErrors.phone_number = 'Phone number Required';
     } // approch
 
 
     if (!formData.approachable == ' ') {
-      formErrors.approch = 'Please click on the button which relects your approach status';
+      formErrors.approachable = 'Please click on the button which relects your approach status';
     } // image
 
 
     if (!formData.img == ' ') {
-      formErrors.image = 'Please upload an image';
+      formErrors.img = 'Please upload an image';
     } // isWalker
 
 
     if (!formData.walker == ' ') {
-      formErrors.walker.bool = 'Please identify as a Walker or Owner';
+      formErrors.walker = 'Please identify as a Walker or Owner';
     } // isOwner
 
 
     if (!formData.owner == ' ') {
-      formErrors.owner.bool = 'Please identify as an Owner or walker';
+      formErrors.owner = 'Please identify as an Owner or walker';
     }
 
-    var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-        _useState6 = _slicedToArray(_useState5, 2),
-        isSubmitted = _useState6[0],
-        setIsSubmitted = _useState6[1];
-
-    var handleSubmit = function handleSubmit(e) {
-      e.preventDefault();
-      setErrors(validate(formData));
-      setIsSubmitted(true);
-    };
-
-    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-      if (Object.keys(errors).length === 0 && isSubmitted) {
-        dispatch(formStage(2));
-        dispatch(formSignup({
-          name: Owner.name,
-          location: owner.location,
-          bio: owner.bio,
-          email: owner.email,
-          phone_number: phone,
-          approachable: approch,
-          rank: rank,
-          img: image,
-          walker: walker,
-          owner: owner
-        }));
-      }
-    }, [formData, isSubmitted, dispatch, errors]);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, SignupOwner || 'Signup as an Owner'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
-      name: "Ownersform",
-      id: "Ownersform",
-      onSubmit: function onSubmit(e) {
-        return handleSubmit(e);
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "Ownername"
-    }, "Owners Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "OwnersForm"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "text",
-      id: "name",
-      name: "Owner name",
-      autoComplete: "enter name",
-      placeholder: "enter name",
-      value: formData.Owner.name,
-      onChange: handleChange
-    })), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "error-message"
-    }, errors.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "location"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "OwnersForm"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "text",
-      id: "name",
-      name: "location",
-      autoComplete: "enter location",
-      placeholder: "enter location",
-      value: formData.owner.location,
-      onChange: handleChange
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "bio"
-    }, "Pets Image", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "OwnersForm"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "text",
-      id: "img",
-      name: "Bio",
-      autoComplete: "",
-      placeholder: "",
-      value: formData.pet.img,
-      onChange: handleChange
-    })), errors.image && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "error-message"
-    }, errors.PetImage), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-      htmlFor: "PetQuantity"
-    }, "Pet Quantity", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "OwnersForm"
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "Interger",
-      id: "Int",
-      name: "pet Quantity",
-      placeholder: "0",
-      value: formData.Pet.quantity,
-      onChange: handleChange
-    })), errors.quantity && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "error-message"
-    }, errors.petQuantity), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-      className: "disclaimer-text"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-      className: "OwnersForm"
-    }), " required fields"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "Submit"
-    }, previousButton && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "submit",
-      value: "Back",
-      onClick: function onClick() {
-        return dispatch(formStage(currentStage - 1));
-      }
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-      type: "submit",
-      value: submitButton || 'Submit'
-    })))));
+    return formErrors;
   };
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isSubmitted = _useState6[0],
+      setIsSubmitted = _useState6[1];
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    setErrors(validate(formData));
+    console.log('check'); //dispatch(saveUser(formData))
+
+    (0,_apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__.updateUser)(formData, token);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, 'Signup Here'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    name: "Ownersform",
+    id: "Ownersform",
+    onSubmit: function onSubmit(e) {
+      return handleSubmit(e);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "name"
+  }, "Owners Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "name",
+    name: "name",
+    autoComplete: "enter name",
+    placeholder: "enter name",
+    value: formData.name,
+    onChange: handleChange
+  })), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "location"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "name",
+    name: "location",
+    autoComplete: "enter location",
+    placeholder: "enter location",
+    value: formData.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "bio"
+  }, "Pets Image", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "bio",
+    name: "bio",
+    autoComplete: "bio",
+    placeholder: "bio",
+    value: formData.bio,
+    onChange: handleChange
+  })), errors.bio && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.bio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "email"
+  }, "Pet Quantity", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "email",
+    name: "email",
+    placeholder: "email",
+    value: formData.email,
+    onChange: handleChange
+  })), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "disclaimer-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  }), " required fields"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "Submit"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit",
+    value: 'Submit'
+  })))));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (OwnerProfileForm);
