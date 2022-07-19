@@ -8,9 +8,8 @@ const Footer = () => {
 
         <div className="text-center p-4 text-yellow-300 bg-sky-900">
           2022 Mako-Goblin22
-          <a className="" href="/">
-            
-            <br/>  Callan - Cameron - Harry - Jay - Rodrigo 
+          <a className='' href='/'>
+            <br /> Callan - Cameron - Harry - Jay - Rodrigo
           </a>
         </div>
       </footer>

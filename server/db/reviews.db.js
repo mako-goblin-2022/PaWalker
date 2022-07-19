@@ -1,6 +1,6 @@
 const connection = require('./connection')
 
-function getReviews(db = connection) {
+function getAllReviews(db = connection) {
   return db('reviews').select()
 }
 
@@ -13,6 +13,6 @@ function postReview(reviewer_id, reviewForm, db = connection) {
 }
 
 module.exports = {
-  getReviews,
+  getAllReviews,
   postReview,
 }

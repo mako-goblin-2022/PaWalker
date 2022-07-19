@@ -19,12 +19,12 @@ function Pets() {
   }
 
   return (
-    <main className="max-w-6xl mx-auto text-center mb-20 grid grid-cols-3 gap-5">
+    <main className='max-w-6xl mx-auto text-center mb-20 grid grid-cols-3 gap-5'>
       {petsDisplay.pets.map((pets, i) => {
         return (
-          <div key={i} className="px-2 py-2 rounded-lg mx-auto">
+          <div key={i} className='px-2 py-2 rounded-lg mx-auto'>
             <img
-              className="rounded-lg object-cover h-48 w-64"
+              className='rounded-lg object-cover h-48 w-64'
               src={pets.img}
               alt={pets.name}
             />
@@ -39,11 +39,7 @@ function Pets() {
               Add History
             </button>
 
-            <p
-              className={
-                petsDisplay.history.includes(pets.id) ? '' : 'invisible'
-              }
-            >
+            <p className={petsDisplay.history.includes(pets.id) ? '' : 'invisible'}>
               {pets.name} has been added to your history.
             </p>
           </div>

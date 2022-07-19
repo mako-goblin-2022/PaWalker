@@ -4,7 +4,7 @@ import { fetchAllUsers } from '../features/users/usersSlice'
 
 function Walkers() {
   const walkersDisplay = useSelector((state) => {
-    // console.log(state)
+    // console.log(state.user.users)
     return state.user.users
   })
 
