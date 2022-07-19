@@ -14,31 +14,27 @@ function Walkers() {
     dispatch(fetchAllUsers())
   }, [dispatch])
 
-   let walker = walkersDisplay.filter(user => user.walker === true)
- console.log(walker)
- 
+  // let walker = walkersDisplay.filter((user) => user.walker === true)
+  // console.log(walker)
+
   return (
-    <main className="max-w-3xl mx-auto text-center mb-20 grid grid-cols-2 gap-4">
+    <main className='max-w-3xl mx-auto text-center mb-20 grid grid-cols-2 gap-4'>
       {walkersDisplay.map((walkers, i) => {
         // if (walkers.walker === true)
-        
+
         return (
           <div>
-            <div key={i} className="px-2 py-2 rounded-lg mx-auto">
-            <img
-              className="rounded-lg object-cover h-48 w-64"
-              src={walkers.img}
-              alt={walkers.name}
-            />
+            <div key={i} className='px-2 py-2 rounded-lg mx-auto'>
+              <img
+                className='rounded-lg object-cover h-48 w-64'
+                src={walkers.img}
+                alt={walkers.name}
+              />
 
-            <h3 className="text-sky-600 font-semibold">{walkers.name}</h3>
-            <h3 className="">{walkers.location}</h3>
-
-        
+              <h3 className='text-sky-600 font-semibold'>{walkers.name}</h3>
+              <h3 className=''>{walkers.location}</h3>
+            </div>
           </div>
-          
-          </div>
-          
         )
       })}
     </main>

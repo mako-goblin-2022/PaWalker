@@ -9,7 +9,6 @@ const userProfileRoutes = require('./routes/userProfile')
 const walkerRoutes = require('./routes/walkers')
 const authUserRoutes = require('./routes/authUser')
 
-
 server.use(express.json())
 server.use(express.static(path.join(__dirname, 'public')))
 

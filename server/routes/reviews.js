@@ -6,7 +6,7 @@ const db = require('../db/reviews.db')
 const router = express.Router()
 
 router.get('/', (req, res) => {
-  db.getReviews()
+  db.getAllReviews()
     .then((results) => {
       res.json(results)
       return null
