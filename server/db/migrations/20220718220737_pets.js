@@ -2,11 +2,12 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function (knex) {
+ exports.up = function (knex) {
   return knex.schema.createTable('pets', (table) => {
     table.integer('id')
     table.integer('owner_id')
     table.string('name')
+    table.string('location')
     table.text('bio')
     table.string('breed')
     table.string('gender')
@@ -25,3 +26,4 @@ exports.up = function (knex) {
 exports.down = function (knex) {
   return knex.schema.dropTable('pets')
 }
+
