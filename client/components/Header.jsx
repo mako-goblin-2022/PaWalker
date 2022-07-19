@@ -4,7 +4,7 @@ import Navbar from './NavbarFilter'
 
 function Header() {
   return (
-    <header className="w-full h-24 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 selection:text-slate-50 ">
+    <header className="w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 selection:text-slate-50 ">
       <div>
         <img
           className="w-16 rounded-full ml-4 "
