@@ -21,9 +21,6 @@ import OwnerProfileForm from './OwnerProfileForm'
 import MyProfile from './MyProfile'
 import PetProfile from './PetProfile'
 
-
-
-
 function App() {
   cacheUser(useAuth0)
   const dispatch = useDispatch()
@@ -37,13 +34,15 @@ function App() {
   }, [])
 
   return (
-    <main className="w-full h-full">
-      <Header />
+    <main className='w-full h-full'>
+      {/* <Header /> */}
       {/* <Login /> */}
       {/* <Users /> */}
 
       <Routes>
         <Route path='/' element={<Login />} />
+        <Route path='/main' element={<Header />} />
+
         <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
