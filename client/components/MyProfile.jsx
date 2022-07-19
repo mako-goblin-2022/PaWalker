@@ -18,7 +18,7 @@ function MyProfile() {
 
   useEffect(() => {
     dispatch(fetchAllUsers())
-  }, [])
+  }, [dispatch])
 
   // object containing my profile details
   const myProfile = allUserProfile?.filter((user) => user.auth0_id === myProfileId)[0]
