@@ -13,9 +13,9 @@ export async function cacheUser(useAuth0) {
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 
   // await can be used since we are within an asynchronous function
-  const token = await getAccessTokenSilently()
   if (isAuthenticated && !loggedInUser?.token) {
     try {
+      const token = await getAccessTokenSilently()
       const userToSave = {
         auth0Id: user.sub,
         email: user.email,

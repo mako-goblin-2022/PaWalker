@@ -9,20 +9,20 @@ import { Auth0Provider } from '@auth0/auth0-react'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <React.StrictMode>
-      <Auth0Provider
-        domain="dev-dboe21nb.us.auth0.com"
-        clientId="8P7eYdbGMH5uVvmul0WgQjWlb4fkiRmL"
-        redirectUri={window.location.origin}
-        audience="https://pawalker/api"
-      >
+    <Auth0Provider
+      domain="dev-7915gybq.au.auth0.com"
+      clientId="VLWRdot0kUSE7TLTnQcCQpuywmhznokJ"
+      redirectUri={window.location.origin}
+      audience="https://pawalker/api"
+    >
+      <React.StrictMode>
         <Provider store={store}>
           <Router>
             <App />
           </Router>
         </Provider>
-      </Auth0Provider>
-    </React.StrictMode>,
+      </React.StrictMode>
+    </Auth0Provider>,
 
     document.getElementById('root')
   )
