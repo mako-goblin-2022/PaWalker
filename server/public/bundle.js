@@ -2440,9 +2440,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
  // to update existing user
 
-function updateUser(user) {
-  return superagent__WEBPACK_IMPORTED_MODULE_0___default().put('/api/v1/users').set('authorization', "Bearer ".concat(user.token)).send({
+function updateUser(user, token) {
+  console.log(user);
+  console.log(token);
+  return superagent__WEBPACK_IMPORTED_MODULE_0___default().put('/api/v1/authusers').set('authorization', "Bearer ".concat(token)).send({
     user: user
+  }).catch(function (error) {
+    return console.log(error.message);
   });
 } // to register a new user
 
@@ -2456,8 +2460,8 @@ function _addUser() {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            return _context.abrupt("return", superagent__WEBPACK_IMPORTED_MODULE_0___default().post("/api/v1/users").set('authorization', "Bearer ".concat(user.token)).send(user).then(function (res) {
-              return console.log(res);
+            return _context.abrupt("return", superagent__WEBPACK_IMPORTED_MODULE_0___default().post("/api/v1/authusers").set('authorization', "Bearer ".concat(user.token)).send(user).then(function (res) {
+              return res.body;
             }));
 
           case 1:
@@ -2597,9 +2601,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ((0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_4__.configureStore)({
   reducer: {
     user: _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_0__["default"],
+    auth: _features_auth_authSlice__WEBPACK_IMPORTED_MODULE_3__["default"],
     pet: _features_users_petsSlice__WEBPACK_IMPORTED_MODULE_1__["default"],
-    walker: _features_users_walkersSlice__WEBPACK_IMPORTED_MODULE_2__["default"],
-    auth: _features_auth_authSlice__WEBPACK_IMPORTED_MODULE_3__["default"]
+    walker: _features_users_walkersSlice__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 }));
 
@@ -2650,33 +2654,39 @@ function _cacheUser() {
             });
             _useAuth = useAuth0(), isAuthenticated = _useAuth.isAuthenticated, getAccessTokenSilently = _useAuth.getAccessTokenSilently, user = _useAuth.user; // await can be used since we are within an asynchronous function
 
-            _context.next = 5;
-            return getAccessTokenSilently();
-
-          case 5:
-            token = _context.sent;
-
-            if (isAuthenticated && !(loggedInUser !== null && loggedInUser !== void 0 && loggedInUser.token)) {
-              try {
-                userToSave = {
-                  auth0Id: user.sub,
-                  email: user.email,
-                  name: user.name,
-                  token: token
-                };
-                console.log(userToSave);
-                dispatch((0,_features_auth_authSlice__WEBPACK_IMPORTED_MODULE_2__.saveUser)(userToSave));
-              } catch (err) {
-                console.error(err);
-              }
+            if (!(isAuthenticated && !(loggedInUser !== null && loggedInUser !== void 0 && loggedInUser.token))) {
+              _context.next = 16;
+              break;
             }
 
+            _context.prev = 4;
+            _context.next = 7;
+            return getAccessTokenSilently();
+
           case 7:
+            token = _context.sent;
+            userToSave = {
+              auth0Id: user.sub,
+              email: user.email,
+              name: user.name,
+              token: token
+            };
+            console.log(userToSave);
+            dispatch((0,_features_auth_authSlice__WEBPACK_IMPORTED_MODULE_2__.saveUser)(userToSave));
+            _context.next = 16;
+            break;
+
+          case 13:
+            _context.prev = 13;
+            _context.t0 = _context["catch"](4);
+            console.error(_context.t0);
+
+          case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[4, 13]]);
   }));
   return _cacheUser.apply(this, arguments);
 }
@@ -2698,7 +2708,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _auth0_auth0_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @auth0/auth0-react */ "./node_modules/@auth0/auth0-react/dist/auth0-react.esm.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_petsSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../features/users/petsSlice */ "./client/features/users/petsSlice.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
 /* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Users */ "./client/components/Users.jsx");
 /* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Login */ "./client/components/Login.jsx");
 /* harmony import */ var _Walkers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Walkers */ "./client/components/Walkers.jsx");
@@ -2706,6 +2716,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./UserProfile */ "./client/components/UserProfile.jsx");
 /* harmony import */ var _Pets__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Pets */ "./client/components/Pets.jsx");
 /* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.jsx");
+/* harmony import */ var _OwnerProfileForm__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./OwnerProfileForm */ "./client/components/OwnerProfileForm.jsx");
+
 
 
 
@@ -2727,18 +2739,26 @@ function App() {
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_features_users_petsSlice__WEBPACK_IMPORTED_MODULE_5__.fetchAllPets)());
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
+    className: "w-full h-full"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    path: "/",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_7__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
     path: "/login",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
     path: "/users",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_6__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
     path: "/pets",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pets__WEBPACK_IMPORTED_MODULE_11__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.Route, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
     path: "/walkers",
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Walkers__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    path: "register",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OwnerProfileForm__WEBPACK_IMPORTED_MODULE_13__["default"], null)
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
 }
 
@@ -2802,7 +2822,7 @@ var Footer = function Footer() {
   }, "2022 Mako-Goblin22", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     className: "",
     href: "/"
-  }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "  Callan -  Cameron - Harry - Jay -  Rodrigo  "))));
+  }, ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), " ' Harry ' Callan ' Cameron ' Jay ' Rodrigo '", ' '))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
@@ -2950,6 +2970,225 @@ var NavbarFilter = function NavbarFilter() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (NavbarFilter);
+
+/***/ }),
+
+/***/ "./client/components/OwnerProfileForm.jsx":
+/*!************************************************!*\
+  !*** ./client/components/OwnerProfileForm.jsx ***!
+  \************************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/AuthApi */ "./client/apis/AuthApi.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+ //import { formStage, formSignup } from '../../store/rootSlice'
+
+function OwnerProfileForm(SignupOwner) {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var token = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.auth.user.token;
+  }); // const InitialStage = useSelector((state) => state.FormStage)
+  // const OwnerName = useSelector((state) => state.Owner.name)
+  // const location = useSelector((state) => state.owner.location)
+  // const bio = useSelector((state) => state.owner.bio)
+  // const email = useSelector((state) => state.owner.email)
+  // const phoneNumber = useSelector((state) => state.owner.phone)
+  // const approachable = useSelector((state) => state.owner.approch)
+  // const rank = useSelector((state) => state.walker.rank)
+  // const img = useSelector((state) => state.owner.image)
+  // const walker = useSelector((state) => state.walker.bool)
+  // const owner = useSelector((state) => state.owner.bool)
+  // form values initial state
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+    name: '',
+    location: '',
+    bio: '',
+    email: '',
+    phone_number: '',
+    approachable: '',
+    rank: '',
+    img: '',
+    walker: '',
+    owner: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      formData = _useState2[0],
+      setFormData = _useState2[1];
+
+  var handleChange = function handleChange(e) {
+    var _e$target = e.target,
+        name = _e$target.name,
+        value = _e$target.value;
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, name, value)));
+  };
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+      _useState4 = _slicedToArray(_useState3, 2),
+      errors = _useState4[0],
+      setErrors = _useState4[1];
+
+  var validate = function validate(formData) {
+    var formErrors = {}; // name
+
+    if (!formData.name) {
+      formErrors.name = 'Name required';
+    } //location
+
+
+    if (!formData.location) {
+      formErrors.location = 'address required';
+    } // bio
+
+
+    if (!formData.bio == ' ') {
+      formErrors.bio = 'Bio Required';
+    } //email
+
+
+    var emailRegex = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      formErrors.email = 'Valid Email required';
+    } // phone
+
+
+    if (!formData.phone_number == ' ') {
+      formErrors.phone_number = 'Phone number Required';
+    } // approch
+
+
+    if (!formData.approachable == ' ') {
+      formErrors.approachable = 'Please click on the button which relects your approach status';
+    } // image
+
+
+    if (!formData.img == ' ') {
+      formErrors.img = 'Please upload an image';
+    } // isWalker
+
+
+    if (!formData.walker == ' ') {
+      formErrors.walker = 'Please identify as a Walker or Owner';
+    } // isOwner
+
+
+    if (!formData.owner == ' ') {
+      formErrors.owner = 'Please identify as an Owner or walker';
+    }
+
+    return formErrors;
+  };
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isSubmitted = _useState6[0],
+      setIsSubmitted = _useState6[1];
+
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+    setErrors(validate(formData));
+    console.log('check'); //dispatch(saveUser(formData))
+
+    (0,_apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__.updateUser)(formData, token);
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, 'Signup Here'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    name: "Ownersform",
+    id: "Ownersform",
+    onSubmit: function onSubmit(e) {
+      return handleSubmit(e);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "name"
+  }, "Owners Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "name",
+    name: "name",
+    autoComplete: "enter name",
+    placeholder: "enter name",
+    value: formData.name,
+    onChange: handleChange
+  })), errors.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "location"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "name",
+    name: "location",
+    autoComplete: "enter location",
+    placeholder: "enter location",
+    value: formData.location,
+    onChange: handleChange
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "bio"
+  }, "Pets Image", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "bio",
+    name: "bio",
+    autoComplete: "bio",
+    placeholder: "bio",
+    value: formData.bio,
+    onChange: handleChange
+  })), errors.bio && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.bio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "email"
+  }, "Pet Quantity", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    id: "email",
+    name: "email",
+    placeholder: "email",
+    value: formData.email,
+    onChange: handleChange
+  })), errors.email && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "error-message"
+  }, errors.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "disclaimer-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "OwnersForm"
+  }), " required fields"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "Submit"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "submit",
+    value: 'Submit'
+  })))));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (OwnerProfileForm);
 
 /***/ }),
 
@@ -3284,8 +3523,8 @@ var saveUser = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk
 
           case 2:
             response = _context.sent;
-            // payload of the action
-            console.log(response);
+            console.log(response.status); // payload of the action
+
             return _context.abrupt("return", response);
 
           case 5:
@@ -48618,12 +48857,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener('DOMContentLoaded', function () {
-  react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_6__.Auth0Provider, {
-    domain: "dev-dboe21nb.us.auth0.com",
-    clientId: "8P7eYdbGMH5uVvmul0WgQjWlb4fkiRmL",
+  react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_auth0_auth0_react__WEBPACK_IMPORTED_MODULE_6__.Auth0Provider, {
+    domain: "dev-7915gybq.au.auth0.com",
+    clientId: "VLWRdot0kUSE7TLTnQcCQpuywmhznokJ",
     redirectUri: window.location.origin,
     audience: "https://pawalker/api"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__.Provider, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().StrictMode), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_redux__WEBPACK_IMPORTED_MODULE_1__.Provider, {
     store: _app_store__WEBPACK_IMPORTED_MODULE_2__["default"]
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_App__WEBPACK_IMPORTED_MODULE_4__["default"], null))))), document.getElementById('root'));
 });

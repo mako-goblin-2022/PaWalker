@@ -7,6 +7,7 @@ const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 const userProfileRoutes = require('./routes/userProfile')
 const walkerRoutes = require('./routes/walkers')
+const authUserRoutes = require('./routes/authUser')
 
 
 server.use(express.json())
@@ -17,7 +18,7 @@ server.use('/api/v1/reviews', reviewRoutes)
 server.use('/api/v1/users', userRoutes)
 server.use('/api/v1/userProfile', userProfileRoutes)
 server.use('/api/v1/walkers', walkerRoutes)
-
+server.use('/api/v1/authusers', authUserRoutes)
 
 server.get('*', (req, res) => {
   res.sendFile(path.resolve('server/public/index.html'))
