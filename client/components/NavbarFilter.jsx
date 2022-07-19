@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom'
 
 const NavbarFilter = () => {
   return (
-    <nav className=" flex flex-wrap  p-3 font-semibold text-sm uppercase tracking-wide">
-      <ul className=" flex flex-wrap ">
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
-          <Link to="/">Home</Link>
+    <nav className=' flex flex-wrap  p-3 font-semibold text-slate-50 text-sm uppercase tracking-wide'>
+      <ul className=' flex flex-wrap '>
+        <li className='p-2  hover:text-orange-500 hover:translate-y-px '>
+          <Link to='/'>Home</Link>
         </li>
 
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
-          <Link to="/pets">Pets</Link>
+        <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <Link to='/pets'>Pets</Link>
         </li>
 
         {/* <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
@@ -19,17 +19,19 @@ const NavbarFilter = () => {
             </Link>
           </li> */}
 
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
-          <Link to="/walkers">Walkers</Link>
+        <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <Link to='/walkers'>Walkers</Link>
         </li>
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
+        <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
           <Link to={'/users/myProfile'}>My Profile</Link>
         </li>
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
-          <Link to={'/users/myProfile/walkHistory'}>Walk History</Link>
-        </li>
-        <li className="p-2  hover:text-orange-500 hover:translate-y-px">
-          <Link to="/login">Login</Link>
+        {/* <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+            <Link to={'/users/myProfile/walkHistory'}>
+              Walk History
+            </Link>
+          </li> */}
+        <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
+          <Link to='/login'>Login</Link>
         </li>
       </ul>
     </nav>

@@ -8,8 +8,8 @@ exports.seed = async function (knex) {
   await knex('reviews').insert([
     {
       id: 1,
-      reviewer_id: 1,
-      reviewee_id: 2,
+      reviewer_id: '1',
+      reviewee_id: '2',
       date: '9/23/2021',
       title: 'Design for Living',
       review:
@@ -18,8 +18,8 @@ exports.seed = async function (knex) {
     },
     {
       id: 2,
-      reviewer_id: 2,
-      reviewee_id: 1,
+      reviewer_id: '2',
+      reviewee_id: '1',
       date: '10/3/2021',
       title: 'Gold Raiders',
       review:
@@ -28,8 +28,8 @@ exports.seed = async function (knex) {
     },
     {
       id: 3,
-      reviewer_id: 3,
-      reviewee_id: 4,
+      reviewer_id: '3',
+      reviewee_id: '4',
       date: '11/21/2021',
       title: 'Holy Innocents, The (Santos inocentes, Los)',
       review:
@@ -38,8 +38,8 @@ exports.seed = async function (knex) {
     },
     {
       id: 4,
-      reviewer_id: 3,
-      reviewee_id: 4,
+      reviewer_id: '3',
+      reviewee_id: '4',
       date: '9/11/2021',
       title: 'Motivation, The',
       review:
@@ -48,8 +48,8 @@ exports.seed = async function (knex) {
     },
     {
       id: 5,
-      reviewer_id: 3,
-      reviewee_id: 5,
+      reviewer_id: '3',
+      reviewee_id: '5',
       date: '3/15/2022',
       title:
         'Thousand Clouds of Peace, A (Mil nubes de paz cercan el cielo, amor, jamás acabarás de ser amor)',
@@ -59,8 +59,8 @@ exports.seed = async function (knex) {
     },
     {
       id: 6,
-      reviewer_id: 3,
-      reviewee_id: 6,
+      reviewer_id: '3',
+      reviewee_id: '6',
       date: '1/30/2022',
       title: 'Veteran, The',
       review:
