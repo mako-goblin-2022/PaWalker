@@ -19,18 +19,16 @@ function OwnerProfileForm(SignupOwner) {
   // const walker = useSelector((state) => state.walker.bool)
   // const owner = useSelector((state) => state.owner.bool)
   // form values initial state
-
   const [formData, setFormData] = useState({
     name: '',
     location: '',
     bio: '',
     email: '',
     phone_number: '',
-    approachable: '',
+    approachable: true,
     rank: '',
     img: '',
-    walker: '',
-    owner: '',
+    userType: 'walker',
   })
 
   const handleChange = (e) => {
@@ -101,7 +99,15 @@ function OwnerProfileForm(SignupOwner) {
     setErrors(validate(formData))
     console.log('check')
     //dispatch(saveUser(formData))
-    updateUser(formData, token)
+    const { userType, ...form } = formData
+    if (userType === 'walker') {
+      form.walker = true
+      form.owner = false
+    } else {
+      form.walker = false
+      form.owner = true
+    }
+    updateUser(form, token)
   }
 
   return (
@@ -117,8 +123,8 @@ function OwnerProfileForm(SignupOwner) {
             type="text"
             id="name"
             name="name"
-            autoComplete="enter name"
-            placeholder="enter name"
+            autoComplete=""
+            placeholder=""
             value={formData.name}
             onChange={handleChange}
           />
@@ -127,14 +133,14 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="location">
-            <span className="OwnersForm"></span>
+            Please Enter a location <span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="name"
             name="location"
-            autoComplete="enter location"
-            placeholder="enter location"
+            autoComplete=""
+            placeholder=""
             value={formData.location}
             onChange={handleChange}
           />
@@ -142,14 +148,14 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="bio">
-            Pets Image<span className="OwnersForm"></span>
+            enter a short Bio<span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="bio"
             name="bio"
-            autoComplete="bio"
-            placeholder="bio"
+            autoComplete=""
+            placeholder=""
             value={formData.bio}
             onChange={handleChange}
           />
@@ -158,18 +164,107 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="email">
-            Pet Quantity<span className="OwnersForm"></span>
+            email<span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="email"
             name="email"
-            placeholder="email"
+            autoComplete=""
+            placeholder=""
             value={formData.email}
             onChange={handleChange}
           />
         </p>
         {errors.email && <span className="error-message">{errors.email}</span>}
+        <p>
+          <label htmlFor="phone_number">
+            Phone Number<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="number"
+            id="phone_number"
+            name="phone_number"
+            autoComplete=""
+            placeholder=""
+            value={formData.phone_number}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.phone_number && (
+          <span className="error-message">{errors.phone_number}</span>
+        )}
+        <p>
+          <label htmlFor="approachable">
+            approachable<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="checkbox"
+            id="approachable"
+            name="approachable"
+            autoComplete=""
+            placeholder=""
+            //value={!formData.approachable}
+            defaultChecked={formData.approachable}
+            onChange={() =>
+              handleChange({
+                target: { name: 'approachable', value: !formData.approachable },
+              })
+            }
+          />
+        </p>
+        {errors.approachable && (
+          <span className="error-message">{errors.approachable}</span>
+        )}
+        <p>
+          <label htmlFor="img">
+            Upload an image<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="image"
+            id="img"
+            name="img"
+            autoComplete=""
+            placeholder=""
+            value={formData.img}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.img && <span className="error-message">{errors.img}</span>}
+        <p>
+          <label htmlFor="walker">
+            Are You a Walker?<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="radio"
+            id="walker"
+            name="userType"
+            autoComplete=""
+            placeholder=""
+            value={'walker'}
+            checked={formData.userType === 'walker'}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.walker && (
+          <span className="error-message">{errors.walker}</span>
+        )}
+        <p>
+          <label htmlFor="owner">
+            Are you an Owner?<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="radio"
+            id="owner"
+            name="userType"
+            autoComplete=""
+            placeholder=""
+            value={'owner'}
+            checked={formData.userType === 'owner'}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.owner && <span className="error-message">{errors.owner}</span>}
 
         <p className="disclaimer-text">
           <span className="OwnersForm"></span> required fields
