@@ -2743,16 +2743,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _features_users_petsSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../features/users/petsSlice */ "./client/features/users/petsSlice.js");
 /* harmony import */ var _features_users_reviewsSlice__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../features/users/reviewsSlice */ "./client/features/users/reviewsSlice.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Users */ "./client/components/Users.jsx");
-/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Login */ "./client/components/Login.jsx");
-/* harmony import */ var _Walkers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Walkers */ "./client/components/Walkers.jsx");
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Header */ "./client/components/Header.jsx");
-/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./UserProfile */ "./client/components/UserProfile.jsx");
-/* harmony import */ var _Pets__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Pets */ "./client/components/Pets.jsx");
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.jsx");
-/* harmony import */ var _Hof__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Hof */ "./client/components/Hof.jsx");
-/* harmony import */ var _OwnerProfileForm__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./OwnerProfileForm */ "./client/components/OwnerProfileForm.jsx");
+/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _Users__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Users */ "./client/components/Users.jsx");
+/* harmony import */ var _Login__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Login */ "./client/components/Login.jsx");
+/* harmony import */ var _Walkers__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Walkers */ "./client/components/Walkers.jsx");
+/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Header */ "./client/components/Header.jsx");
+/* harmony import */ var _UserProfile__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./UserProfile */ "./client/components/UserProfile.jsx");
+/* harmony import */ var _Pets__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Pets */ "./client/components/Pets.jsx");
+/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./Footer */ "./client/components/Footer.jsx");
+/* harmony import */ var _Rank__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./Rank */ "./client/components/Rank.jsx");
+/* harmony import */ var _OwnerProfileForm__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./OwnerProfileForm */ "./client/components/OwnerProfileForm.jsx");
+/* harmony import */ var _MyProfile__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./MyProfile */ "./client/components/MyProfile.jsx");
+
+
 
 
 
@@ -2782,28 +2786,34 @@ function App() {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "w-full h-full"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_11__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Routes, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "/",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "/login",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_8__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Login__WEBPACK_IMPORTED_MODULE_9__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "/users",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_7__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Users__WEBPACK_IMPORTED_MODULE_8__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    path: "/users/:id",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_UserProfile__WEBPACK_IMPORTED_MODULE_12__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "/pets",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pets__WEBPACK_IMPORTED_MODULE_12__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Pets__WEBPACK_IMPORTED_MODULE_13__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "/walkers",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Walkers__WEBPACK_IMPORTED_MODULE_9__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
-    path: "/hof",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Hof__WEBPACK_IMPORTED_MODULE_14__["default"], null)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Walkers__WEBPACK_IMPORTED_MODULE_10__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    path: "/rank",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Rank__WEBPACK_IMPORTED_MODULE_15__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
+    path: "/myProfile",
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MyProfile__WEBPACK_IMPORTED_MODULE_17__["default"], null)
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_18__.Route, {
     path: "register",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OwnerProfileForm__WEBPACK_IMPORTED_MODULE_15__["default"], null)
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_13__["default"], null));
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OwnerProfileForm__WEBPACK_IMPORTED_MODULE_16__["default"], null)
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Footer__WEBPACK_IMPORTED_MODULE_14__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (App);
@@ -2906,95 +2916,6 @@ function Header() {
 
 /***/ }),
 
-/***/ "./client/components/Hof.jsx":
-/*!***********************************!*\
-  !*** ./client/components/Hof.jsx ***!
-  \***********************************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
-
-
-
-
-function Hof() {
-  var _topRev$, _topRev$2, _topRev$3, _topRev$4, _topRev$5, _topRev$6;
-
-  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
-  var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    return state.review.reviews;
-  });
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
-  }, [reviews]);
-  var allUsers = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    // console.log(state.user.users)
-    return state.user.users;
-  });
-
-  var getRank = function getRank() {
-    var result = Object.values(reviews.reduce(function (c, _ref) {
-      var reviewee_id = _ref.reviewee_id,
-          rating = _ref.rating;
-      c[reviewee_id] = c[reviewee_id] || {
-        reviewee_id: reviewee_id,
-        rating: 0
-      };
-      c[reviewee_id].rating += rating;
-      return c;
-    }, {}));
-    var sorted = result.sort(function (a, b) {
-      return b.rating - a.rating;
-    }).slice(0, 3);
-    console.log('the whole list: ', sorted); // console.log('the first element: ', sorted[0])
-    // console.log('first key within the first element: ', sorted[0]?.reviewee_id)
-
-    return sorted;
-  };
-
-  var topRev = getRank();
-
-  var getRankerProfile = function getRankerProfile() {
-    var result = allUsers.filter(function (el) {
-      return topRev.some(function (topRev) {
-        return topRev.reviewee_id === el.auth0_id;
-      });
-    }); // console.log(result)
-
-    return result;
-  };
-
-  var rankerProfile = getRankerProfile();
-  var goldProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
-    return i.auth0_id === topRev[0].reviewee_id;
-  });
-  var silverProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
-    return i.auth0_id === topRev[1].reviewee_id;
-  });
-  var bronzeProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
-    return i.auth0_id === topRev[2].reviewee_id;
-  });
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Gold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$2 = topRev[0]) === null || _topRev$2 === void 0 ? void 0 : _topRev$2.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.img,
-    alt: "goldRanker"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Silver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$3 = topRev[1]) === null || _topRev$3 === void 0 ? void 0 : _topRev$3.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$4 = topRev[1]) === null || _topRev$4 === void 0 ? void 0 : _topRev$4.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.img,
-    alt: "silverRanker"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bronze"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$5 = topRev[2]) === null || _topRev$5 === void 0 ? void 0 : _topRev$5.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$6 = topRev[2]) === null || _topRev$6 === void 0 ? void 0 : _topRev$6.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.img,
-    alt: "bronzeRanker"
-  })));
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Hof);
-
-/***/ }),
-
 /***/ "./client/components/Login.jsx":
 /*!*************************************!*\
   !*** ./client/components/Login.jsx ***!
@@ -3057,6 +2978,50 @@ function Login() {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Login);
+
+/***/ }),
+
+/***/ "./client/components/MyProfile.jsx":
+/*!*****************************************!*\
+  !*** ./client/components/MyProfile.jsx ***!
+  \*****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
+
+
+
+
+
+function MyProfile() {
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var allUserProfile = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    console.log(state.user.users);
+    return state.user.users;
+  });
+  var myProfileId = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    console.log(state.auth.user.auth0Id);
+    return state.auth.user.auth0Id;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
+  }, []); // object containing my profile details
+
+  var myProfile = allUserProfile === null || allUserProfile === void 0 ? void 0 : allUserProfile.filter(function (user) {
+    return user.auth0_id === myProfileId;
+  })[0];
+  console.log(myProfile); // need to display all my user profile
+  // need to be able to update / delete my profile
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (MyProfile);
 
 /***/ }),
 
@@ -3410,6 +3375,95 @@ function Pets() {
 
 /***/ }),
 
+/***/ "./client/components/Rank.jsx":
+/*!************************************!*\
+  !*** ./client/components/Rank.jsx ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../features/users/usersSlice */ "./client/features/users/usersSlice.js");
+
+
+
+
+function Rank() {
+  var _topRev$, _topRev$2, _topRev$3, _topRev$4, _topRev$5, _topRev$6;
+
+  var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
+  var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    return state.review.reviews;
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
+  }, [reviews]);
+  var allUsers = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    // console.log(state.user.users)
+    return state.user.users;
+  });
+
+  var getRank = function getRank() {
+    var result = Object.values(reviews.reduce(function (c, _ref) {
+      var reviewee_id = _ref.reviewee_id,
+          rating = _ref.rating;
+      c[reviewee_id] = c[reviewee_id] || {
+        reviewee_id: reviewee_id,
+        rating: 0
+      };
+      c[reviewee_id].rating += rating;
+      return c;
+    }, {}));
+    var sorted = result.sort(function (a, b) {
+      return b.rating - a.rating;
+    }).slice(0, 3);
+    console.log('the whole list: ', sorted); // console.log('the first element: ', sorted[0])
+    // console.log('first key within the first element: ', sorted[0]?.reviewee_id)
+
+    return sorted;
+  };
+
+  var topRev = getRank();
+
+  var getRankerProfile = function getRankerProfile() {
+    var result = allUsers.filter(function (el) {
+      return topRev.some(function (topRev) {
+        return topRev.reviewee_id === el.auth0_id;
+      });
+    }); // console.log(result)
+
+    return result;
+  };
+
+  var rankerProfile = getRankerProfile();
+  var goldProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[0].reviewee_id;
+  });
+  var silverProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[1].reviewee_id;
+  });
+  var bronzeProfile = rankerProfile === null || rankerProfile === void 0 ? void 0 : rankerProfile.find(function (i) {
+    return i.auth0_id === topRev[2].reviewee_id;
+  });
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Gold"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$ = topRev[0]) === null || _topRev$ === void 0 ? void 0 : _topRev$.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$2 = topRev[0]) === null || _topRev$2 === void 0 ? void 0 : _topRev$2.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: goldProfile === null || goldProfile === void 0 ? void 0 : goldProfile.img,
+    alt: "goldRanker"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Silver"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$3 = topRev[1]) === null || _topRev$3 === void 0 ? void 0 : _topRev$3.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$4 = topRev[1]) === null || _topRev$4 === void 0 ? void 0 : _topRev$4.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: silverProfile === null || silverProfile === void 0 ? void 0 : silverProfile.img,
+    alt: "silverRanker"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "--------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Bronze"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "User ID: ", reviews && ((_topRev$5 = topRev[2]) === null || _topRev$5 === void 0 ? void 0 : _topRev$5.reviewee_id)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Total Rating: ", reviews && ((_topRev$6 = topRev[2]) === null || _topRev$6 === void 0 ? void 0 : _topRev$6.rating)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, "Name: ", reviews && (bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, reviews && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: bronzeProfile === null || bronzeProfile === void 0 ? void 0 : bronzeProfile.img,
+    alt: "bronzeRanker"
+  })));
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Rank);
+
+/***/ }),
+
 /***/ "./client/components/UserProfile.jsx":
 /*!*******************************************!*\
   !*** ./client/components/UserProfile.jsx ***!
@@ -3432,13 +3486,22 @@ function UserProfile() {
   var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useParams)();
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   var userId = params.id;
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchUserById)(1));
+  }, []);
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
     console.log('state: ', state);
     return state.user.user;
   });
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchUserById)(1));
-  }, []);
+  var reviews = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
+    // console.log(state.review.reviews)
+    return state.review.reviews;
+  }); // returns an array of obj containing review for this user
+
+  var userReview = reviews === null || reviews === void 0 ? void 0 : reviews.filter(function (review) {
+    return review.reviewee_id === userId;
+  });
+  console.log(userReview);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, user.userProfile && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "User Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, user.userProfile.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, user.userProfile.bio), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, user.userProfile.email), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, user.userProfile.phone_number), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, user.userProfile.location), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "---------------------------------"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Pet Profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, user.petProfile.map(function (i) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, i.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, i.breed), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, i.age), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "--------"));
   }))));
@@ -3586,15 +3649,13 @@ __webpack_require__.r(__webpack_exports__);
 
 function Walkers() {
   var walkersDisplay = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(function (state) {
-    // console.log(state)
+    // console.log(state.user.users)
     return state.user.users;
   });
   var dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useDispatch)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     dispatch((0,_features_users_usersSlice__WEBPACK_IMPORTED_MODULE_2__.fetchAllUsers)());
-  }, [dispatch]); // let walker = walkersDisplay.filter((user) => user.walker === true)
-  // console.log(walker)
-
+  }, [dispatch]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", {
     className: "max-w-3xl mx-auto text-center mb-20 grid grid-cols-2 gap-4"
   }, walkersDisplay.map(function (walkers, i) {
@@ -3654,11 +3715,9 @@ var saveUser = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_1__.createAsyncThunk
 
           case 2:
             response = _context.sent;
-            console.log(response.status); // payload of the action
-
             return _context.abrupt("return", response);
 
-          case 5:
+          case 4:
           case "end":
             return _context.stop();
         }

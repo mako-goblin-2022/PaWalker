@@ -4,7 +4,7 @@ import { fetchAllUsers } from '../features/users/usersSlice'
 
 function Walkers() {
   const walkersDisplay = useSelector((state) => {
-    // console.log(state)
+    // console.log(state.user.users)
     return state.user.users
   })
 
@@ -13,9 +13,6 @@ function Walkers() {
   useEffect(() => {
     dispatch(fetchAllUsers())
   }, [dispatch])
-
-  // let walker = walkersDisplay.filter((user) => user.walker === true)
-  // console.log(walker)
 
   return (
     <main className='max-w-3xl mx-auto text-center mb-20 grid grid-cols-2 gap-4'>
