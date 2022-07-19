@@ -127,14 +127,14 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="location">
-            <span className="OwnersForm"></span>
+            Please Enter a location <span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="name"
             name="location"
-            autoComplete="enter location"
-            placeholder="enter location"
+            autoComplete=""
+            placeholder=""
             value={formData.location}
             onChange={handleChange}
           />
@@ -142,14 +142,14 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="bio">
-            Pets Image<span className="OwnersForm"></span>
+            enter a short Bio<span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="bio"
             name="bio"
-            autoComplete="bio"
-            placeholder="bio"
+            autoComplete=""
+            placeholder=""
             value={formData.bio}
             onChange={handleChange}
           />
@@ -158,18 +158,99 @@ function OwnerProfileForm(SignupOwner) {
 
         <p>
           <label htmlFor="email">
-            Pet Quantity<span className="OwnersForm"></span>
+            email<span className="OwnersForm"></span>
           </label>
           <input
             type="text"
             id="email"
             name="email"
-            placeholder="email"
+            placeholder=""
             value={formData.email}
             onChange={handleChange}
           />
         </p>
         {errors.email && <span className="error-message">{errors.email}</span>}
+        <p>
+          <label htmlFor="phone_number">
+            Phone Number<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="number"
+            id="phone_number"
+            name="phone_number"
+            autoComplete=""
+            placeholder=""
+            value={formData.phone_number}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.phone_number && (
+          <span className="error-message">{errors.phone_number}</span>
+        )}
+        <p>
+          <label htmlFor="approachable">
+            approachable<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="boolean"
+            id="approachable"
+            name="approachable"
+            autoComplete=""
+            placeholder=""
+            value={formData.approachable}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.approachable && (
+          <span className="error-message">{errors.approachable}</span>
+        )}
+        <p>
+          <label htmlFor="img">
+            Upload an image<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="image"
+            id="img"
+            name="img"
+            autoComplete=""
+            placeholder=""
+            value={formData.img}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.img && <span className="error-message">{errors.img}</span>}
+        <p>
+          <label htmlFor="walker">
+            Are You a Walker?<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="boolean"
+            id="walker"
+            name="walker"
+            autoComplete=""
+            placeholder=""
+            value={formData.walker}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.walker && (
+          <span className="error-message">{errors.walker}</span>
+        )}
+        <p>
+          <label htmlFor="owner">
+            Are you an Owner?<span className="OwnersForm"></span>
+          </label>
+          <input
+            type="boolean"
+            id="owner"
+            name="owner"
+            autoComplete=""
+            placeholder=""
+            value={formData.owner}
+            onChange={handleChange}
+          />
+        </p>
+        {errors.owner && <span className="error-message">{errors.owner}</span>}
 
         <p className="disclaimer-text">
           <span className="OwnersForm"></span> required fields
