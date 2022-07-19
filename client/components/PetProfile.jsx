@@ -7,13 +7,22 @@ function UserProfile() {
   const params = useParams()
   const dispatch = useDispatch()
   const petId = params.id
+  console.log(petId)
 
   const pet = useSelector((state) => {
-    console.log(state)
+    console.log(state.pet.pets)
     return state.pet.pets
   })
 
+  const allReviews = useSelector((state) => {
+    return state.review.reviews
+  })
+
   const petSelected = pet.find((pet) => pet.id === Number(petId))
+  console.log('I am a pet profile: ', petSelected)
+
+  const petReview = allReviews.find((review) => review.reviewee_id === petId)
+  console.log('I am a pet review: ', petReview)
 
   useEffect(() => {
     console.log(pet.owner_id)
@@ -23,7 +32,7 @@ function UserProfile() {
   }, [pet])
 
   let owner = useSelector((state) => {
-    console.log('owner state: ', state.user.user)
+    console.log('owner detail: ', state.user.user)
     return state.user.user.userProfile
   })
 

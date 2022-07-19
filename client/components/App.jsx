@@ -19,6 +19,7 @@ import Footer from './Footer'
 import Rank from './Rank'
 import OwnerProfileForm from './OwnerProfileForm'
 import MyProfile from './MyProfile'
+import PetProfile from './PetProfile'
 
 // import '../../client/index.css'
 
@@ -46,6 +47,7 @@ function App() {
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />
+        <Route path='/pets/:id' element={<PetProfile />} />
         <Route path='/walkers' element={<Walkers />} />
         <Route path='/rank' element={<Rank />} />
         <Route path='/myProfile' element={<MyProfile />} />
