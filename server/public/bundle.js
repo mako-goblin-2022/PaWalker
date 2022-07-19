@@ -2989,6 +2989,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../apis/AuthApi */ "./client/apis/AuthApi.js");
+var _excluded = ["userType"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -3028,17 +3034,18 @@ function OwnerProfileForm(SignupOwner) {
   // const owner = useSelector((state) => state.owner.bool)
   // form values initial state
 
+  console.log(formData);
+
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
     name: '',
     location: '',
     bio: '',
     email: '',
     phone_number: '',
-    approachable: '',
+    approachable: true,
     rank: '',
     img: '',
-    walker: '',
-    owner: ''
+    userType: 'walker'
   }),
       _useState2 = _slicedToArray(_useState, 2),
       formData = _useState2[0],
@@ -3048,6 +3055,7 @@ function OwnerProfileForm(SignupOwner) {
     var _e$target = e.target,
         name = _e$target.name,
         value = _e$target.value;
+    console.log(name, value);
     setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, name, value)));
   };
 
@@ -3118,7 +3126,18 @@ function OwnerProfileForm(SignupOwner) {
     setErrors(validate(formData));
     console.log('check'); //dispatch(saveUser(formData))
 
-    (0,_apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__.updateUser)(formData, token);
+    var userType = formData.userType,
+        form = _objectWithoutProperties(formData, _excluded);
+
+    if (userType === 'walker') {
+      form.walker = true;
+      form.owner = false;
+    } else {
+      form.walker = false;
+      form.owner = true;
+    }
+
+    (0,_apis_AuthApi__WEBPACK_IMPORTED_MODULE_2__.updateUser)(form, token);
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, 'Signup Here'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
@@ -3200,13 +3219,21 @@ function OwnerProfileForm(SignupOwner) {
   }, "approachable", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "OwnersForm"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "radio",
+    type: "checkbox",
     id: "approachable",
     name: "approachable",
     autoComplete: "",
-    placeholder: "",
-    value: formData.approachable,
-    onChange: handleChange
+    placeholder: "" //value={!formData.approachable}
+    ,
+    defaultChecked: formData.approachable,
+    onChange: function onChange() {
+      return handleChange({
+        target: {
+          name: 'approachable',
+          value: !formData.approachable
+        }
+      });
+    }
   })), errors.approachable && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "error-message"
   }, errors.approachable), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
@@ -3230,10 +3257,11 @@ function OwnerProfileForm(SignupOwner) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "radio",
     id: "walker",
-    name: "walker",
+    name: "userType",
     autoComplete: "",
     placeholder: "",
-    value: formData.walker,
+    value: 'walker',
+    checked: formData.userType === 'walker',
     onChange: handleChange
   })), errors.walker && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "error-message"
@@ -3244,10 +3272,11 @@ function OwnerProfileForm(SignupOwner) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "radio",
     id: "owner",
-    name: "walker",
+    name: "userType",
     autoComplete: "",
     placeholder: "",
-    value: formData.owner,
+    value: 'owner',
+    checked: formData.userType === 'owner',
     onChange: handleChange
   })), errors.owner && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "error-message"

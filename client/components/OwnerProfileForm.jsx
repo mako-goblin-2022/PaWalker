@@ -19,22 +19,23 @@ function OwnerProfileForm(SignupOwner) {
   // const walker = useSelector((state) => state.walker.bool)
   // const owner = useSelector((state) => state.owner.bool)
   // form values initial state
-
+  console.log(formData)
   const [formData, setFormData] = useState({
     name: '',
     location: '',
     bio: '',
     email: '',
     phone_number: '',
-    approachable: '',
+    approachable: true,
     rank: '',
     img: '',
-    walker: '',
-    owner: '',
+    userType: 'walker',
   })
 
   const handleChange = (e) => {
     const { name, value } = e.target
+
+    console.log(name, value)
     setFormData({
       ...formData,
       [name]: value,
@@ -101,7 +102,15 @@ function OwnerProfileForm(SignupOwner) {
     setErrors(validate(formData))
     console.log('check')
     //dispatch(saveUser(formData))
-    updateUser(formData, token)
+    const { userType, ...form } = formData
+    if (userType === 'walker') {
+      form.walker = true
+      form.owner = false
+    } else {
+      form.walker = false
+      form.owner = true
+    }
+    updateUser(form, token)
   }
 
   return (
@@ -193,13 +202,18 @@ function OwnerProfileForm(SignupOwner) {
             approachable<span className="OwnersForm"></span>
           </label>
           <input
-            type="radio"
+            type="checkbox"
             id="approachable"
             name="approachable"
             autoComplete=""
             placeholder=""
-            value={formData.approachable}
-            onChange={handleChange}
+            //value={!formData.approachable}
+            defaultChecked={formData.approachable}
+            onChange={() =>
+              handleChange({
+                target: { name: 'approachable', value: !formData.approachable },
+              })
+            }
           />
         </p>
         {errors.approachable && (
@@ -227,10 +241,11 @@ function OwnerProfileForm(SignupOwner) {
           <input
             type="radio"
             id="walker"
-            name="walker"
+            name="userType"
             autoComplete=""
             placeholder=""
-            value={formData.walker}
+            value={'walker'}
+            checked={formData.userType === 'walker'}
             onChange={handleChange}
           />
         </p>
@@ -244,10 +259,11 @@ function OwnerProfileForm(SignupOwner) {
           <input
             type="radio"
             id="owner"
-            name="walker"
+            name="userType"
             autoComplete=""
             placeholder=""
-            value={formData.owner}
+            value={'owner'}
+            checked={formData.userType === 'owner'}
             onChange={handleChange}
           />
         </p>
