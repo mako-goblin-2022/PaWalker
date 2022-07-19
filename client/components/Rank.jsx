@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAllUsers } from '../features/users/usersSlice'
 
-function Hof() {
+function Rank() {
   const dispatch = useDispatch()
 
   const reviews = useSelector((state) => {
@@ -75,4 +75,4 @@ function Hof() {
   )
 }
 
-export default Hof
+export default Rank

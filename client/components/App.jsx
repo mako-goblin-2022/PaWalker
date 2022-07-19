@@ -5,6 +5,8 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useDispatch } from 'react-redux'
 import { fetchAllPets } from '../features/users/petsSlice'
 import { fetchAllReviews } from '../features/users/reviewsSlice'
+import { fetchAllUsers } from '../features/users/usersSlice'
+
 import { Route, Routes } from 'react-router-dom'
 
 import Users from './Users'
@@ -14,8 +16,10 @@ import Navbar from './Header'
 import UserProfile from './UserProfile'
 import Pets from './Pets'
 import Footer from './Footer'
-import Hof from './Hof'
+import Rank from './Rank'
 import OwnerProfileForm from './OwnerProfileForm'
+import MyProfile from './MyProfile'
+import PetProfile from './PetProfile'
 
 // import '../../client/index.css'
 
@@ -41,9 +45,12 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
         <Route path='/users' element={<Users />} />
+        <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />
+        <Route path='/pets/:id' element={<PetProfile />} />
         <Route path='/walkers' element={<Walkers />} />
-        <Route path='/hof' element={<Hof />} />
+        <Route path='/rank' element={<Rank />} />
+        <Route path='/myProfile' element={<MyProfile />} />
 
         <Route path='register' element={<OwnerProfileForm />} />
       </Routes>
