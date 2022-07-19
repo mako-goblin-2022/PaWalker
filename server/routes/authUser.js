@@ -6,22 +6,22 @@ const router = express.Router()
 
 // PUT /api/v1/users
 router.put('/', checkJwt, async (req, res) => {
-  const { userForm } = req.body
-  const auth0Id = userForm.authOId
-  const userToUpdate = {
-    name: userForm.name,
-    email: userForm.email,
-    password: userForm.password,
-  }
+  const userForm = req.body.user
+  const auth0Id = req.auth.sub
+  console.log(userForm)
+  console.log(auth0Id)
+
   try {
-    const users = await db.updateUser(auth0Id, userToUpdate)
-    res.json({ users })
+    const user = await db.updateUser(auth0Id, userForm)
+    console.log(user)
+    res.json({ user })
   } catch (err) {
     console.error(err)
     if (err.message === 'Unauthorized') {
-      return res
+      res
         .status(403)
         .send('Unauthorized: only logged in users may update their data')
+      return
     }
     res.status(500).send(err.message)
   }
@@ -38,9 +38,10 @@ router.post('/', checkJwt, async (req, res) => {
   try {
     // check if user exists using new db function that takes auth id as param
     const userExists = await db.userExists(auth0Id)
-    if (userExists) return res.sendStatus(200)
+    console.log(userExists)
+    if (userExists) return res.json(req.body)
     await db.createUser(user)
-    res.sendStatus(201)
+    res.status(201).json(req.body)
   } catch (err) {
     console.log(err)
     res.status(500).send(err.message)
