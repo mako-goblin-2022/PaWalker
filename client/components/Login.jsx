@@ -42,123 +42,48 @@ function Login() {
   }
 
   return (
-<<<<<<< HEAD
-    <div>
-      <header className='flex w-full bg-sky-900 mb-8 mx-auto'>
-        <div className=''>
-||||||| f22fbba
-    <div>
-      <header className="flex w-full bg-sky-900 mb-8 mx-auto">
-        <div className="">
-=======
     <div className='mx-auto'>
-      <header className="flex bg-slate-800 mb-8 mx-auto items-center">
-        <div className="w-full">
->>>>>>> dev
+      <header className='flex bg-slate-800 mb-8 mx-auto items-center'>
+        <div className='w-full'>
           <img
-<<<<<<< HEAD
-            className='w-16 rounded-full ml-4 '
-||||||| f22fbba
-            className="w-16 rounded-full ml-4 "
-=======
-            className="w-20 rounded-full ml-12"
->>>>>>> dev
+            className='w-20 rounded-full ml-12'
             src={'./images/pawalker-logo.png'}
             alt='logo'
           />
-<<<<<<< HEAD
-          <strong className=' text-2xl text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight'>
-||||||| f22fbba
-          <strong className=" text-2xl text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
-=======
-          <strong className=" text-2xl ml-10 text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
->>>>>>> dev
+          <strong className=' text-2xl ml-10 text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight'>
             PaWalker
           </strong>
         </div>
-<<<<<<< HEAD
-        <div className='block text-center'>
-||||||| f22fbba
-        <div className="block text-center">
-=======
-        <div className=" w-full flex mr-10">
->>>>>>> dev
+        <div className=' w-full flex mr-10'>
           <IfAuthenticated>
-<<<<<<< HEAD
-            <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
+            <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
               <a href='/' onClick={handleLogoff}>
-||||||| f22fbba
-            <button className="w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
-              <a href="/" onClick={handleLogoff}>
-=======
-            <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
-              <a href="/" onClick={handleLogoff}>
->>>>>>> dev
                 Log off
               </a>
             </button>
           </IfAuthenticated>
           <IfNotAuthenticated>
-<<<<<<< HEAD
-            <button className='w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
+            <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
+              <a href='/' onClick={handleSignIn}>
+                Sign in
+              </a>
+            </button>
+            <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
               <a href='/' onClick={handleRegister}>
                 Register
               </a>
             </button>
-            <button className='w-52 cursor-pointer mb-5 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
-              <a href='/' onClick={handleSignIn}>
-||||||| f22fbba
-            <button className="w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
-              <a href="/" onClick={handleRegister}>
-                Register
-              </a>
-            </button>
-            <button className="w-52 cursor-pointer mb-5 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
-              <a href="/" onClick={handleSignIn}>
-=======
-          <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
-              <a href="/" onClick={handleSignIn}>
->>>>>>> dev
-                Sign in
-              </a>
-            </button>
-            <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
-              <a href="/" onClick={handleRegister}>
-                Register
-              </a>
-            </button>
- 
-          
-          
           </IfNotAuthenticated>
         </div>
       </header>
       <main>
-<<<<<<< HEAD
-        <section className='overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]'>
+        <section className=' overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]'>
           <div className='container'>
             <div className='-mx-4 flex flex-wrap items-center justify-between'>
               <div className='w-full px-4 lg:w-6/12'>
                 <div className='-mx-3 flex items-center sm:-mx-4'>
                   <div className='w-full px-3 sm:px-4 xl:w-1/2'>
                     <div className='py-3 sm:py-4'>
-||||||| f22fbba
-        <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
-          <div className="container">
-            <div className="-mx-4 flex flex-wrap items-center justify-between">
-              <div className="w-full px-4 lg:w-6/12">
-                <div className="-mx-3 flex items-center sm:-mx-4">
-                  <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                    <div className="py-3 sm:py-4">
-=======
-        <section className=" overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
-          <div className="container">
-            <div className="-mx-4 flex flex-wrap items-center justify-between">
-              <div className="w-full px-4 lg:w-6/12">
-                <div className="-mx-3 flex items-center sm:-mx-4">
-                  <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                    <div className="py-3 sm:py-4">
->>>>>>> dev
                       <img
                         src='assets/images/about/image-1.jpg'
                         alt=''
@@ -173,16 +98,8 @@ function Login() {
                       />
                     </div>
                   </div>
-<<<<<<< HEAD
                   <div className='w-full px-3 sm:px-4 xl:w-1/2'>
-                    <div className='relative z-10 my-4'>
-||||||| f22fbba
-                  <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                    <div className="relative z-10 my-4">
-=======
-                  <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                    <div className="relative z-10 my-4 shadow-xl">
->>>>>>> dev
+                    <div className='relative z-10 my-4 shadow-xl'>
                       <img
                         src='https://images.unsplash.com/photo-1494947665470-20322015e3a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
                         alt=''
@@ -762,47 +679,17 @@ function Login() {
                   </div>
                 </div>
               </div>
-<<<<<<< HEAD
-              <div className='w-full px-4 lg:w-1/2 xl:w-5/12'>
-                <div className='mt-10 lg:mt-0'>
+              <div className=' px-4 lg:w-1/2 xl:w-5/12'>
+                <div className='ml-10 mt-10 lg:mt-0'>
                   <h2 className='mb-8 text-3xl font-bold text-dark sm:text-4xl'>
-                    Make your customers happy by giving services.
-||||||| f22fbba
-              <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-                <div className="mt-10 lg:mt-0">
-                  
-                  <h2 className="mb-8 text-3xl font-bold text-dark sm:text-4xl">
-                    Make your customers happy by giving services.
-=======
-              <div className=" px-4 lg:w-1/2 xl:w-5/12">
-                <div className="ml-10 mt-10 lg:mt-0">
-                  
-                  <h2 className="mb-8 text-3xl font-bold text-dark sm:text-4xl">
-                   Dog Walker Neighborhood.
->>>>>>> dev
+                    Dog Walker Neighborhood.
                   </h2>
 
-<<<<<<< HEAD
                   <p className='mb-8 text-sm text-body-color'>
-                    Our Story We are a small team of NZ Junior Devs and we have developed
+                    Our Story, We are a small team of NZ Junior Devs and we have developed
                     an web application for assistance on getting someone to walk your pet
                     The journey to relaxation. Finding a solution to avoid walking your
                     pets didn’t happen overnight.
-||||||| f22fbba
-                  <p className="mb-8 text-sm text-body-color">
-                    Our Story We are a small team of NZ Junior Devs and we have
-                    developed an web application for assistance on getting
-                    someone to walk your pet The journey to relaxation. Finding
-                    a solution to avoid walking your pets didn’t happen
-                    overnight.
-=======
-                  <p className="mb-8 text-sm text-body-color">
-                    Our Story, We are a small team of NZ Junior Devs and we have
-                    developed an web application for assistance on getting
-                    someone to walk your pet The journey to relaxation. Finding
-                    a solution to avoid walking your pets didn’t happen
-                    overnight.
->>>>>>> dev
                   </p>
                   <p className='mb-8 text-sm text-body-color'>
                     It started off with discovery and research from the great minds of
