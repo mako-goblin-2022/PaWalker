@@ -42,7 +42,7 @@ function Pets() {
       <main className='max-w-6xl mx-auto text-center mb-20 grid grid-cols-3 gap-5'>
         {petsDisplay.pets.map((pets, i) => {
           return (
-            <div key={i} className='px-2 py-2 rounded-lg mx-auto'>
+            <div key={i} className='px-2 py-2 rounded-lg mx-auto shadow shadow-slate-400'>
               <img
                 className='rounded-lg object-cover h-48 w-64'
                 src={pets.img}
@@ -52,12 +52,12 @@ function Pets() {
               <h3 className=''>{pets.location}</h3>
 
               <Link to={`/pets/${pets.id}`}>
-                <button className='w-20 cursor-pointer uppercase h-9 bg-yellow-500 rounded-3xl text-white text-xs font-semibold  shadow-xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
+                <button className='w-20 inline-flex m-1 items-center justify-center rounded-md border border-slate-900 py-1 px-1 text-center text-slate-800  tracking-wider transition hover:border-orange-500 hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
                   Owner Profile
                 </button>
               </Link>
               <button
-                className='w-20 cursor-pointer uppercase h-9 bg-yellow-500 rounded-3xl text-white text-xs font-semibold  shadow-xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'
+                className='w-20 inline-flex items-center justify-center rounded-md border border-slate-900 py-1 px-1 text-center text-slate-800  tracking-wider transition hover:border-orange-500 hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'
                 onClick={() => addHistory(pets.id)}
               >
                 Add History
