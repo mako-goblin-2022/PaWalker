@@ -115,12 +115,12 @@ function PetProfileForm(SignupPet) {
   return (
     <>
 
-      <form className='bg-slate-200 w-72 h-1/3 max-w-6xl mx-auto shadow-xl rounded-xl p-2 mb-2' name="petsForm" id="petsForm" onSubmit={(e) => handleSubmit(e)}>
+      <form className='w-80 text-left m-2 text-slate-800 mt-1 bg-slate-100 shadow-xl rounded-2xl p-3 border border-slate-500' name="petsForm" id="petsForm" onSubmit={(e) => handleSubmit(e)}>
         <p>
           <label htmlFor="name" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Enter your Dog Name<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="name"
             name="name"
@@ -136,7 +136,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="location" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Enter your Address <span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="location"
             name="location"
@@ -151,7 +151,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="bio" className='text-sm ml-1 text-cyan-900 font-semibold'>
             enter a short Bio<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="bio"
             name="bio"
@@ -167,7 +167,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="breed" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Enter Dog breed<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="breed"
             name="breed"
@@ -183,7 +183,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="gender" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Select gender<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="gender"
             name="gender"
@@ -200,7 +200,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="colour" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Enter Dog Colour<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="colour"
             name="colour"
@@ -217,7 +217,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="neutered" className='text-sm ml-1 text-cyan-900 font-semibold'>
             neutered<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='p-2'
             type="checkbox"
             id="neutered"
             name="neutered"
@@ -238,7 +238,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="size">
             Enter the Size of your Dog<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="text"
             id="size"
             name="size"
@@ -254,7 +254,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="age" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Enter your Dogs Age<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='w-11/12 bg-slate-200 text-blue-700 h-10 placeholder:w-11/12 m-1 py-2 px-2 rounded-xl text-center shadow-xl border border-slate-500'
             type="number"
             id="age"
             name="age"
@@ -270,7 +270,7 @@ function PetProfileForm(SignupPet) {
           <label htmlFor="img" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Upload an image<span className="petsForm"></span>
           </label>
-          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='p-2'
             type="image" alt=''
             id="img"
             name="img"
