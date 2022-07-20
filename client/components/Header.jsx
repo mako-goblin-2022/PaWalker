@@ -31,10 +31,10 @@ function Header() {
   // }, [user])
 
   return (
-    <header className='w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 text-white '>
+    <header className='w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-slate-800 text-white '>
       <div>
         <img
-          className='w-16 rounded-full ml-4 '
+          className='w-16 rounded-full ml-4'
           src={'./images/pawalker-logo.png'}
           alt='logo'
         />
