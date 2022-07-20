@@ -25,7 +25,7 @@ function UserProfile() {
 
   // returns an array of obj containing review for this user
   const userReview = reviews?.filter((review) => review.reviewee_id === userId)
-  // console.log(userReview)
+  console.log(userReview)
 
   // add user review
 
@@ -34,18 +34,18 @@ function UserProfile() {
       <div>
         <Header />
       </div>
-      {user.userProfile && (
-        <div className='w-80 bg-slate-500'>
-          <h1>User Profile</h1>
-          <p>{user.userProfile.name}</p>
-          <p>{user.userProfile.bio}</p>
-          <p>{user.userProfile.email}</p>
-          <p>{user.userProfile.phone_number}</p>
-          <p>{user.userProfile.location}</p>
-          <p>---------------------------------</p>
-          <h2>Pet Profile</h2>
-          <div className='w-80 bg-slate-500'>
-            {user.petProfile.map((i) => {
+      <div className='flex'>
+        {user.userProfile && (
+          <div className='flex flex-col justify-content '>
+            <h1>Walker User Profile</h1>
+            <img src={user.userProfile.img} alt={user.userProfile.img} />
+            <p>{user.userProfile.name}</p>
+            <p>{user.userProfile.bio}</p>
+            <p>Location: {user.userProfile.location}</p>
+            <p>Contacts</p>
+            <p>{user.userProfile.email}</p>
+            <p className='mb-5'>{user.userProfile.phone_number}</p>
+            {/* {user.petProfile.map((i) => {
               return (
                 <div key={i}>
                   <p>{i.name}</p>
@@ -54,10 +54,21 @@ function UserProfile() {
                   <p>--------</p>
                 </div>
               )
-            })}
+            })} */}
+            {userReview &&
+              userReview.map((review) => {
+                return (
+                  <div className='mb-5'>
+                    <div>Reviews</div>
+                    <p>Rating: {review.rating}</p>
+                    <p>Title: {review.title}</p>
+                    <p>Review: {review.review}</p>
+                  </div>
+                )
+              })}
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </>
   )
 }
