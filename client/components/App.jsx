@@ -21,12 +21,10 @@ import OwnerProfileForm from './OwnerProfileForm'
 import MyProfile from './MyProfile'
 import PetProfile from './PetProfile'
 
-
-
-
 function App() {
-  cacheUser(useAuth0)
   const dispatch = useDispatch()
+
+  cacheUser(useAuth0)
 
   useEffect(() => {
     dispatch(fetchAllPets())
@@ -37,14 +35,10 @@ function App() {
   }, [])
 
   return (
-    <main className="w-full h-full">
-      <Header />
-      {/* <Login /> */}
-      {/* <Users /> */}
-
+    <main className='w-full h-full'>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/main' element={<Header />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />
@@ -52,10 +46,8 @@ function App() {
         <Route path='/walkers' element={<Walkers />} />
         <Route path='/rank' element={<Rank />} />
         <Route path='/myProfile' element={<MyProfile />} />
-
-        <Route path='register' element={<OwnerProfileForm />} />
+        <Route path='/register' element={<OwnerProfileForm />} />
       </Routes>
-      {/* <UserProfile /> */}
 
       <Footer />
     </main>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { fetchAllUsers } from '../features/users/usersSlice'
 import { fetchAllPets } from '../features/users/petsSlice'
 import { Link } from 'react-router-dom'
+import Header from './Header'
 
 function WalkHistory() {
   const dispatch = useDispatch()
@@ -52,7 +53,12 @@ function WalkHistory() {
   //   findUserFromList('2')
   // }, [])
 
-  return <>{allPetList.pets !== [] && findPetsFromList()}</>
+  return (
+    <>
+      <Header />
+      {allPetList.pets !== [] && findPetsFromList()}
+    </>
+  )
 }
 
 export default WalkHistory

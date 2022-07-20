@@ -22,6 +22,8 @@ function createUser(user, db = connection) {
 function userExists(auth0Id, db = connection) {
   console.log('auth0Id', auth0Id)
   return db('users')
+    .select()
+    .where('auth0_d')
     .count('auth0_id as n')
     .where('auth0_id', auth0Id)
     .then((count) => count[0].n > 0)

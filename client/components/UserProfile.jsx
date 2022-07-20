@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchUserById } from '../features/users/usersSlice'
+import Header from './Header'
 
 function UserProfile() {
   const params = useParams()
@@ -26,8 +27,11 @@ function UserProfile() {
   const userReview = reviews?.filter((review) => review.reviewee_id === userId)
   console.log(userReview)
 
+  // add user review
+
   return (
     <>
+      <Header />
       {user.userProfile && (
         <>
           <h1>User Profile</h1>

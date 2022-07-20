@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPetsByUserId, fetchPetById } from '../features/users/petsSlice'
 import { fetchUserById } from '../features/users/usersSlice'
+import Header from './Header'
+
 function UserProfile() {
   const params = useParams()
   const dispatch = useDispatch()
@@ -36,8 +38,11 @@ function UserProfile() {
     return state.user.user.userProfile
   })
 
+  // add pet review
+
   return (
     <>
+      <Header />
       {petSelected && (
         <div>
           <p>{petSelected.name}</p>
