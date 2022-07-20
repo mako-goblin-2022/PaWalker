@@ -57,7 +57,7 @@ exports.seed = async function (knex) {
     {
       auth0_id: 5,
       name: 'Jacob',
-      location: 'Youhao',
+      location: 'North',
       bio: 'Rhea americana',
       email: 'jwaghorn3@dyndns.org',
       phone_number: 11,
@@ -69,7 +69,7 @@ exports.seed = async function (knex) {
     {
       auth0_id: 6,
       name: 'Verne',
-      location: 'Kulonkali',
+      location: 'CBD',
       bio: 'Pteronura brasiliensis',
       email: 'vdannell4@netscape.com',
       phone_number: 10,
@@ -81,7 +81,7 @@ exports.seed = async function (knex) {
     {
       auth0_id: 7,
       name: 'Madeline',
-      location: 'Bayan Qagan',
+      location: 'West',
       bio: 'Turtur chalcospilos',
       email: 'mmanifield5@live.com',
       phone_number: 11,

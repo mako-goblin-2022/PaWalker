@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useParams } from 'react-router-dom'
-import { fetchAllUsers, addToHistory } from '../features/users/usersSlice'
-import WalkHistory from './WalkHistory'
+
+import { fetchAllUsers} from '../features/users/usersSlice'
+
 
 function Users() {
   const usersDisplay = useSelector((state) => {
@@ -14,7 +14,7 @@ function Users() {
 
   useEffect(() => {
     dispatch(fetchAllUsers())
-  }, [])
+  }, [dispatch])
 
   // console.log(historyList)
 

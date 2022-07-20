@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../apis/AuthApi'
+import Login from './Login'
 //import { formStage, formSignup } from '../../store/rootSlice'
 
 function OwnerProfileForm(SignupOwner) {
@@ -110,20 +111,36 @@ function OwnerProfileForm(SignupOwner) {
   }
 
   return (
-    <>
-      <h2>{'Signup Here'}</h2>
+    <div className='mx-auto justify-center text-slate-900'>
+    
+      <div className='flex w-full bg-sky-900 mb-16 mx-auto'>
+      <div className=''>
+        <img
+          className="w-16 rounded-full ml-4 "
+          src={'./images/pawalker-logo.png'}
+          alt="logo"
+        />
+        <strong className=" text-2xl text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
+          PaWalker
+        </strong>
+      </div>
+      <div classname=''>
+         <Login />
+      </div>
+        
+      </div>
 
-      <form name='Ownersform' id='Ownersform' onSubmit={(e) => handleSubmit(e)}>
+      <form className='bg-slate-200 w-72 h-1/3 max-w-6xl mx-auto shadow-xl rounded-xl p-2' name="Ownersform" id="Ownersform" onSubmit={(e) => handleSubmit(e)}>
         <p>
-          <label htmlFor='name'>
-            Owners Name<span className='OwnersForm'></span>
+          <label htmlFor="name" className='text-sm'>
+            Owners Name<span className="OwnersForm"></span>
           </label>
-          <input
-            type='text'
-            id='name'
-            name='name'
-            autoComplete=''
-            placeholder=''
+          <input className='px-10 py-2 m-1 rounded-xl bg-slate-300 border-none'
+            type="text"
+            id="name"
+            name="name"
+            autoComplete=""
+            placeholder=""
             value={formData.name}
             onChange={handleChange}
           />
@@ -134,12 +151,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='location'>
             Please Enter a location <span className='OwnersForm'></span>
           </label>
-          <input
-            type='text'
-            id='name'
-            name='location'
-            autoComplete=''
-            placeholder=''
+          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+            type="text"
+            id="name"
+            name="location"
+            autoComplete=""
+            placeholder=""
             value={formData.location}
             onChange={handleChange}
           />
@@ -149,12 +166,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='bio'>
             enter a short Bio<span className='OwnersForm'></span>
           </label>
-          <input
-            type='text'
-            id='bio'
-            name='bio'
-            autoComplete=''
-            placeholder=''
+          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+            type="text"
+            id="bio"
+            name="bio"
+            autoComplete=""
+            placeholder=""
             value={formData.bio}
             onChange={handleChange}
           />
@@ -165,12 +182,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='email'>
             email<span className='OwnersForm'></span>
           </label>
-          <input
-            type='text'
-            id='email'
-            name='email'
-            autoComplete=''
-            placeholder=''
+          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+            type="text"
+            id="email"
+            name="email"
+            autoComplete=""
+            placeholder=""
             value={formData.email}
             onChange={handleChange}
           />
@@ -180,12 +197,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='phone_number'>
             Phone Number<span className='OwnersForm'></span>
           </label>
-          <input
-            type='number'
-            id='phone_number'
-            name='phone_number'
-            autoComplete=''
-            placeholder=''
+          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+            type="number"
+            id="phone_number"
+            name="phone_number"
+            autoComplete=""
+            placeholder=""
             value={formData.phone_number}
             onChange={handleChange}
           />
@@ -197,12 +214,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='approachable'>
             approachable<span className='OwnersForm'></span>
           </label>
-          <input
-            type='checkbox'
-            id='approachable'
-            name='approachable'
-            autoComplete=''
-            placeholder=''
+          <input className='px-7 py-2 m-1 rounded-xl bg-slate-200 border-none'
+            type="checkbox"
+            id="approachable"
+            name="approachable"
+            autoComplete=""
+            placeholder=""
             //value={!formData.approachable}
             defaultChecked={formData.approachable}
             onChange={() =>
@@ -219,12 +236,12 @@ function OwnerProfileForm(SignupOwner) {
           <label htmlFor='img'>
             Upload an image<span className='OwnersForm'></span>
           </label>
-          <input
-            type='image'
-            id='img'
-            name='img'
-            autoComplete=''
-            placeholder=''
+          <input 
+            type="image"
+            id="img"
+            name="img"
+            autoComplete=""
+            placeholder=""
             value={formData.img}
             onChange={handleChange}
           />
@@ -273,7 +290,7 @@ function OwnerProfileForm(SignupOwner) {
           </p>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 

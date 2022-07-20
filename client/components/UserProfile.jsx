@@ -11,10 +11,10 @@ function UserProfile() {
 
   useEffect(() => {
     dispatch(fetchUserById(1))
-  }, [])
+  }, [dispatch])
 
   let user = useSelector((state) => {
-    console.log('state: ', state)
+    // console.log('state: ', state)
     return state.user.user
   })
 
@@ -25,13 +25,15 @@ function UserProfile() {
 
   // returns an array of obj containing review for this user
   const userReview = reviews?.filter((review) => review.reviewee_id === userId)
-  console.log(userReview)
+  // console.log(userReview)
 
   // add user review
 
   return (
     <>
+    <div>
       <Header />
+    </div>
       {user.userProfile && (
         <>
           <h1>User Profile</h1>
@@ -45,12 +47,12 @@ function UserProfile() {
           <div>
             {user.petProfile.map((i) => {
               return (
-                <>
+                <div key={i}>
                   <p>{i.name}</p>
                   <p>{i.breed}</p>
                   <p>{i.age}</p>
                   <p>--------</p>
-                </>
+                </div>
               )
             })}
           </div>
