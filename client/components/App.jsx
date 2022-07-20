@@ -20,6 +20,8 @@ import OwnerProfileForm from './OwnerProfileForm'
 import MyProfile from './MyProfile'
 import PetProfile from './PetProfile'
 import Header from './Header'
+import WalkHistory from './WalkHistory'
+import ReviewForm from './ReviewForm'
 
 function App() {
   const dispatch = useDispatch()
@@ -41,11 +43,14 @@ function App() {
         <Route path='/main' element={<Header />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
+        <Route path='/users/:id/WalkHistory' element={<WalkHistory />} />
         <Route path='/pets' element={<Pets />} />
         <Route path='/pets/:id' element={<PetProfile />} />
+        <Route path='/pets/:id/review' element={<ReviewForm />} />
         <Route path='/walkers' element={<Walkers />} />
         <Route path='/rank' element={<Rank />} />
-        <Route path='/myProfile' element={<MyProfile />} />
+        <Route path='/users/myProfile' element={<MyProfile />} />
+        <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/register' element={<OwnerProfileForm />} />
       </Routes>
 

@@ -11,7 +11,7 @@ function Header() {
   const navigate = useNavigate()
 
   const user = useSelector((state) => state.auth.user)
-  console.log(user)
+  // console.log(user)
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {
@@ -20,7 +20,7 @@ function Header() {
     // console.log(user)
     // console.log(user === {})
     const userRegistered = Object.keys(user).every((key) => {
-      console.log(key, user[key])
+      // console.log(key, user[key])
       return user[key] !== null
     })
     // console.log(userRegistered)

@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { postReview } from '../apis/reviewsApi'
 import { saveUser } from '../features/auth/authSlice'
 import StarRate from './StarRate'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Header from './Header'
 
 function ReviewForm() {
   const params = useParams()
   const petId = params.id
+  const navigate = useNavigate()
 
   const [rating, setRating] = useState(0)
 
@@ -78,7 +79,7 @@ function ReviewForm() {
         ></input> */}
 
           <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
-          {/* <p>Rating - {rating}</p> */}
+          <p>Rating - {rating}</p>
           <label htmlFor='title'>Title: </label>
           <input
             id='title'
@@ -103,7 +104,9 @@ function ReviewForm() {
             value={reviewForm.date}
             onChange={handleInput}
           ></input>
-          <button type='submit'>Submit a Review</button>
+          <button type='submit' onClick={() => navigate('/')}>
+            Submit a Review
+          </button>
         </form>
       </div>
     </>
