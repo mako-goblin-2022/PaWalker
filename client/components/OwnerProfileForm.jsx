@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../apis/AuthApi'
-//import { formStage, formSignup } from '../../store/rootSlice'
+import PetProfileForm from '../components/PetProfileForm'
 
 function OwnerProfileForm(SignupOwner) {
   const dispatch = useDispatch()
@@ -26,7 +26,6 @@ function OwnerProfileForm(SignupOwner) {
     email: '',
     phone_number: '',
     approachable: true,
-    rank: '',
     img: '',
     userType: 'walker',
   })
@@ -204,7 +203,6 @@ function OwnerProfileForm(SignupOwner) {
             name="approachable"
             autoComplete=""
             placeholder=""
-            //value={!formData.approachable}
             defaultChecked={formData.approachable}
             onChange={() =>
               handleChange({
@@ -276,6 +274,7 @@ function OwnerProfileForm(SignupOwner) {
           </p>
         </div>
       </form>
+      {formData.userType === 'owner' && <PetProfileForm />}
     </>
   )
 }
