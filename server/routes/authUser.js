@@ -1,6 +1,7 @@
 const express = require('express')
 const checkJwt = require('../.././server/auth0')
 const db = require('../db/authDB')
+const dbUsers = require('../db/users.db')
 
 const router = express.Router()
 
@@ -18,9 +19,7 @@ router.put('/', checkJwt, async (req, res) => {
   } catch (err) {
     console.error(err)
     if (err.message === 'Unauthorized') {
-      res
-        .status(403)
-        .send('Unauthorized: only logged in users may update their data')
+      res.status(403).send('Unauthorized: only logged in users may update their data')
       return
     }
     res.status(500).send(err.message)
@@ -37,14 +36,19 @@ router.post('/', checkJwt, async (req, res) => {
   }
   try {
     // check if user exists using new db function that takes auth id as param
-    const userExists = await db.userExists(auth0Id)
-    console.log(userExists)
-    if (userExists) return res.json(req.body)
+    const dbUser = await dbUsers.getUserById(auth0Id)
+    // console.log(userExists)
+    if (dbUser) return res.json(dbUser)
     await db.createUser(user)
     res.status(201).json(req.body)
   } catch (err) {
     console.log(err)
-    res.status(500).send(err.message)
+    console.log(err.code)
+    if (err.code === 'SQLITE_CONSTRAINT_PRIMARYKEY') {
+      res.status(200).json(req.body)
+    } else {
+      res.status(500).send(err.message)
+    }
   }
 })
 

@@ -27,7 +27,6 @@ function OwnerProfileForm(SignupOwner) {
     email: '',
     phone_number: '',
     approachable: true,
-    rank: '',
     img: '',
     userType: 'walker',
   })
@@ -146,11 +145,11 @@ function OwnerProfileForm(SignupOwner) {
             onChange={handleChange}
           />
         </p>
-        {errors.name && <span className="error-message">{errors.name}</span>}
+        {errors.name && <span className='error-message'>{errors.name}</span>}
 
         <p>
-          <label htmlFor="location">
-            Please Enter a location <span className="OwnersForm"></span>
+          <label htmlFor='location'>
+            Please Enter a location <span className='OwnersForm'></span>
           </label>
           <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
@@ -164,8 +163,8 @@ function OwnerProfileForm(SignupOwner) {
         </p>
 
         <p>
-          <label htmlFor="bio">
-            enter a short Bio<span className="OwnersForm"></span>
+          <label htmlFor='bio'>
+            enter a short Bio<span className='OwnersForm'></span>
           </label>
           <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
@@ -177,11 +176,11 @@ function OwnerProfileForm(SignupOwner) {
             onChange={handleChange}
           />
         </p>
-        {errors.bio && <span className="error-message">{errors.bio}</span>}
+        {errors.bio && <span className='error-message'>{errors.bio}</span>}
 
         <p>
-          <label htmlFor="email">
-            email<span className="OwnersForm"></span>
+          <label htmlFor='email'>
+            email<span className='OwnersForm'></span>
           </label>
           <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
@@ -193,10 +192,10 @@ function OwnerProfileForm(SignupOwner) {
             onChange={handleChange}
           />
         </p>
-        {errors.email && <span className="error-message">{errors.email}</span>}
+        {errors.email && <span className='error-message'>{errors.email}</span>}
         <p>
-          <label htmlFor="phone_number">
-            Phone Number<span className="OwnersForm"></span>
+          <label htmlFor='phone_number'>
+            Phone Number<span className='OwnersForm'></span>
           </label>
           <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
             type="number"
@@ -209,11 +208,11 @@ function OwnerProfileForm(SignupOwner) {
           />
         </p>
         {errors.phone_number && (
-          <span className="error-message">{errors.phone_number}</span>
+          <span className='error-message'>{errors.phone_number}</span>
         )}
         <p>
-          <label htmlFor="approachable">
-            approachable<span className="OwnersForm"></span>
+          <label htmlFor='approachable'>
+            approachable<span className='OwnersForm'></span>
           </label>
           <input className='px-7 py-2 m-1 rounded-xl bg-slate-200 border-none'
             type="checkbox"
@@ -231,11 +230,11 @@ function OwnerProfileForm(SignupOwner) {
           />
         </p>
         {errors.approachable && (
-          <span className="error-message">{errors.approachable}</span>
+          <span className='error-message'>{errors.approachable}</span>
         )}
         <p>
-          <label htmlFor="img">
-            Upload an image<span className="OwnersForm"></span>
+          <label htmlFor='img'>
+            Upload an image<span className='OwnersForm'></span>
           </label>
           <input 
             type="image"
@@ -247,49 +246,47 @@ function OwnerProfileForm(SignupOwner) {
             onChange={handleChange}
           />
         </p>
-        {errors.img && <span className="error-message">{errors.img}</span>}
+        {errors.img && <span className='error-message'>{errors.img}</span>}
         <p>
-          <label htmlFor="walker">
-            Are You a Walker?<span className="OwnersForm"></span>
+          <label htmlFor='walker'>
+            Are You a Walker?<span className='OwnersForm'></span>
           </label>
           <input
-            type="radio"
-            id="walker"
-            name="userType"
-            autoComplete=""
-            placeholder=""
+            type='radio'
+            id='walker'
+            name='userType'
+            autoComplete=''
+            placeholder=''
             value={'walker'}
             checked={formData.userType === 'walker'}
             onChange={handleChange}
           />
         </p>
-        {errors.walker && (
-          <span className="error-message">{errors.walker}</span>
-        )}
+        {errors.walker && <span className='error-message'>{errors.walker}</span>}
         <p>
-          <label htmlFor="owner">
-            Are you an Owner?<span className="OwnersForm"></span>
+          <label htmlFor='owner'>
+            Are you an Owner?<span className='OwnersForm'></span>
           </label>
           <input
-            type="radio"
-            id="owner"
-            name="userType"
-            autoComplete=""
-            placeholder=""
+            type='radio'
+            id='owner'
+            name='userType'
+            autoComplete=''
+            placeholder=''
             value={'owner'}
             checked={formData.userType === 'owner'}
             onChange={handleChange}
           />
         </p>
-        {errors.owner && <span className="error-message">{errors.owner}</span>}
+        {errors.owner && <span className='error-message'>{errors.owner}</span>}
 
-        <p className="disclaimer-text">
-          <span className="OwnersForm"></span> required fields
+        <p className='disclaimer-text'>
+          <span className='OwnersForm'></span> required fields
         </p>
 
-        <div className="Submit">
+        <div className='Submit'>
           <p>
-            <input type="submit" value={'Submit'} />
+            <input type='submit' value={'Submit'} />
           </p>
         </div>
       </form>

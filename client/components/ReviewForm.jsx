@@ -4,6 +4,7 @@ import { postReview } from '../apis/reviewsApi'
 import { saveUser } from '../features/auth/authSlice'
 import StarRate from './StarRate'
 import { useParams } from 'react-router-dom'
+import Header from './Header'
 
 function ReviewForm() {
   const params = useParams()
@@ -64,9 +65,11 @@ function ReviewForm() {
   }
 
   return (
-    <div className='flex justify-center'>
-      <form className='flex flex-col' onSubmit={handleSubmit}>
-        {/* <label htmlFor='rating'>Rating </label>
+    <>
+      <Header />
+      <div className='flex justify-center'>
+        <form className='flex flex-col' onSubmit={handleSubmit}>
+          {/* <label htmlFor='rating'>Rating </label>
         <input
           id='rating'
           name='rating'
@@ -74,35 +77,36 @@ function ReviewForm() {
           onChange={handleInput}
         ></input> */}
 
-        <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
-        {/* <p>Rating - {rating}</p> */}
-        <label htmlFor='title'>Title: </label>
-        <input
-          id='title'
-          name='title'
-          value={reviewForm.name}
-          placeholder='Enter Review Title'
-          onChange={handleInput}
-        ></input>
-        <label htmlFor='review'>review: </label>
-        <textarea
-          className='border p-2 '
-          id='review'
-          name='review'
-          value={reviewForm.review}
-          placeholder='Please Leave a Feedback'
-          onChange={handleInput}
-        />
-        <label htmlFor='date'>Date: </label>
-        <input
-          id='date'
-          name='date'
-          value={reviewForm.date}
-          onChange={handleInput}
-        ></input>
-        <button type='submit'>Submit a Review</button>
-      </form>
-    </div>
+          <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
+          {/* <p>Rating - {rating}</p> */}
+          <label htmlFor='title'>Title: </label>
+          <input
+            id='title'
+            name='title'
+            value={reviewForm.name}
+            placeholder='Enter Review Title'
+            onChange={handleInput}
+          ></input>
+          <label htmlFor='review'>review: </label>
+          <textarea
+            className='border p-2 '
+            id='review'
+            name='review'
+            value={reviewForm.review}
+            placeholder='Please Leave a Feedback'
+            onChange={handleInput}
+          />
+          <label htmlFor='date'>Date: </label>
+          <input
+            id='date'
+            name='date'
+            value={reviewForm.date}
+            onChange={handleInput}
+          ></input>
+          <button type='submit'>Submit a Review</button>
+        </form>
+      </div>
+    </>
   )
 }
 

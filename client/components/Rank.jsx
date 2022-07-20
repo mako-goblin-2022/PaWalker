@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAllUsers } from '../features/users/usersSlice'
+import Header from './Header'
 
 function Rank() {
   const dispatch = useDispatch()
@@ -52,6 +53,8 @@ function Rank() {
 
   return (
     <>
+      <Header />
+
       <div>Gold</div>
       <div>User ID: {reviews && topRev[0]?.reviewee_id}</div>
       <div>Total Rating: {reviews && topRev[0]?.rating}</div>
