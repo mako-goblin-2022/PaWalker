@@ -32,7 +32,15 @@ function MyProfile() {
   return (
     <div>
       <Header />
-      <div></div>
+      {myProfile &&
+        myProfile.map((detail) => {
+          return (
+            <>
+              <div>{myProfile.name}</div>
+              <div>{myProfile.img}</div>
+            </>
+          )
+        })}
     </div>
   )
 }

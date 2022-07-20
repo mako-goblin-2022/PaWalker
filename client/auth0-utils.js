@@ -8,7 +8,7 @@ import { saveUser } from './features/auth/authSlice'
 // eslint-disable-next-line no-unused-vars
 export async function cacheUser(useAuth0) {
   const dispatch = useDispatch()
-  const loggedInUser = useSelector((state) => state.loggedInUser)
+  const loggedInUser = useSelector((state) => state.auth.user)
 
   const { isAuthenticated, getAccessTokenSilently, user } = useAuth0()
 

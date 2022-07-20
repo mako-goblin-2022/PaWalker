@@ -12,22 +12,22 @@ function Header() {
 
   const user = useSelector((state) => state.auth.user)
 
-  // useEffect(() => {
-  //   if (Object.keys(user).length === 0) {
-  //     return
-  //   }
-  //   // console.log(user)
-  //   // console.log(user === {})
-  //   const userRegistered = Object.keys(user).every((key) => {
-  //     console.log(key, user[key])
-  //     return user[key] !== null
-  //   })
-  //   // console.log(userRegistered)
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      return
+    }
+    // console.log(user)
+    // console.log(user === {})
+    const userRegistered = Object.keys(user).every((key) => {
+      console.log(key, user[key])
+      return user[key] !== null
+    })
+    // console.log(userRegistered)
 
-  //   if (!userRegistered) {
-  //     navigate('/register')
-  //   }
-  // }, [user])
+    if (!userRegistered) {
+      navigate('/register')
+    }
+  }, [user])
 
   return (
     <header className='w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-blue-900 text-white '>

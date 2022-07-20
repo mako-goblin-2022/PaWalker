@@ -2684,7 +2684,7 @@ function _cacheUser() {
           case 0:
             dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useDispatch)();
             loggedInUser = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(function (state) {
-              return state.loggedInUser;
+              return state.auth.user;
             });
             _useAuth = useAuth0(), isAuthenticated = _useAuth.isAuthenticated, getAccessTokenSilently = _useAuth.getAccessTokenSilently, user = _useAuth.user; // await can be used since we are within an asynchronous function
 
@@ -2921,22 +2921,23 @@ function Header() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
     return state.auth.user;
-  }); // useEffect(() => {
-  //   if (Object.keys(user).length === 0) {
-  //     return
-  //   }
-  //   // console.log(user)
-  //   // console.log(user === {})
-  //   const userRegistered = Object.keys(user).every((key) => {
-  //     console.log(key, user[key])
-  //     return user[key] !== null
-  //   })
-  //   // console.log(userRegistered)
-  //   if (!userRegistered) {
-  //     navigate('/register')
-  //   }
-  // }, [user])
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (Object.keys(user).length === 0) {
+      return;
+    } // console.log(user)
+    // console.log(user === {})
 
+
+    var userRegistered = Object.keys(user).every(function (key) {
+      console.log(key, user[key]);
+      return user[key] !== null;
+    }); // console.log(userRegistered)
+
+    if (!userRegistered) {
+      navigate('/register');
+    }
+  }, [user]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
     className: "w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-blue-900 text-white "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -3081,7 +3082,9 @@ function MyProfile() {
   console.log(myProfile); // need to display all my user profile
   // need to be able to update / delete my profile
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Header__WEBPACK_IMPORTED_MODULE_3__["default"], null), myProfile && myProfile.map(function (detail) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, myProfile.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, myProfile.img));
+  }));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (MyProfile);
