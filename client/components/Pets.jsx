@@ -66,7 +66,7 @@ function Pets() {
       <div className='mb-12 text-center m-auto'>
      
         <input
-          className='mb-5'
+          className='mb-5 w-80 rounded-xl'
           type='text'
           placeholder='Search For Pets In Your Area..'
           onChange={(e) => setLocation(e.target.value)}
@@ -75,7 +75,7 @@ function Pets() {
           {petsArr &&
             petsArr
               .filter((val) => {
-                if (location == '') {
+                if (location === '') {
                   return val
                 } else if (val.location.toLowerCase().includes(location.toLowerCase())) {
                   return val
@@ -99,7 +99,7 @@ function Pets() {
 
                     <div className='flex justify-center '>
                       <Link to={`/pets/${pets.id}`}>
-                        <button className='mr-10 w-20 cursor-pointer uppercase h-9 bg-yellow-500 rounded-3xl text-white text-xs font-semibold  shadow-xl hover:bg-yellow-600 hover:text-black hover:translate-y-px'>
+                        <button className='w-20 inline-flex mr-2 items-center justify-center rounded-md border border-slate-900 py-1 px-1 text-center text-slate-800  tracking-wider transition hover:border-orange-500 hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
                           Pet Profile
                         </button>
                       </Link>

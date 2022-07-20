@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 import OwnerProfileForm from './OwnerProfileForm'
+import Navbar from './Navbar'
 
 function Login() {
   const { logout, loginWithRedirect, isAuthenticated } = useAuth0()
@@ -12,14 +13,14 @@ function Login() {
 
   const user = useSelector((state) => state.auth.user)
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/pets')
-    }
-    console.log(isAuthenticated)
-    // console.log(user)
-    // console.log(user === {})
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate('/pets')
+  //   }
+  //   console.log(isAuthenticated)
+  //   // console.log(user)
+  //   // console.log(user === {})
+  // }, [isAuthenticated])
 
   function handleLogoff(e) {
     e.preventDefault()
@@ -56,11 +57,19 @@ function Login() {
         </div>
         <div className=' w-full flex mr-10'>
           <IfAuthenticated>
-            <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
-              <a href='/' onClick={handleLogoff}>
-                Log off
-              </a>
-            </button>
+            <div className='flex'>
+              <div className='float-left mr-5'>
+                <button className='w-30 h-full inline-flex items-center justify-center rounded-md border border-orange-500 py-1 px-3 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
+                
+                    <a href='/' onClick={handleLogoff}>
+                      Log off
+                    </a>
+                
+                
+                </button>
+              </div>
+              <div className='float-right'><Navbar/></div>
+            </div>
           </IfAuthenticated>
           <IfNotAuthenticated>
             <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>

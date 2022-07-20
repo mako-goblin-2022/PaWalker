@@ -18,11 +18,10 @@ const Navbar = () => {
           <Link to='/walkers'>Walkers</Link>
         </li>
         <li className='p-2  hover:text-white hover:translate-y-px'>
-          <Link to={'/users/myProfile'}>My Profile</Link>
-        </li>
-       
-        <li className='p-2  hover:text-white hover:translate-y-px'>
           <Link to='/rank'>Rank</Link>
+        </li>
+        <li className='p-2  hover:text-white hover:translate-y-px'>
+          <Link to={'/users/myProfile'}>My Profile</Link>
         </li>
       </ul>
     </nav>
