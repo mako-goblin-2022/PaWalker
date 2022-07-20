@@ -42,42 +42,45 @@ function Login() {
   }
 
   return (
-    <div>
-      <header className="flex w-full bg-sky-900 mb-8 mx-auto">
-        <div className="">
+    <div className='mx-auto'>
+      <header className="flex bg-slate-800 mb-8 mx-auto items-center">
+        <div className="w-full">
           <img
-            className="w-16 rounded-full ml-4 "
+            className="w-20 rounded-full ml-12"
             src={'./images/pawalker-logo.png'}
             alt="logo"
           />
-          <strong className=" text-2xl text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
+          <strong className=" text-2xl ml-10 text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
             PaWalker
           </strong>
         </div>
-        <div className="block text-center">
+        <div className=" w-full flex mr-10">
           <IfAuthenticated>
-            <button className="w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
+            <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
               <a href="/" onClick={handleLogoff}>
                 Log off
               </a>
             </button>
           </IfAuthenticated>
           <IfNotAuthenticated>
-            <button className="w-52 cursor-pointer mb-5 m-14 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  drop-shadow-shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
-              <a href="/" onClick={handleRegister}>
-                Register
-              </a>
-            </button>
-            <button className="w-52 cursor-pointer mb-5 uppercase h-9 bg-yellow-500 rounded-3xl text-white font-bold  shadow-2xl hover:bg-yellow-600 hover:text-black hover:translate-y-px">
+          <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
               <a href="/" onClick={handleSignIn}>
                 Sign in
               </a>
             </button>
+            <button className="w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10">
+              <a href="/" onClick={handleRegister}>
+                Register
+              </a>
+            </button>
+ 
+          
+          
           </IfNotAuthenticated>
         </div>
       </header>
       <main>
-        <section className="overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+        <section className=" overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
           <div className="container">
             <div className="-mx-4 flex flex-wrap items-center justify-between">
               <div className="w-full px-4 lg:w-6/12">
@@ -99,7 +102,7 @@ function Login() {
                     </div>
                   </div>
                   <div className="w-full px-3 sm:px-4 xl:w-1/2">
-                    <div className="relative z-10 my-4">
+                    <div className="relative z-10 my-4 shadow-xl">
                       <img
                         src="https://images.unsplash.com/photo-1494947665470-20322015e3a8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                         alt=""
@@ -679,15 +682,15 @@ function Login() {
                   </div>
                 </div>
               </div>
-              <div className="w-full px-4 lg:w-1/2 xl:w-5/12">
-                <div className="mt-10 lg:mt-0">
+              <div className=" px-4 lg:w-1/2 xl:w-5/12">
+                <div className="ml-10 mt-10 lg:mt-0">
                   
                   <h2 className="mb-8 text-3xl font-bold text-dark sm:text-4xl">
-                    Make your customers happy by giving services.
+                   Dog Walker Neighborhood.
                   </h2>
 
                   <p className="mb-8 text-sm text-body-color">
-                    Our Story We are a small team of NZ Junior Devs and we have
+                    Our Story, We are a small team of NZ Junior Devs and we have
                     developed an web application for assistance on getting
                     someone to walk your pet The journey to relaxation. Finding
                     a solution to avoid walking your pets didn’t happen

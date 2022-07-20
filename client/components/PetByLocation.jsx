@@ -12,27 +12,27 @@ const people = [
   {
     id: 1,
     name: 'Locations',
-    avatar:'https://cdn-icons.flaticon.com/png/512/1865/premium/1865269.png?token=exp=1658285405~hmac=f0affb6cc18714b1c6fa51edbaae5a1d',   
+    avatar:'https://cdn-icons-png.flaticon.com/512/6644/6644401.png',   
   },
   {
     id: 2,
     name: 'CBD',
-    avatar:'https://cdn-icons.flaticon.com/png/512/1865/premium/1865269.png?token=exp=1658285405~hmac=f0affb6cc18714b1c6fa51edbaae5a1d',   
+    avatar:'https://cdn-icons-png.flaticon.com/512/6644/6644401.png',   
   },
   {
     id: 3,
     name: 'North',
-    avatar:'https://cdn-icons.flaticon.com/png/512/1865/premium/1865269.png?token=exp=1658285405~hmac=f0affb6cc18714b1c6fa51edbaae5a1d',   
+    avatar:'https://cdn-icons-png.flaticon.com/512/6644/6644401.png',   
   },
   {
     id: 4,
     name: 'South',
-    avatar:'https://cdn-icons.flaticon.com/png/512/1865/premium/1865269.png?token=exp=1658285405~hmac=f0affb6cc18714b1c6fa51edbaae5a1d',   
+    avatar:'https://cdn-icons-png.flaticon.com/512/6644/6644401.png',   
   },
   {
     id: 5,
     name: 'West',
-    avatar:'https://cdn-icons.flaticon.com/png/512/1865/premium/1865269.png?token=exp=1658285405~hmac=f0affb6cc18714b1c6fa51edbaae5a1d',   
+    avatar:'https://cdn-icons-png.flaticon.com/512/6644/6644401.png',   
   },
 ]
 
@@ -62,7 +62,7 @@ useEffect(() => {
         {({ open }) => (
           <>
             <Listbox.Label className="block text-sm font-medium text-gray-700"></Listbox.Label>
-            <div className="mt-1 relative">
+            <div className="mt-1 relative ">
               <Listbox.Button className="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 <span className="flex items-center">
                   
@@ -94,7 +94,7 @@ useEffect(() => {
                     >
                       {({ selected, active }) => (
                         <>
-                          <div className="flex items-center">
+                          <div className="flex items-center ">
                             <img src={person.avatar} alt="" className="flex-shrink-0 h-6 w-6 rounded-full" />
                             <span
                               className={classNames(selected ? 'font-semibold' : 'font-normal', 'ml-3 block truncate')}
