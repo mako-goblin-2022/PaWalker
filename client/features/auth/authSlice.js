@@ -9,7 +9,12 @@ export const saveUser = createAsyncThunk('auth/saveUserId', async (user, thunkAP
 })
 
 const initialState = {
-  user: {},
+  user: {
+    auth0Id: null,
+    name: null,
+    email: null,
+    token: null,
+  },
   err: '',
 }
 

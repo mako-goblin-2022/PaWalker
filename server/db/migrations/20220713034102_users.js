@@ -11,12 +11,10 @@ exports.up = function (knex) {
     table.string('email')
     table.integer('phone_number')
     table.boolean('approachable')
-    table.string('rank')
     table.string('availability')
     table.string('img')
     table.boolean('walker')
     table.boolean('owner')
-    table.integer('history')
   })
 }
 
