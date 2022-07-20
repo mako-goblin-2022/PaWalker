@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 
 function Header() {
   return (
-    <header className="w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-blue-900 text-white ">
+    <header className="w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 text-white ">
       <div>
         <img
           className="w-16 rounded-full ml-4 "
