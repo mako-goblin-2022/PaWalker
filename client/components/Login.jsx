@@ -686,7 +686,7 @@ function Login() {
                 <div className="ml-10 mt-10 lg:mt-0">
                   
                   <h2 className="mb-8 text-3xl font-bold text-dark sm:text-4xl">
-                   Dog Walker Neighborhood.
+                   Dog Walking in your Neighborhood.
                   </h2>
 
                   <p className="mb-8 text-sm text-body-color">

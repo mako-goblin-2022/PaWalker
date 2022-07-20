@@ -13,7 +13,6 @@ function Pets() {
   const navigate = useNavigate()
 
   const petsDisplay = useSelector((state) => {
-    // console.log(state)
     return state.pet
   })
 
@@ -26,10 +25,6 @@ function Pets() {
     dispatch(addToHistoryPet(userId))
   }
 
-  // const OwnerProfile = async (userId) => {
-  //   // await setHistoryList(historyList.push(userId))
-  //   dispatch(addToHistoryPet(userId))
-  // }
 
   return (
     <div>
@@ -39,7 +34,11 @@ function Pets() {
       <div className='w-1/3 mb-12 text-center m-auto'>
         <PetByLocation />
       </div>
+      <div className='w-full text-center text-lg font-bold text-slate-800'>
+          <h1>Pets</h1><br/>
+        </div>
       <main className='max-w-6xl mx-auto text-center mb-20 grid grid-cols-3 gap-5'>
+        
         {petsDisplay.pets.map((pets, i) => {
           return (
             <div key={i} className='px-2 py-2 rounded-lg mx-auto shadow shadow-slate-400'>

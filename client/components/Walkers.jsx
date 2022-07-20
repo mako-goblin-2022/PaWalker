@@ -24,6 +24,9 @@ function Walkers() {
       <div>
         <Header />
       </div>
+      <div className='w-full text-center text-lg font-bold text-slate-800'>
+          <h1>Walkers</h1><br/>
+        </div>
       <main className='max-w-3xl mx-auto text-center mb-20 grid grid-cols-2 gap-4'>
         {walker.map((walkers, i) => {
           return (

@@ -13,11 +13,6 @@ const Navbar = () => {
         <li className='p-2  hover:text-white hover:translate-y-px'>
           <Link to='/pets'>Pets</Link>
         </li>
-        {/* <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
-            <Link to='/users'>
-              Owners
-            </Link>
-          </li> */}
 
         <li className='p-2  hover:text-white hover:translate-y-px'>
           <Link to='/walkers'>Walkers</Link>
@@ -25,13 +20,9 @@ const Navbar = () => {
         <li className='p-2  hover:text-white hover:translate-y-px'>
           <Link to={'/users/myProfile'}>My Profile</Link>
         </li>
-        {/* <li className='p-2  hover:text-orange-500 hover:translate-y-px'>
-            <Link to={'/users/myProfile/walkHistory'}>
-              Walk History
-            </Link>
-          </li> */}
+       
         <li className='p-2  hover:text-white hover:translate-y-px'>
-          <Link to='/login'>Login</Link>
+          <Link to='/rank'>Rank</Link>
         </li>
       </ul>
     </nav>
