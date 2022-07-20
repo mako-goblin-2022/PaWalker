@@ -2904,23 +2904,22 @@ function Header() {
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_4__.useSelector)(function (state) {
     return state.auth.user;
   }); // console.log(user)
+  // useEffect(() => {
+  //   if (Object.keys(user).length === 0) {
+  //     return
+  //   }
+  //   // console.log(user)
+  //   // console.log(user === {})
+  //   const userRegistered = Object.keys(user).every((key) => {
+  //     // console.log(key, user[key])
+  //     return user[key] !== null
+  //   })
+  //   // console.log(userRegistered)
+  //   if (!userRegistered) {
+  //     navigate('/register')
+  //   }
+  // }, [user])
 
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (Object.keys(user).length === 0) {
-      return;
-    } // console.log(user)
-    // console.log(user === {})
-
-
-    var userRegistered = Object.keys(user).every(function (key) {
-      // console.log(key, user[key])
-      return user[key] !== null;
-    }); // console.log(userRegistered)
-
-    if (!userRegistered) {
-      navigate('/register');
-    }
-  }, [user]);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("header", {
     className: "w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 text-white "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -2967,15 +2966,14 @@ function Login() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.auth.user;
-  });
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (isAuthenticated) {
-      navigate('/main');
-    }
-
-    console.log(isAuthenticated); // console.log(user)
-    // console.log(user === {})
-  }, [isAuthenticated]);
+  }); // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate('/main')
+  //   }
+  //   console.log(isAuthenticated)
+  //   // console.log(user)
+  //   // console.log(user === {})
+  // }, [isAuthenticated])
 
   function handleLogoff(e) {
     e.preventDefault(); // console.log('log off')
@@ -3968,7 +3966,10 @@ function ReviewForm() {
     var _e$target = e.target,
         name = _e$target.name,
         value = _e$target.value;
-    setReviewForm(_objectSpread(_objectSpread({}, reviewForm), {}, _defineProperty({}, name, value)));
+    setReviewForm(_objectSpread(_objectSpread({}, reviewForm), {}, _defineProperty({
+      rating: rating
+    }, name, value)));
+    console.log(reviewForm);
   }
 
   function handleSubmit(_x) {
@@ -3983,15 +3984,26 @@ function ReviewForm() {
             case 0:
               e.preventDefault();
               console.log(reviewForm);
-              _context.next = 4;
+              _context.prev = 2;
+              _context.next = 5;
               return (0,_apis_reviewsApi__WEBPACK_IMPORTED_MODULE_2__.postReview)(reviewForm);
 
-            case 4:
+            case 5:
+              navigate('/users/myprofile/walkhistory');
+              _context.next = 11;
+              break;
+
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](2);
+              console.log(_context.t0);
+
+            case 11:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, null, [[2, 8]]);
     }));
     return _handleSubmit.apply(this, arguments);
   }
@@ -4006,7 +4018,7 @@ function ReviewForm() {
     onRating: function onRating(rate) {
       return setRating(rate);
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Rating - ", rating), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "title"
   }, "Title: "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     id: "title",
@@ -4031,10 +4043,7 @@ function ReviewForm() {
     value: reviewForm.date,
     onChange: handleInput
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    type: "submit",
-    onClick: function onClick() {
-      return navigate('/');
-    }
+    type: "submit"
   }, "Submit a Review"))));
 }
 

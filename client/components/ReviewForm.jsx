@@ -55,14 +55,21 @@ function ReviewForm() {
     const { name, value } = e.target
     setReviewForm({
       ...reviewForm,
+      rating: rating,
       [name]: value,
     })
+    console.log(reviewForm)
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
     console.log(reviewForm)
-    await postReview(reviewForm)
+    try {
+      await postReview(reviewForm)
+      navigate('/users/myprofile/walkhistory')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -70,8 +77,8 @@ function ReviewForm() {
       <Header />
       <div className='flex justify-center'>
         <form className='flex flex-col' onSubmit={handleSubmit}>
-          {/* <label htmlFor='rating'>Rating </label>
-        <input
+          {/* <label htmlFor='rating'>Rating </label> */}
+          {/* <input
           id='rating'
           name='rating'
           value={reviewForm.rating}
@@ -79,7 +86,7 @@ function ReviewForm() {
         ></input> */}
 
           <StarRate rating={rating} onRating={(rate) => setRating(rate)} />
-          <p>Rating - {rating}</p>
+          {/* <p>Rating - {rating}</p> */}
           <label htmlFor='title'>Title: </label>
           <input
             id='title'
@@ -104,9 +111,7 @@ function ReviewForm() {
             value={reviewForm.date}
             onChange={handleInput}
           ></input>
-          <button type='submit' onClick={() => navigate('/')}>
-            Submit a Review
-          </button>
+          <button type='submit'>Submit a Review</button>
         </form>
       </div>
     </>
