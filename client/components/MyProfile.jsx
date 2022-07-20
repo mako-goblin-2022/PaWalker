@@ -36,8 +36,12 @@ function MyProfile() {
         myProfile.map((detail) => {
           return (
             <>
-              <div>{myProfile.name}</div>
-              <div>{myProfile.img}</div>
+              <div>{detail.name}</div>
+              <div>{detail.img}</div>
+              <div>{detail.location}</div>
+              <div>{detail.bio}</div>
+              <div>{detail.phone_number}</div>
+              <div>{detail.email}</div>
             </>
           )
         })}

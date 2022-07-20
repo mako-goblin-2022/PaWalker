@@ -43,7 +43,12 @@ router.post('/', checkJwt, async (req, res) => {
     res.status(201).json(req.body)
   } catch (err) {
     console.log(err)
-    res.status(500).send(err.message)
+    console.log(err.code)
+    if (err.code === 'SQLITE_CONSTRAINT_PRIMARYKEY') {
+      res.status(200).json(req.body)
+    } else {
+      res.status(500).send(err.message)
+    }
   }
 })
 

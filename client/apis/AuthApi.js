@@ -17,5 +17,5 @@ export async function addUser(user) {
     .post(`/api/v1/authusers`)
     .set('authorization', `Bearer ${user.token}`)
     .send(user)
-    .then((res) => res.body)
+  // .then((res) => res.body)
 }
