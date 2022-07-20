@@ -11,6 +11,7 @@ function Header() {
   const navigate = useNavigate()
 
   const user = useSelector((state) => state.auth.user)
+  console.log(user)
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {
@@ -30,7 +31,7 @@ function Header() {
   }, [user])
 
   return (
-    <header className="w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 text-white ">
+    <header className='w-full h-28 flex sticky mt-0 mb-6 justify-around items-center  bg-sky-900 text-white '>
       <div>
         <img
           className='w-16 rounded-full ml-4 '
