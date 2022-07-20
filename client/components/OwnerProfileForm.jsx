@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser } from '../apis/AuthApi'
 import Login from './Login'
-//import { formStage, formSignup } from '../../store/rootSlice'
+import PetProfileForm from '../components/PetProfileForm'
 
 function OwnerProfileForm(SignupOwner) {
   const dispatch = useDispatch()
@@ -67,28 +67,28 @@ function OwnerProfileForm(SignupOwner) {
     }
 
     // phone
-    if (!formData.phone_number == ' ') {
+    if (!formData.phone_number === ' ') {
       formErrors.phone_number = 'Phone number Required'
     }
 
     // approch
-    if (!formData.approachable == ' ') {
+    if (!formData.approachable === ' ') {
       formErrors.approachable =
         'Please click on the button which relects your approach status'
     }
 
     // image
-    if (!formData.img == ' ') {
+    if (!formData.img === ' ') {
       formErrors.img = 'Please upload an image'
     }
 
     // isWalker
-    if (!formData.walker == ' ') {
+    if (!formData.walker === ' ') {
       formErrors.walker = 'Please identify as a Walker or Owner'
     }
 
     // isOwner
-    if (!formData.owner == ' ') {
+    if (!formData.owner === ' ') {
       formErrors.owner = 'Please identify as an Owner or walker'
     }
     return formErrors
@@ -113,29 +113,12 @@ function OwnerProfileForm(SignupOwner) {
   return (
     <div className='mx-auto justify-center text-slate-900'>
     
-      <div className='flex w-full bg-sky-900 mb-16 mx-auto'>
-      <div className=''>
-        <img
-          className="w-16 rounded-full ml-4 "
-          src={'./images/pawalker-logo.png'}
-          alt="logo"
-        />
-        <strong className=" text-2xl text-white drop-shadow-[0_0.5px_0.5px_rgba(250,240,250)] -tracking-tight">
-          PaWalker
-        </strong>
-      </div>
-      <div classname=''>
-         <Login />
-      </div>
-        
-      </div>
-
-      <form className='bg-slate-200 w-72 h-1/3 max-w-6xl mx-auto shadow-xl rounded-xl p-2' name="Ownersform" id="Ownersform" onSubmit={(e) => handleSubmit(e)}>
+      <form className='bg-slate-200 w-72 h-1/3 max-w-6xl mx-auto shadow-xl rounded-xl p-2 mb-2' name="Ownersform" id="Ownersform" onSubmit={(e) => handleSubmit(e)}>
         <p>
-          <label htmlFor="name" className='text-sm'>
+          <label htmlFor="name" className='text-sm ml-1 text-cyan-900 font-semibold'>
             Owners Name<span className="OwnersForm"></span>
           </label>
-          <input className='px-10 py-2 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
             id="name"
             name="name"
@@ -148,10 +131,10 @@ function OwnerProfileForm(SignupOwner) {
         {errors.name && <span className='error-message'>{errors.name}</span>}
 
         <p>
-          <label htmlFor='location'>
+          <label htmlFor='location' className='text-sm ml-1 text-cyan-900 font-semibold'>
             Please Enter a location <span className='OwnersForm'></span>
           </label>
-          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
             id="name"
             name="location"
@@ -163,10 +146,10 @@ function OwnerProfileForm(SignupOwner) {
         </p>
 
         <p>
-          <label htmlFor='bio'>
-            enter a short Bio<span className='OwnersForm'></span>
+          <label htmlFor='bio' className='text-sm ml-1 text-cyan-900 font-semibold'>
+            Enter a short Bio<span className='OwnersForm'></span>
           </label>
-          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
             id="bio"
             name="bio"
@@ -179,10 +162,10 @@ function OwnerProfileForm(SignupOwner) {
         {errors.bio && <span className='error-message'>{errors.bio}</span>}
 
         <p>
-          <label htmlFor='email'>
-            email<span className='OwnersForm'></span>
+          <label htmlFor='email' className='text-sm ml-1 text-cyan-900 font-semibold'>
+            Email<span className='OwnersForm'></span>
           </label>
-          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="text"
             id="email"
             name="email"
@@ -194,10 +177,10 @@ function OwnerProfileForm(SignupOwner) {
         </p>
         {errors.email && <span className='error-message'>{errors.email}</span>}
         <p>
-          <label htmlFor='phone_number'>
+          <label htmlFor='phone_number' className='text-sm ml-1 text-cyan-900 font-semibold'>
             Phone Number<span className='OwnersForm'></span>
           </label>
-          <input className='px-7 py-2 m-1 rounded-xl bg-slate-300 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="number"
             id="phone_number"
             name="phone_number"
@@ -211,10 +194,10 @@ function OwnerProfileForm(SignupOwner) {
           <span className='error-message'>{errors.phone_number}</span>
         )}
         <p>
-          <label htmlFor='approachable'>
+          <label htmlFor='approachable' className='text-sm ml-1 text-cyan-900 font-semibold'>
             approachable<span className='OwnersForm'></span>
           </label>
-          <input className='px-7 py-2 m-1 rounded-xl bg-slate-200 border-none'
+          <input className='px-10 py-1 m-1 rounded-xl bg-slate-300 border-none'
             type="checkbox"
             id="approachable"
             name="approachable"
@@ -233,11 +216,11 @@ function OwnerProfileForm(SignupOwner) {
           <span className='error-message'>{errors.approachable}</span>
         )}
         <p>
-          <label htmlFor='img'>
+          <label htmlFor='img' className='text-sm ml-1 text-cyan-900 font-semibold'>
             Upload an image<span className='OwnersForm'></span>
           </label>
           <input 
-            type="image"
+            type="image" alt=''
             id="img"
             name="img"
             autoComplete=""
@@ -248,7 +231,7 @@ function OwnerProfileForm(SignupOwner) {
         </p>
         {errors.img && <span className='error-message'>{errors.img}</span>}
         <p>
-          <label htmlFor='walker'>
+          <label htmlFor='walker' className='text-sm ml-1 text-cyan-900 font-semibold'>
             Are You a Walker?<span className='OwnersForm'></span>
           </label>
           <input
@@ -264,7 +247,7 @@ function OwnerProfileForm(SignupOwner) {
         </p>
         {errors.walker && <span className='error-message'>{errors.walker}</span>}
         <p>
-          <label htmlFor='owner'>
+          <label htmlFor='owner' className='text-sm ml-1 text-cyan-900 font-semibold'>
             Are you an Owner?<span className='OwnersForm'></span>
           </label>
           <input
@@ -290,6 +273,7 @@ function OwnerProfileForm(SignupOwner) {
           </p>
         </div>
       </form>
+      {formData.userType === 'owner' && <PetProfileForm />}
     </div>
   )
 }
