@@ -30,8 +30,10 @@ function MyProfile() {
   // need to be able to update / delete my profile
 
   return (
-    <div classname='w-full mx-auto'>
-      <Header />
+    <div className=''>
+     <div>
+        <Header />
+      </div>
       {myProfile &&
         myProfile.map((detail) => {
           return (
