@@ -13,8 +13,8 @@ function MyProfile() {
   })
 
   const myProfileId = useSelector((state) => {
-    console.log(state.auth.user.auth0_id)
-    return state.auth?.user.auth0_id
+    console.log(state.auth.user.body?.auth0_id)
+    return state.auth?.user.body?.auth0_id
   })
 
   useEffect(() => {
@@ -45,6 +45,7 @@ function MyProfile() {
             </>
           )
         })}
+      <Link to='/users/myProfile/walkHistory'>Walk History</Link>
     </div>
   )
 }

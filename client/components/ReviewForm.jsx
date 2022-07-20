@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { postReview } from '../apis/reviewsApi'
 import { saveUser } from '../features/auth/authSlice'
 import StarRate from './StarRate'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Header from './Header'
 
 function ReviewForm() {
   const params = useParams()
   const petId = params.id
+  const navigate = useNavigate()
 
   const [rating, setRating] = useState(0)
 
@@ -54,14 +55,21 @@ function ReviewForm() {
     const { name, value } = e.target
     setReviewForm({
       ...reviewForm,
+      rating: rating,
       [name]: value,
     })
+    console.log(reviewForm)
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
     console.log(reviewForm)
-    await postReview(reviewForm)
+    try {
+      await postReview(reviewForm)
+      navigate('/users/myprofile/walkhistory')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
@@ -69,8 +77,8 @@ function ReviewForm() {
       <Header />
       <div className='flex justify-center'>
         <form className='flex flex-col' onSubmit={handleSubmit}>
-          {/* <label htmlFor='rating'>Rating </label>
-        <input
+          {/* <label htmlFor='rating'>Rating </label> */}
+          {/* <input
           id='rating'
           name='rating'
           value={reviewForm.rating}

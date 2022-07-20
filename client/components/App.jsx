@@ -8,7 +8,6 @@ import { fetchAllPets } from '../features/users/petsSlice'
 import { fetchAllReviews } from '../features/users/reviewsSlice'
 // import { fetchAllUsers } from '../features/users/usersSlice'
 
-
 //? ------- Components --------
 import Users from './Users'
 import Login from './Login'
@@ -22,10 +21,6 @@ import MyProfile from './MyProfile'
 import PetProfile from './PetProfile'
 import WalkHistory from './WalkHistory'
 import ReviewForm from './ReviewForm'
-
-
-
-
 
 function App() {
   const dispatch = useDispatch()

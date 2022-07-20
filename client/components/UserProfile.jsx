@@ -10,7 +10,7 @@ function UserProfile() {
   const userId = params.id
 
   useEffect(() => {
-    dispatch(fetchUserById(1))
+    dispatch(fetchUserById(userId))
   }, [dispatch])
 
   let user = useSelector((state) => {
@@ -31,9 +31,9 @@ function UserProfile() {
 
   return (
     <>
-    <div>
-      <Header />
-    </div>
+      <div>
+        <Header />
+      </div>
       {user.userProfile && (
         <>
           <h1>User Profile</h1>
