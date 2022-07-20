@@ -40,9 +40,7 @@ function App() {
 
       <Routes>
         <Route path='/' element={<Login />} />
-        {/* <Route path='/main' element={<Header />} /> */}
-
-        <Route path='/login' element={<Login />} />
+        <Route path='/main' element={<Header />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/pets' element={<Pets />} />

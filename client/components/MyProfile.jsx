@@ -13,8 +13,8 @@ function MyProfile() {
   })
 
   const myProfileId = useSelector((state) => {
-    console.log(state.auth.user.auth0Id)
-    return state.auth.user.auth0Id
+    console.log(state.auth.user.auth0_id)
+    return state.auth?.user.auth0_id
   })
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function MyProfile() {
   }, [])
 
   // object containing my profile details
-  const myProfile = allUserProfile?.filter((user) => user.auth0_id === myProfileId)[0]
+  const myProfile = allUserProfile?.filter((user) => user.auth0_id === myProfileId)
   console.log(myProfile)
 
   // need to display all my user profile
@@ -32,6 +32,7 @@ function MyProfile() {
   return (
     <div>
       <Header />
+      <div></div>
     </div>
   )
 }

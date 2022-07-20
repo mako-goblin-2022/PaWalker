@@ -54,6 +54,7 @@ function Rank() {
   return (
     <>
       <Header />
+
       <div>Gold</div>
       <div>User ID: {reviews && topRev[0]?.reviewee_id}</div>
       <div>Total Rating: {reviews && topRev[0]?.rating}</div>
