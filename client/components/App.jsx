@@ -19,7 +19,6 @@ import Rank from './Rank'
 import OwnerProfileForm from './OwnerProfileForm'
 import MyProfile from './MyProfile'
 import PetProfile from './PetProfile'
-import Header from './Header'
 import WalkHistory from './WalkHistory'
 import ReviewForm from './ReviewForm'
 
@@ -40,7 +39,6 @@ function App() {
     <main className='w-full h-full'>
       <Routes>
         <Route path='/' element={<Login />} />
-        <Route path='/main' element={<Header />} />
         <Route path='/users' element={<Users />} />
         <Route path='/users/:id' element={<UserProfile />} />
         <Route path='/users/:id/WalkHistory' element={<WalkHistory />} />
@@ -53,7 +51,6 @@ function App() {
         <Route path='/users/myProfile/walkHistory' element={<WalkHistory />} />
         <Route path='/register' element={<OwnerProfileForm />} />
       </Routes>
-
       <Footer />
     </main>
   )
