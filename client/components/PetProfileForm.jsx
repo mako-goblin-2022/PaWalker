@@ -119,7 +119,7 @@ function PetProfileForm(SignupPet) {
       <form name="petsForm" id="petsForm" onSubmit={(e) => handleSubmit(e)}>
         <p>
           <label htmlFor="name">
-            Pet Name<span className="petsForm"></span>
+            Enter your Dog Name<span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -135,7 +135,7 @@ function PetProfileForm(SignupPet) {
 
         <p>
           <label htmlFor="location">
-            Please Enter a location <span className="petsForm"></span>
+            Enter your Address <span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -166,7 +166,7 @@ function PetProfileForm(SignupPet) {
 
         <p>
           <label htmlFor="breed">
-            breed<span className="petsForm"></span>
+            Enter Dog breed<span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -182,7 +182,7 @@ function PetProfileForm(SignupPet) {
 
         <p>
           <label htmlFor="gender">
-            breed<span className="petsForm"></span>
+            Select gender<span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -199,7 +199,7 @@ function PetProfileForm(SignupPet) {
         )}
         <p>
           <label htmlFor="colour">
-            email<span className="petsForm"></span>
+            Enter Dog Colour<span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -227,7 +227,7 @@ function PetProfileForm(SignupPet) {
             defaultChecked={petformData.neutered}
             onChange={() =>
               handleChange({
-                target: { name: 'gender', value: !petformData.neutered },
+                target: { name: 'neutered', value: !petformData.neutered },
               })
             }
           />
@@ -237,7 +237,7 @@ function PetProfileForm(SignupPet) {
         )}
         <p>
           <label htmlFor="size">
-            size<span className="petsForm"></span>
+            Enter the Size of your Dog<span className="petsForm"></span>
           </label>
           <input
             type="text"
@@ -253,7 +253,7 @@ function PetProfileForm(SignupPet) {
 
         <p>
           <label htmlFor="age">
-            size<span className="petsForm"></span>
+            Enter your Dogs Age<span className="petsForm"></span>
           </label>
           <input
             type="number"
