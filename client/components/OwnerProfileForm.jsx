@@ -4,22 +4,13 @@ import { updateUser } from '../apis/AuthApi'
 import Login from './Login'
 import PetProfileForm from '../components/PetProfileForm'
 import Header from './Header'
+import { Navigate } from 'react-router-dom'
+
 function OwnerProfileForm(SignupOwner) {
   const dispatch = useDispatch()
   const token = useSelector((state) => state.auth.user.token)
 
-  // const InitialStage = useSelector((state) => state.FormStage)
-  // const OwnerName = useSelector((state) => state.Owner.name)
-  // const location = useSelector((state) => state.owner.location)
-  // const bio = useSelector((state) => state.owner.bio)
-  // const email = useSelector((state) => state.owner.email)
-  // const phoneNumber = useSelector((state) => state.owner.phone)
-  // const approachable = useSelector((state) => state.owner.approch)
-  // const rank = useSelector((state) => state.walker.rank)
-  // const img = useSelector((state) => state.owner.image)
-  // const walker = useSelector((state) => state.walker.bool)
-  // const owner = useSelector((state) => state.owner.bool)
-  // form values initial state
+  
   const [formData, setFormData] = useState({
     name: '',
     location: '',
@@ -94,7 +85,7 @@ function OwnerProfileForm(SignupOwner) {
     return formErrors
   }
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setErrors(validate(formData))
     console.log('check')
@@ -107,7 +98,12 @@ function OwnerProfileForm(SignupOwner) {
       form.walker = false
       form.owner = true
     }
-    updateUser(form, token)
+    try {
+      await updateUser(form, token)
+      Navigate('/pets')
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
