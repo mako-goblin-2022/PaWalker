@@ -8,9 +8,13 @@ import Header from './Header'
 import Users from './Users'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { useAuth0 } from '@auth0/auth0-react'
+
+import Navbar from './Navbar'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+
 function Pets() {
   const dispatch = useDispatch()
-  const navigate = useNavigate()
 
   const petsDisplay = useSelector((state) => {
     // console.log(state)
@@ -25,6 +29,29 @@ function Pets() {
     // await setHistoryList(historyList.push(userId))
     dispatch(addToHistoryPet(userId))
   }
+
+  const { logout, loginWithRedirect, isAuthenticated } = useAuth0()
+  const navigate = useNavigate()
+
+  const user = useSelector((state) => state.auth.user)
+  // console.log(user)
+
+  // useEffect(() => {
+  //   if (Object.keys(user).length === 0) {
+  //     return
+  //   }
+  //   // console.log(user)
+  //   // console.log(user === {})
+  //   const userRegistered = Object.keys(user).every((key) => {
+  //     // console.log(key, user[key])
+  //     return user[key] !== null
+  //   })
+  //   // console.log(userRegistered)
+
+  //   if (!userRegistered) {
+  //     navigate('/register')
+  //   }
+  // }, [user])
 
   // const OwnerProfile = async (userId) => {
   //   // await setHistoryList(historyList.push(userId))
