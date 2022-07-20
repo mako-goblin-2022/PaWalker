@@ -43,17 +43,31 @@ function UserProfile() {
   return (
     <>
       <Header />
-      {petSelected && (
-        <div>
-          <p>{petSelected.name}</p>
-        </div>
-      )}
+      <div className='flex flex-col justify-around'>
+        {petSelected && (
+          <div className=''>
+            <img
+              className='rounded-lg object-cover h-48 w-64'
+              src={petSelected.img}
+              alt={petSelected.name}
+            />
+            <p>{petSelected.name}</p>
+            <p>{petSelected.breed}</p>
+            <p>{petSelected.gender}</p>
+            <p>Location: {petSelected.location}</p>
+            <p>size: {petSelected.size}</p>
+          </div>
+        )}
 
-      {owner && (
-        <div>
-          <p>I am the owner: {owner?.name}</p>
-        </div>
-      )}
+        {owner && (
+          <div className='mt-10 mb-10'>
+            <p>The Owner Detail </p>
+            <p>{owner?.name}</p>
+            <p>{owner?.email}</p>
+            <p>{owner?.phone_number}</p>
+          </div>
+        )}
+      </div>
     </>
   )
 }
