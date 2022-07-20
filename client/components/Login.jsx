@@ -12,14 +12,14 @@ function Login() {
 
   const user = useSelector((state) => state.auth.user)
 
-  // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     navigate('/pets')
-  //   }
-  //   console.log(isAuthenticated)
-  //   // console.log(user)
-  //   // console.log(user === {})
-  // }, [isAuthenticated])
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/pets')
+    }
+    console.log(isAuthenticated)
+    // console.log(user)
+    // console.log(user === {})
+  }, [isAuthenticated])
 
   function handleLogoff(e) {
     e.preventDefault()

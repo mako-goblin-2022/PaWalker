@@ -2854,7 +2854,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var Footer = function Footer() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("footer", {
-    className: " w-full text-white fixed bottom-0 "
+    className: " w-full text-white bottom-0 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "text-center p-3  bg-slate-800 text-orange-500 "
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
@@ -2965,14 +2965,15 @@ function Login() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useNavigate)();
   var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(function (state) {
     return state.auth.user;
-  }); // useEffect(() => {
-  //   if (isAuthenticated) {
-  //     navigate('/pets')
-  //   }
-  //   console.log(isAuthenticated)
-  //   // console.log(user)
-  //   // console.log(user === {})
-  // }, [isAuthenticated])
+  });
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (isAuthenticated) {
+      navigate('/pets');
+    }
+
+    console.log(isAuthenticated); // console.log(user)
+    // console.log(user === {})
+  }, [isAuthenticated]);
 
   function handleLogoff(e) {
     e.preventDefault(); // console.log('log off')
