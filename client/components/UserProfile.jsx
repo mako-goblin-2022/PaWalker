@@ -36,7 +36,7 @@ function UserProfile() {
       </div>
       <div className='flex'>
         {user.userProfile && (
-          <div className='w-80 '>
+          <div className='flex flex-col justify-content '>
             <h1>Walker User Profile</h1>
             <img src={user.userProfile.img} alt={user.userProfile.img} />
             <p>{user.userProfile.name}</p>
