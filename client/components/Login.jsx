@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import { useSelector } from 'react-redux'
 import OwnerProfileForm from './OwnerProfileForm'
+import Navbar from './Navbar'
 
 function Login() {
   const { logout, loginWithRedirect, isAuthenticated } = useAuth0()
@@ -12,14 +13,14 @@ function Login() {
 
   const user = useSelector((state) => state.auth.user)
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/pets')
-    }
-    console.log(isAuthenticated)
-    // console.log(user)
-    // console.log(user === {})
-  }, [isAuthenticated])
+  // useEffect(() => {
+  //   if (isAuthenticated) {
+  //     navigate('/pets')
+  //   }
+  //   console.log(isAuthenticated)
+  //   // console.log(user)
+  //   // console.log(user === {})
+  // }, [isAuthenticated])
 
   function handleLogoff(e) {
     e.preventDefault()
@@ -54,13 +55,28 @@ function Login() {
             PaWalker
           </strong>
         </div>
-        <div className=' w-full flex mr-10'>
+        <div className=' w-11/12 flex mr-2'>
           <IfAuthenticated>
-            <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
-              <a href='/' onClick={handleLogoff}>
-                Log off
-              </a>
-            </button>
+            <div className='inline-flex'>
+              <div className='float-left mr-5'>
+                <button className='w-30 h-full inline-flex items-center justify-center rounded-md border border-orange-500 py-1 px-3 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
+                
+                    <a href='/' onClick={handleLogoff}>
+                      Log off
+                    </a>
+                
+                
+                </button>
+              </div>
+              <div className='float-left mr-5'>
+                <button className='w-30 h-full inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-1 px-3 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
+                <a href='/' onClick={handleRegister}>
+                  Register
+                </a>
+                            </button>
+              </div>
+              <div className='ml-2 float-right'><Navbar/></div>
+            </div>
           </IfAuthenticated>
           <IfNotAuthenticated>
             <button className='w-2/5 inline-flex items-center justify-center rounded-md border border-orange-500 mr-2 py-4 px-10 text-center text-base text-orange-500 tracking-wider transition hover:border-primary hover:bg-orange-500 hover:text-white lg:px-8 xl:px-10'>
@@ -679,10 +695,11 @@ function Login() {
                   </div>
                 </div>
               </div>
-              <div className=' px-4 lg:w-1/2 xl:w-5/12'>
-                <div className='ml-10 mt-10 lg:mt-0'>
-                  <h2 className='mb-8 text-3xl font-bold text-dark sm:text-4xl'>
-                    Dog Walker Neighborhood.
+              <div className=" px-4 lg:w-1/2 xl:w-5/12">
+                <div className="ml-10 mt-10 lg:mt-0">
+                  
+                  <h2 className="mb-8 text-3xl font-bold text-dark sm:text-4xl">
+                   Dog Walking in your Neighborhood.
                   </h2>
 
                   <p className='mb-8 text-sm text-body-color'>
