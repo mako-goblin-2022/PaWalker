@@ -18,14 +18,4 @@ This repo includes:
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
-## Project Screenshot(s)
-### Application
-
-### Database Diagram
-![image](https://user-images.githubusercontent.com/86042155/180416619-adb6a5b8-bde3-4b89-9391-1fb9bf215025.png)
-
-
-
-## Authors
-
 
